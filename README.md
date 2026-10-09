@@ -38,7 +38,7 @@ the app. The panel stays open and watches the selected window locally. Pause,
 resume and result confirmation are available. Turn Teach off for the existing
 action mode described above.
 
-The library contains **125 tasks across 27 application areas**, **378 task cases**
+The library contains **128 tasks across 29 application areas**, **387 task cases**
 and **15 shared runtime scenarios**. Office, CapCut, Figma web, Canva web and
 Photoshop are the first hands-on test set. The broader catalogue includes FL
 Studio, Illustrator, Premiere, After Effects, macOS utilities, and desktop Zoom,
@@ -49,6 +49,10 @@ branching, Gmail label/filter previews and Drive inherited sharing. Sheets and
 Forms share a hostname and require explicit editor selection. All workflows
 remain hands-on unverified. Study activities add Anki desktop deck/note maintenance,
 Classroom teacher rubric building and Kahoot self-paced assignments/reports on Mac browsers.
+Research/document tasks add Zotero Word integration, Acrobat Pro fillable forms and
+Overleaf compile diagnosis. Zotero work uses paused manual confirmations and returns
+to Word before Resume; Acrobat authoring needs entitlement; Overleaf fixes sources
+rather than generated auxiliary files.
 
 ```powershell
 py -B tools/application_skills.py --check-bundle PinDo/Resources/ApplicationSkills.json

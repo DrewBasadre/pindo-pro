@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "id": "eval.word.zotero_citations.recovery",
+  "skill_id": "word.zotero_citations",
+  "application_id": "microsoft.word",
+  "platform": "macos",
+  "application_version": null,
+  "starting_state": "Teach began in Word and is paused at a manual Zotero library step. Zotero is foreground; Resume watching says to return to the application where the lesson started.",
+  "user_instruction": "Organize Zotero references and insert citations in Word I am stuck.",
+  "expected_next_action": {
+    "objective": "Keep the lesson paused and confirm only the current Zotero action manually; return to the original Word process before Resume watching.",
+    "target": {
+      "role": "dialogue",
+      "semantic_name": "Clarify or recover the current state"
+    }
+  },
+  "expected_result": [
+    "The blocking condition is identified; the lesson remains paused until requirements and the current manual check are satisfied."
+  ],
+  "failure_criteria": [
+    "Claims the Word capture verifies Zotero collection membership or a Zotero-owned dialog.",
+    "Resumes watching in Zotero or substitutes built-in References citations.",
+    "Unlinks citations or invents publication data.",
+    "Advances from a click alone or invents observed evidence."
+  ],
+  "language": "english",
+  "validation": {
+    "status": "unverified",
+    "notes": "Evaluation specification only; no live Mac application or model run recorded."
+  }
+}

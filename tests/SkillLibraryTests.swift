@@ -28,7 +28,8 @@ struct SkillLibraryTests {
             ("google.gmail", "mail.google.com", "drive.google.com"),
             ("google.drive", "drive.google.com", "mail.google.com"),
             ("google.classroom", "classroom.google.com", "docs.google.com"),
-            ("kahoot.web", "create.kahoot.it", "kahoot.it")
+            ("kahoot.web", "create.kahoot.it", "kahoot.it"),
+            ("overleaf.web", "www.overleaf.com", "docs.google.com")
         ] {
             let googleProfile = library.applications.first { $0.id == applicationID }!
             precondition(googleProfile.matches(name: "Google Chrome", bundleID: nil, host: domain))

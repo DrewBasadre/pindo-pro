@@ -116,6 +116,38 @@ class RichSkillsTests(unittest.TestCase):
         # The player join hostname must not identify a host assignment lesson.
         self.assertEqual(profiles['kahoot.web']['domains'], ['create.kahoot.it'])
 
+    def test_research_requests_and_observation_boundaries(self) -> None:
+        skills, cases = load_library(ROOT)
+        tasks = {s['id']: s for s in skills}
+        task_apps = {'word.zotero_citations': ('microsoft.word', 'desktop'),
+                     'acrobat.fillable_forms': ('adobe.acrobat', 'desktop'),
+                     'overleaf.compile_troubleshooting': ('overleaf.web', 'browser')}
+        for case in cases:
+            if case['skill_id'] not in task_apps:
+                continue
+            with self.subTest(case=case['id']):
+                expected = [case['skill_id']]
+                # Existing built-in citation routing is retained; the picker resolves it.
+                if case['skill_id'] == 'word.zotero_citations':
+                    expected = ['word.citations', 'word.zotero_citations']
+                self.assertEqual(match_skills(skills, case['application_id'], case['user_instruction']), expected)
+                for other_app, _ in set(task_apps.values()) - {task_apps[case['skill_id']]}:
+                    self.assertEqual(match_skills(skills, other_app, case['user_instruction']), [])
+        self.assertEqual(match_skills(skills, 'microsoft.word', 'Insert a citation and bibliography'), ['word.citations'])
+        profiles = {p['id']: p for p in load_profiles(ROOT)}
+        for task_id, (app, surface) in task_apps.items():
+            self.assertEqual((tasks[task_id]['application_id'], tasks[task_id]['platform'], tasks[task_id]['surface']), (app, 'macos', surface))
+            self.assertEqual(profiles[app]['surface'], surface)
+        self.assertEqual(profiles['overleaf.web']['domains'], ['overleaf.com'])
+        self.assertEqual(profiles['adobe.acrobat']['domains'], [])
+        for app in ('adobe.acrobat', 'overleaf.web'):
+            self.assertEqual(profiles[app]['bundle_ids'], [])
+        zotero_steps = {s['id']: s for s in tasks['word.zotero_citations']['steps']}
+        for step_id in ('zotero', 'collection', 'metadata', 'search', 'choose_reference', 'insert', 'replacement_style', 'review'):
+            self.assertEqual(zotero_steps[step_id]['verification'], 'user_confirmation')
+        for task_id in task_apps:
+            self.assertEqual(tasks[task_id]['steps'][-1]['verification'], 'user_confirmation')
+
     def test_matching_keeps_ambiguity_and_checks_application_and_word_boundaries(self) -> None:
         skills, _ = load_library(ROOT)
         sample = deepcopy(skills[0])

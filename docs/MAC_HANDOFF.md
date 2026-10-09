@@ -49,7 +49,10 @@ Record exact macOS version, application build, browser, account plan, language a
 | --- | --- | --- |
 | PowerPoint | `powerpoint.insert_image` | slide masters and PDF output |
 | Excel | `excel.totals_averages` | PivotTables and Mac CSV import |
-| Word | `word.headings` | section numbering and citation layout |
+| Word | `word.headings` | section numbering and built-in citation layout |
+| Zotero + Word Mac | `word.zotero_citations` | paused library/dialog transitions, Automation grant, plugin fields, styles and Refresh |
+| Acrobat Pro Mac | `acrobat.fillable_forms` | authoring entitlement, text/checkbox properties, required flags, tab order and saved fillability |
+| Overleaf on Mac browser | `overleaf.compile_troubleshooting` | editable-source diagnosis, generated files, fresh compile and full PDF review |
 | CapCut Mac | `capcut.import_trim` | captions, tracked blur and export gates |
 | Figma web | `figma.nested_auto_layout` | interactive states and variable modes |
 | Canva web | `canva.frames_crop` | video timing and accessible PDF output |
@@ -79,6 +82,8 @@ Run the shared scenarios in `evaluations/runtime_cases.json`. Some require a con
 
 For study/classroom practice use `anki`, `classroom` and `kahoot` setups. Record actual Mac/app or browser versions, roles and plan/policy. Keep Anki local without sync; compare note identity before calling similar cards duplicates and verify moved/untouched siblings. Use an ungraded titled Classroom draft, configure fields one at a time and review the saved rubric without posting. Kahoot creation is immediately available; review test audience before sharing and manually verify submission and learner access. Match reports by session/deadline, not source title alone; quiz edits do not update previous assignments. Test missing controls, student/player views and plan gates as separate recovery cases.
 
+For research/document preparation use `zotero_word`, `acrobat` and `overleaf` setups; preparation is manual and requires no new static media. Record exact Word/Zotero/Acrobat builds, Mac/browser versions, plugin and Automation permission, license and project role. The Zotero lesson starts in Word under the existing `microsoft.word` profile. `TutorSession.activity()` pauses on target changes; `resume()` requires the original PID, so it cannot transfer watching to Zotero or a Zotero-owned plugin dialog. Library organization and plugin dialogs are manual `user_confirmation` steps while paused. Use **I checked this result** after each manual action; bring the original Word document forward before **Resume watching**. Same-process Word dialogs/windows can be adopted by explicit Resume; restarting Word changes the PID and needs a new lesson. Generic Zotero citation wording also matches the retained built-in `word.citations` lesson; choose the explicitly titled Zotero task in the picker. No Zotero app alias/profile is added because automatic Zotero-window watching is not supported by this Word-anchored lesson. Acrobat needs an active Pro authoring entitlement; test Reader-only and PDF editing restrictions without bypassing them. Preview all field types, independent values, Required flags and forward/reverse focus order, then reopen the blank saved copy to verify retained fillability. Do not submit/distribute or infer enforcement from a Required flag. Overleaf must trace `.toc` headings, `.aux` labels/citation keys and `.bbl` entries to editable sources, repair one cause, regenerate cache and review current logs and all PDF checklist pages. Test view-only access and stale/error-tolerant PDF cases separately.
+
 ## Record evidence
 
 Copy `evaluations/run_template.json` into a local results directory for each real run. Use null for unavailable metrics and explain why. Do not commit screenshots of personal documents.
@@ -103,6 +108,8 @@ Copy `evaluations/run_template.json` into a local results directory for each rea
 Task files describe procedures; they are not macros. The host owns progression while inference supplies guidance and evidence. Preserve this separation while continuing development.
 
 ## Known limits to investigate
+
+- Research and document preparation batch validation on 2026-10-10: generation and bundle checking passed for 128 tasks and 387 specifications; all 36 Python tests passed, including Mac surfaces, English/Taglish/recovery routing, preserved built-in citation choices and manual observation boundaries. All 125 prior tasks, 27 profiles and 378 cases are retained unchanged as data. Word uses its existing profile; Acrobat desktop and Overleaf browser add two profiles, with unknown bundle IDs empty. Swift Overleaf domain checks were added but not executed on this Linux host. Native Xcode/Swift checks and live Mac workflows are unavailable; all three tasks remain unverified with empty tested-version arrays. The existing `qwen3-vl:8b` selection is unchanged.
 
 - Study and classroom activities batch validation on 2026-10-10: generation and bundle checking passed for 125 tasks and 378 specifications; all 35 Python tests passed, including English/Taglish/recovery routing and distinct Mac surfaces. All 122 prior tasks, 24 profiles and 369 cases are retained unchanged as data. Swift Classroom/creator-versus-player domain checks were added but not executed on this Linux host. Native Xcode/Swift checks and live Mac Anki/Classroom/Kahoot execution are unavailable; all three tasks remain unverified with empty tested-version arrays. The existing `qwen3-vl:8b` selection is unchanged.
 

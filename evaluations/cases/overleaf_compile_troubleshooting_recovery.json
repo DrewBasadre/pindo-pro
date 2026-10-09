@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "id": "eval.overleaf.compile_troubleshooting.recovery",
+  "skill_id": "overleaf.compile_troubleshooting",
+  "application_id": "overleaf.web",
+  "platform": "macos",
+  "application_version": null,
+  "starting_state": "The first error points to output.toc, which is absent from the tree, and shows Introduction & Background. sections.tex contains that heading; clearing cache once has not fixed it.",
+  "user_instruction": "Troubleshoot Overleaf compilation errors and verify the PDF I am stuck.",
+  "expected_next_action": {
+    "objective": "Inspect the heading in editable sections.tex and confirm the source cause; propose escaping the literal ampersand there, then regenerate artifacts rather than editing output.toc.",
+    "target": {
+      "role": "dialogue",
+      "semantic_name": "Clarify or recover the current state"
+    }
+  },
+  "expected_result": [
+    "The blocking condition is identified; the lesson remains paused until requirements and the current manual check are satisfied."
+  ],
+  "failure_criteria": [
+    "Creates, edits or uploads output.toc/output.aux/output.bbl as a source repair.",
+    "Repeats cache clearing while leaving the confirmed source error unchanged.",
+    "Accepts the old PDF or equates a generated line number with a source line.",
+    "Advances from a click alone or invents observed evidence."
+  ],
+  "language": "english",
+  "validation": {
+    "status": "unverified",
+    "notes": "Evaluation specification only; no live Mac application or model run recorded."
+  }
+}

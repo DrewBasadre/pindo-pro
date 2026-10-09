@@ -513,6 +513,46 @@
         "Reports",
         "Assigned kahoots"
       ]
+    },
+    {
+      "id": "adobe.acrobat",
+      "name": "Adobe Acrobat",
+      "aliases": [
+        "Adobe Acrobat",
+        "Acrobat",
+        "Adobe Acrobat Pro",
+        "Acrobat Pro"
+      ],
+      "bundle_ids": [],
+      "domains": [],
+      "surface": "desktop",
+      "terminology": [
+        "Prepare a form",
+        "Fields",
+        "Required",
+        "Tab order",
+        "Preview"
+      ]
+    },
+    {
+      "id": "overleaf.web",
+      "name": "Overleaf web",
+      "aliases": [
+        "Overleaf",
+        "Overleaf web"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "overleaf.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Recompile",
+        "Logs and output files",
+        "Stop on first error",
+        "Recompile from scratch",
+        "source"
+      ]
     }
   ]
 }

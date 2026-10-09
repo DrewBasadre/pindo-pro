@@ -1,8 +1,16 @@
 # Application task catalogue
 
-125 tasks. Research date: 2026-10-10. Every task is hands-on unverified; source documentation is not a successful test run.
+128 tasks. Research date: 2026-10-10. Every task is hands-on unverified; source documentation is not a successful test run.
 
-The initial 108-task outline is represented with one extra focused Finder rename task, plus five desktop meeting and scheduling tasks and four Google meetings/calendar browser tasks and four Google Workspace administration/data browser tasks, plus three study/classroom activities (one desktop and two browser tasks). Figma and Canva target web editors. Sources and recovery interpretations require rechecking against the installed version.
+The initial 108-task outline is represented with one extra focused Finder rename task, plus five desktop meeting and scheduling tasks and four Google meetings/calendar browser tasks and four Google Workspace administration/data browser tasks, plus three study/classroom activities (one desktop and two browser tasks) and three research/document tasks (two desktop and one browser). Figma and Canva target web editors. Sources and recovery interpretations require rechecking against the installed version.
+
+## Adobe Acrobat (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [acrobat.fillable_forms](../skills/acrobat/fillable_forms.json) — Prepare and preview a fillable PDF form on Mac | intermediate | [Vendor documentation](https://helpx.adobe.com/acrobat/using/pdf-forms.html) |
+
+Mac desktop, active Acrobat Pro Prepare a form entitlement and unsigned writable PDF. Reader and Fill & Sign do not configure reusable interactive fields. Inspect detection/type, unique names/tooltips, text and checkbox properties, Required and manual keyboard order, then preview every field and save a blank reusable local copy. Required flags do not prove submit enforcement; saved fillability and full order need manual checks. Proposal `acrobat-fillable-forms` maps to `acrobat.fillable_forms`.
 
 ## Adobe After Effects (8)
 
@@ -237,7 +245,7 @@ Mac desktop; Microsoft 365/Exchange organizer calendar, free/busy access and org
 
 Mac desktop work/school calendar; classroom practice uses Teams for Education. The organizer creates rooms; explicit in-meeting room-manager delegation is distinct from presenter status. Calendar mode and Exchange integration affect scheduling controls. Proposals `teams-breakout-classrooms` and `teams-meeting-scheduling` map to `teams.breakout_classrooms` and `teams.meeting_scheduling`.
 
-## Microsoft Word (8)
+## Microsoft Word (9)
 
 | Task | Difficulty | Primary reference |
 | --- | --- | --- |
@@ -249,6 +257,17 @@ Mac desktop work/school calendar; classroom practice uses Teams for Education. T
 | [word.section_break](../skills/word/section_break.json) — Create an independent document section | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/office/insert-a-section-break-eef20fd8-e38c-4ba6-a027-e503bdf8375c) |
 | [word.table_of_contents](../skills/word/table_of_contents.json) — Insert and update a table of contents | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/word/training/insert-a-table-of-contents) |
 | [word.tracked_changes](../skills/word/tracked_changes.json) — Review tracked changes in Word | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/accessibility/word/use-a-screen-reader-to-track-and-review-changes-in-a-document-in-word) |
+| [word.zotero_citations](../skills/word/zotero_citations.json) — Organize Zotero references and cite in Word on Mac | intermediate | [Vendor documentation](https://www.zotero.org/support/word_processor_plugin_usage) |
+
+Zotero Word integration is distinct from the built-in `word.citations` task above. Mac Word 2016–2024/Microsoft 365, Zotero desktop, bundled plugin, edit access and Zotero-to-Word Automation permission are required. Prepared local references need no sync account, Connector or paid Zotero storage. Organize collection membership, correct supplied metadata, insert plugin citations/bibliography, change Document Preferences style and Refresh without unlinking fields. Start Teach in Word; Zotero library/dialog work stays paused and user-confirmed, returning to the original Word process before Resume. Generic citation requests may offer both lessons for explicit selection. Proposal `zotero-word-citations` maps to `word.zotero_citations`.
+
+## Overleaf web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [overleaf.compile_troubleshooting](../skills/overleaf/compile_troubleshooting.json) — Trace Overleaf compile errors to sources and verify the PDF on Mac | intermediate | [Vendor documentation](https://docs.overleaf.com/troubleshooting-and-support/fixing-latex-errors/fixing-errors-in-generated-files) |
+
+Mac supported browser on `overleaf.com`, signed-in account, edit permission and network. No paid feature/plugin is needed for the small setup; compile-time/collaborator limits still apply. Use Stop on first error and fresh logs, trace generated `.toc`/`.aux`/`.bbl` symptoms to editable `.tex`/`.bib` inputs, then Recompile from scratch and inspect the fresh PDF. Never treat auxiliary artifacts as editable sources or accept a stale/error-tolerant PDF. Proposal `overleaf-compile-troubleshooting` maps to `overleaf.compile_troubleshooting`.
 
 ## Preview (4)
 
