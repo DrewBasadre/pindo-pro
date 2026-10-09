@@ -38,13 +38,15 @@ the app. The panel stays open and watches the selected window locally. Pause,
 resume and result confirmation are available. Turn Teach off for the existing
 action mode described above.
 
-The library contains **118 tasks across 20 application areas**, **357 task cases**
+The library contains **122 tasks across 24 application areas**, **369 task cases**
 and **15 shared runtime scenarios**. Office, CapCut, Figma web, Canva web and
 Photoshop are the first hands-on test set. The broader catalogue includes FL
 Studio, Illustrator, Premiere, After Effects, macOS utilities, and desktop Zoom,
 Teams and Outlook meeting workflows, plus Google Meet and Google Calendar on
 Mac browsers. Google workflows cover presentation/host controls, recurring-series
-edit scope and eligible appointment schedules. All workflows
+edit scope and eligible appointment schedules, plus Sheets pivot analysis, Forms
+branching, Gmail label/filter previews and Drive inherited sharing. Sheets and
+Forms share a hostname and require explicit editor selection. All workflows
 remain hands-on unverified.
 
 ```powershell

@@ -366,6 +366,94 @@
         "Scheduling window",
         "Booked appointment settings"
       ]
+    },
+    {
+      "id": "google.sheets",
+      "name": "Google Sheets web",
+      "aliases": [
+        "Google Sheets",
+        "Google Sheets web",
+        "Sheets"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "sheets.google.com",
+        "docs.google.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Pivot table editor",
+        "Rows",
+        "Columns",
+        "Values",
+        "Filters",
+        "Summarize by"
+      ]
+    },
+    {
+      "id": "google.forms",
+      "name": "Google Forms web",
+      "aliases": [
+        "Google Forms",
+        "Google Forms web",
+        "Forms"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "forms.google.com",
+        "docs.google.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Questions",
+        "Add section",
+        "Go to section based on answer",
+        "After section",
+        "Preview"
+      ]
+    },
+    {
+      "id": "google.gmail",
+      "name": "Gmail web",
+      "aliases": [
+        "Gmail",
+        "Gmail web",
+        "Google Mail"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "mail.google.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Show search options",
+        "Search",
+        "Create filter",
+        "Apply the label",
+        "Filters and Blocked Addresses"
+      ]
+    },
+    {
+      "id": "google.drive",
+      "name": "Google Drive web",
+      "aliases": [
+        "Google Drive",
+        "Google Drive web",
+        "Drive"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "drive.google.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Share",
+        "People with access",
+        "General access",
+        "Viewer",
+        "Commenter",
+        "Editor"
+      ]
     }
   ]
 }

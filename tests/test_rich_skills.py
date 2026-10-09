@@ -65,6 +65,34 @@ class RichSkillsTests(unittest.TestCase):
             with self.subTest(app=app, request=request):
                 self.assertEqual(match_skills(skills, app, request), [])
 
+    def test_google_workspace_data_requests_keep_applications_distinct(self) -> None:
+        skills, cases = load_library(ROOT)
+        task_apps = {
+            'google_sheets.pivot_analysis': 'google.sheets',
+            'google_forms.branching': 'google.forms',
+            'gmail.labels_and_filters': 'google.gmail',
+            'drive.sharing_permissions': 'google.drive',
+        }
+        for case in cases:
+            if case['skill_id'] not in task_apps:
+                continue
+            with self.subTest(case=case['id']):
+                self.assertEqual(match_skills(skills, case['application_id'], case['user_instruction']), [case['skill_id']])
+        for app, request in (
+            ('google.sheets', 'Analyze a pivot table'),
+            ('google.forms', 'Configure answer based branching'),
+            ('google.gmail', 'Apply a label filter'),
+            ('google.drive', 'Review sharing permissions'),
+        ):
+            for other_app in set(task_apps.values()) - {app}:
+                with self.subTest(app=other_app, request=request):
+                    self.assertEqual(match_skills(skills, other_app, request), [])
+        profiles = {p['id']: p for p in load_profiles(ROOT)}
+        # Both editors use this host; the existing application picker must resolve it.
+        self.assertEqual({p['id'] for p in profiles.values() if 'docs.google.com' in p['domains']}, {'google.sheets', 'google.forms'})
+        self.assertEqual(profiles['google.gmail']['domains'], ['mail.google.com'])
+        self.assertEqual(profiles['google.drive']['domains'], ['drive.google.com'])
+
     def test_matching_keeps_ambiguity_and_checks_application_and_word_boundaries(self) -> None:
         skills, _ = load_library(ROOT)
         sample = deepcopy(skills[0])

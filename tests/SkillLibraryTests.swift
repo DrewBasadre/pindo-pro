@@ -22,7 +22,11 @@ struct SkillLibraryTests {
         precondition(!profile.matches(name: "Example", bundleID: nil, host: nil))
         for (applicationID, domain, otherDomain) in [
             ("google.meet", "meet.google.com", "calendar.google.com"),
-            ("google.calendar", "calendar.google.com", "meet.google.com")
+            ("google.calendar", "calendar.google.com", "meet.google.com"),
+            ("google.sheets", "sheets.google.com", "forms.google.com"),
+            ("google.forms", "forms.google.com", "sheets.google.com"),
+            ("google.gmail", "mail.google.com", "drive.google.com"),
+            ("google.drive", "drive.google.com", "mail.google.com")
         ] {
             let googleProfile = library.applications.first { $0.id == applicationID }!
             precondition(googleProfile.matches(name: "Google Chrome", bundleID: nil, host: domain))
@@ -30,6 +34,12 @@ struct SkillLibraryTests {
             precondition(!googleProfile.matches(name: "Safari", bundleID: nil, host: domain + ".evil.test"))
             precondition(!googleProfile.matches(name: googleProfile.name, bundleID: nil, host: nil))
         }
+        let sharedEditorProfiles = library.applications.filter {
+            $0.matches(name: "Safari", bundleID: nil, host: "docs.google.com")
+        }
+        precondition(Set(sharedEditorProfiles.map(\.id)) == Set(["google.sheets", "google.forms"]))
+        // A shared host requires explicit app selection, never array-order selection.
+        precondition(sharedEditorProfiles.count != 1)
         for changed in 0..<7 {
             let accepted = TeachingProgress.isCurrent(session: 1, currentSession: changed == 1 ? 2 : 1,
                 step: 2, currentStep: changed == 2 ? 3 : 2, observation: 3, currentObservation: changed == 3 ? 4 : 3,

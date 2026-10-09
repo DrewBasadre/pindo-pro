@@ -1,8 +1,8 @@
 # Application task catalogue
 
-118 tasks. Research date: 2026-10-10. Every task is hands-on unverified; source documentation is not a successful test run.
+122 tasks. Research date: 2026-10-10. Every task is hands-on unverified; source documentation is not a successful test run.
 
-The initial 108-task outline is represented with one extra focused Finder rename task, plus five desktop meeting and scheduling tasks and four Google meetings/calendar browser tasks. Figma and Canva target web editors. Sources and recovery interpretations require rechecking against the installed version.
+The initial 108-task outline is represented with one extra focused Finder rename task, plus five desktop meeting and scheduling tasks and four Google meetings/calendar browser tasks and four Google Workspace administration/data browser tasks. Figma and Canva target web editors. Sources and recovery interpretations require rechecking against the installed version.
 
 ## Adobe After Effects (8)
 
@@ -120,6 +120,14 @@ The initial 108-task outline is represented with one extra focused Finder rename
 | [finder.rename](../skills/finder/rename.json) — Rename a Finder item | intermediate | [Vendor documentation](https://support.apple.com/guide/mac-help/rename-files-folders-and-disks-mchlp1144/mac) |
 | [finder.tags_search](../skills/finder/tags_search.json) — Tag and search Finder items | intermediate | [Vendor documentation](https://support.apple.com/guide/mac-help/change-finder-settings-mchlp2803/mac) |
 
+## Gmail web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [gmail.labels_and_filters](../skills/gmail/labels_and_filters.json) — Preview and apply Gmail label filters on Mac | intermediate | [Vendor documentation](https://support.google.com/mail/answer/6579?hl=en) |
+
+Mac browser on `mail.google.com`, signed-in Gmail-enabled account and available search/filter controls. Search previews matching and excluded practice messages before rule creation. Review exact label, automatic actions and whether existing matching conversations are affected. Threads and future replies need separate checks; forwarding setup is outside this practice. Proposal `gmail-labels-and-filters` maps to `gmail.labels_and_filters`.
+
 ## Google Calendar web (2)
 
 | Task | Difficulty | Primary reference |
@@ -129,6 +137,22 @@ The initial 108-task outline is represented with one extra focused Finder rename
 
 Mac browser on `calendar.google.com`, signed-in account and writable calendar. Recurrence setup is distinct from one-occurrence, following-events or whole-series edit scope; confirm the actual dialog and compare dates. Appointment schedules need account eligibility: personal/Business Starter supports one booking page; Frontline/Essentials/unsupported legacy plans cannot create schedules. Premium features vary; inspect enabled availability, booking-window, buffer and daily-cap settings and pause for required unavailable controls. Booking-page review is not proof of booking enforcement. Proposals `google-calendar-recurring-events` and `google-calendar-office-hours` map to `google_calendar.recurring_events` and `google_calendar.office_hours`.
 
+## Google Drive web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [drive.sharing_permissions](../skills/drive/sharing_permissions.json) — Interpret and review Google Drive sharing on Mac | intermediate | [Vendor documentation](https://support.google.com/drive/answer/2494822?hl=en) |
+
+Mac browser on `drive.google.com`, signed-in account and My Drive item access; changes require owner/permitted-editor authority. Interpret Viewer/Commenter/Editor, General access and parent inheritance. A lower direct grant or Restricted general access cannot revoke higher inherited access. Review child, parent and sibling practice grants without changing folder permissions; shared-drive membership and limited-access configuration need separate owner/manager review. Proposal `drive-sharing-permissions` maps to `drive.sharing_permissions`.
+
+## Google Forms web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [google_forms.branching](../skills/google_forms/branching.json) — Build and preview Google Forms branches on Mac | intermediate | [Vendor documentation](https://support.google.com/docs/answer/141062?hl=en) |
+
+Mac browser on `forms.google.com` or `docs.google.com/forms`, with form owner/editor access. Multiple choice and Dropdown support answer navigation; Checkboxes does not. Create named sections, map answers and review each section exit, then preview every path from the beginning without publishing/submitting. Report unavailable preview navigation as blocked; external responders require publication. Confirm the Forms editor in PinDo on the shared hostname. Proposal `google-forms-branching` maps to `google_forms.branching`.
+
 ## Google Meet web (2)
 
 | Task | Difficulty | Primary reference |
@@ -137,6 +161,14 @@ Mac browser on `calendar.google.com`, signed-in account and writable calendar. R
 | [meet.presentation_controls](../skills/meet/presentation_controls.json) — Choose and stop a Google Meet presentation on Mac | intermediate | [Vendor documentation](https://support.google.com/meet/answer/9308856?hl=en) |
 
 Mac browser on `meet.google.com`; Chrome is the tab-sharing reference. Distinguish tab/window/display boundaries, your own active share and Stop presenting. System sharing permission and pickers can be outside the capture. Host/co-host authority, host management, account edition and main-room status gate restrictions and co-host options; Leave meeting differs from End meeting for all. Before-call co-host setup belongs to the Calendar creator's Video call options and does not make Calendar recurrence controls Meet controls. Proposals `meet-presentation-controls` and `meet-host-management` map to `meet.presentation_controls` and `meet.host_management`.
+
+## Google Sheets web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [google_sheets.pivot_analysis](../skills/google_sheets/pivot_analysis.json) — Analyze a Google Sheets pivot table on Mac | intermediate | [Vendor documentation](https://support.google.com/docs/answer/1272900?hl=en) |
+
+Mac browser on `sheets.google.com` or `docs.google.com/spreadsheets`, signed-in account with native spreadsheet edit access. Inspect source boundaries/headers, Rows/Columns/Values/Filters, Summarize by and Show as; compare the filtered practice totals against source records. No Connected Sheets or premium plan is required for this ordinary pivot. Confirm the Sheets editor in PinDo on the shared hostname. Proposal `google-sheets-pivot-analysis` maps to `google_sheets.pivot_analysis`.
 
 ## Microsoft Excel (8)
 
