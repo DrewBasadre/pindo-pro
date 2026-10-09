@@ -1,8 +1,8 @@
 # Changed files
 
-The inherited inventory was compared with `origin/main`; the desktop meetings, Google meetings/calendar, Google Workspace administration/data, study/classroom activities and research/document preparation batches extend it from their current local HEADs without remote Git operations. A = created; M = modified. No tracked files are deleted. Ignored local build assets and authoring scratch scripts are not part of the change.
+The inherited inventory was compared with `origin/main`; the desktop meetings, Google meetings/calendar, Google Workspace administration/data, study/classroom activities, research/document preparation and productivity/content workflows batches extend it from their current local HEADs without remote Git operations. A = created; M = modified. No tracked files are deleted. Ignored local build assets and authoring scratch scripts are not part of the change.
 
-537 files are listed individually. Most are independently editable task and evaluation data; the generated app resource duplicates them intentionally for packaging.
+553 files are listed individually. Most are independently editable task and evaluation data; the generated app resource duplicates them intentionally for packaging.
 
 | Change | File | Purpose |
 | --- | --- | --- |
@@ -15,11 +15,11 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [PinDo/TutorSession.swift](../PinDo/TutorSession.swift) | Teaching state, debounce, cancellation, stale responses and progression. |
 | A | [PinDo/TutorView.swift](../PinDo/TutorView.swift) | Lesson selection, prerequisites, explanations and pause/confirmation controls. |
 | M | [README.md](../README.md) | Teach-mode overview and entry points for development and Mac testing. |
-| A | [application_profiles.json](../application_profiles.json) | Application aliases, known bundle IDs, surfaces, domains and terminology, including distinct Zoom/Teams/Outlook desktop and Google Meet/Calendar and Sheets/Forms/Gmail/Drive/Classroom/Kahoot browser profiles plus Anki desktop with unconfirmed bundle IDs left empty; shared-host editors require explicit selection. Word profile reused for Zotero integration; new Acrobat desktop and Overleaf browser profiles, verified overleaf.com domain and unknown bundle IDs empty. |
-| A | [docs/APPLICATION_SKILLS.md](../docs/APPLICATION_SKILLS.md) | Version 2 contract, execution flow, observation limits, meeting/data prerequisites, shared-host selection, study/classroom prerequisites and evidence policy. Research/document counts, plugin/license/access requirements, paused Zotero transitions and validation boundaries. |
+| A | [application_profiles.json](../application_profiles.json) | Application aliases, known bundle IDs, surfaces, domains and terminology, including distinct Zoom/Teams/Outlook desktop and Google Meet/Calendar and Sheets/Forms/Gmail/Drive/Classroom/Kahoot browser profiles plus Anki desktop with unconfirmed bundle IDs left empty; shared-host editors require explicit selection. Word profile reused for Zotero integration; new Acrobat desktop and Overleaf browser profiles, verified overleaf.com domain and unknown bundle IDs empty. Productivity/content: existing Canva profile reused unchanged; Notion, Slack and Trello browser profiles added with service domains and empty unknown bundle IDs. |
+| A | [docs/APPLICATION_SKILLS.md](../docs/APPLICATION_SKILLS.md) | Version 2 contract, execution flow, observation limits, meeting/data prerequisites, shared-host selection, study/classroom prerequisites and evidence policy. Research/document counts, plugin/license/access requirements, paused Zotero transitions and validation boundaries. Productivity/content counts, browser surface decisions, plan/permission gates and validation limitations. |
 | A | [docs/CHANGED_FILES.md](../docs/CHANGED_FILES.md) | Complete created/modified file report for this branch. |
-| A | [docs/MAC_HANDOFF.md](../docs/MAC_HANDOFF.md) | Exact continuation/build steps and available-app validation instructions. |
-| A | [docs/SKILL_CATALOGUE.md](../docs/SKILL_CATALOGUE.md) | Task-by-task inventory, proposal mappings and vendor references, including meeting/data batches and three study/classroom activity tasks. Research/document task inventory, proposal mappings, vendor references and Mac prerequisites. |
+| A | [docs/MAC_HANDOFF.md](../docs/MAC_HANDOFF.md) | Exact continuation/build steps and available-app validation instructions. Productivity/content browser setup and manual test boundaries. |
+| A | [docs/SKILL_CATALOGUE.md](../docs/SKILL_CATALOGUE.md) | Task-by-task inventory, proposal mappings and vendor references, including meeting/data batches and three study/classroom activity tasks. Research/document task inventory, proposal mappings, vendor references and Mac prerequisites. Four productivity/content task entries and proposal mappings. |
 | A | [evaluations/cases/acrobat_fillable_forms_english.json](../evaluations/cases/acrobat_fillable_forms_english.json) | English evaluation specification for acrobat.fillable_forms. |
 | A | [evaluations/cases/acrobat_fillable_forms_recovery.json](../evaluations/cases/acrobat_fillable_forms_recovery.json) | Recovery evaluation specification for acrobat.fillable_forms. |
 | A | [evaluations/cases/acrobat_fillable_forms_taglish.json](../evaluations/cases/acrobat_fillable_forms_taglish.json) | Taglish evaluation specification for acrobat.fillable_forms. |
@@ -56,6 +56,9 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [evaluations/cases/canva_branding_english.json](../evaluations/cases/canva_branding_english.json) | English evaluation specification for canva.branding. |
 | A | [evaluations/cases/canva_branding_recovery.json](../evaluations/cases/canva_branding_recovery.json) | Recovery evaluation specification for canva.branding. |
 | A | [evaluations/cases/canva_branding_taglish.json](../evaluations/cases/canva_branding_taglish.json) | Taglish evaluation specification for canva.branding. |
+| A | [evaluations/cases/canva_bulk_personalization_english.json](../evaluations/cases/canva_bulk_personalization_english.json) | English evaluation specification for canva.bulk_personalization. |
+| A | [evaluations/cases/canva_bulk_personalization_recovery.json](../evaluations/cases/canva_bulk_personalization_recovery.json) | Recovery evaluation specification for canva.bulk_personalization. |
+| A | [evaluations/cases/canva_bulk_personalization_taglish.json](../evaluations/cases/canva_bulk_personalization_taglish.json) | Taglish evaluation specification for canva.bulk_personalization. |
 | A | [evaluations/cases/canva_export_images_english.json](../evaluations/cases/canva_export_images_english.json) | English evaluation specification for canva.export_images. |
 | A | [evaluations/cases/canva_export_images_recovery.json](../evaluations/cases/canva_export_images_recovery.json) | Recovery evaluation specification for canva.export_images. |
 | A | [evaluations/cases/canva_export_images_taglish.json](../evaluations/cases/canva_export_images_taglish.json) | Taglish evaluation specification for canva.export_images. |
@@ -246,6 +249,9 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [evaluations/cases/meet_presentation_controls_english.json](../evaluations/cases/meet_presentation_controls_english.json) | English evaluation specification for meet.presentation_controls. |
 | A | [evaluations/cases/meet_presentation_controls_recovery.json](../evaluations/cases/meet_presentation_controls_recovery.json) | Recovery evaluation specification for meet.presentation_controls. |
 | A | [evaluations/cases/meet_presentation_controls_taglish.json](../evaluations/cases/meet_presentation_controls_taglish.json) | Taglish evaluation specification for meet.presentation_controls. |
+| A | [evaluations/cases/notion_relations_rollups_english.json](../evaluations/cases/notion_relations_rollups_english.json) | English evaluation specification for notion.relations_rollups. |
+| A | [evaluations/cases/notion_relations_rollups_recovery.json](../evaluations/cases/notion_relations_rollups_recovery.json) | Recovery evaluation specification for notion.relations_rollups. |
+| A | [evaluations/cases/notion_relations_rollups_taglish.json](../evaluations/cases/notion_relations_rollups_taglish.json) | Taglish evaluation specification for notion.relations_rollups. |
 | A | [evaluations/cases/outlook_scheduling_english.json](../evaluations/cases/outlook_scheduling_english.json) | English evaluation specification for outlook.scheduling. |
 | A | [evaluations/cases/outlook_scheduling_recovery.json](../evaluations/cases/outlook_scheduling_recovery.json) | Recovery evaluation specification for outlook.scheduling. |
 | A | [evaluations/cases/outlook_scheduling_taglish.json](../evaluations/cases/outlook_scheduling_taglish.json) | Taglish evaluation specification for outlook.scheduling. |
@@ -350,6 +356,9 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [evaluations/cases/safari_save_pdf_english.json](../evaluations/cases/safari_save_pdf_english.json) | English evaluation specification for safari.save_pdf. |
 | A | [evaluations/cases/safari_save_pdf_recovery.json](../evaluations/cases/safari_save_pdf_recovery.json) | Recovery evaluation specification for safari.save_pdf. |
 | A | [evaluations/cases/safari_save_pdf_taglish.json](../evaluations/cases/safari_save_pdf_taglish.json) | Taglish evaluation specification for safari.save_pdf. |
+| A | [evaluations/cases/slack_workflow_builder_english.json](../evaluations/cases/slack_workflow_builder_english.json) | English evaluation specification for slack.workflow_builder. |
+| A | [evaluations/cases/slack_workflow_builder_recovery.json](../evaluations/cases/slack_workflow_builder_recovery.json) | Recovery evaluation specification for slack.workflow_builder. |
+| A | [evaluations/cases/slack_workflow_builder_taglish.json](../evaluations/cases/slack_workflow_builder_taglish.json) | Taglish evaluation specification for slack.workflow_builder. |
 | A | [evaluations/cases/teams_breakout_classrooms_english.json](../evaluations/cases/teams_breakout_classrooms_english.json) | English evaluation specification for teams.breakout_classrooms. |
 | A | [evaluations/cases/teams_breakout_classrooms_recovery.json](../evaluations/cases/teams_breakout_classrooms_recovery.json) | Recovery evaluation specification for teams.breakout_classrooms. |
 | A | [evaluations/cases/teams_breakout_classrooms_taglish.json](../evaluations/cases/teams_breakout_classrooms_taglish.json) | Taglish evaluation specification for teams.breakout_classrooms. |
@@ -374,6 +383,9 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [evaluations/cases/terminal_understand_stop_english.json](../evaluations/cases/terminal_understand_stop_english.json) | English evaluation specification for terminal.understand_stop. |
 | A | [evaluations/cases/terminal_understand_stop_recovery.json](../evaluations/cases/terminal_understand_stop_recovery.json) | Recovery evaluation specification for terminal.understand_stop. |
 | A | [evaluations/cases/terminal_understand_stop_taglish.json](../evaluations/cases/terminal_understand_stop_taglish.json) | Taglish evaluation specification for terminal.understand_stop. |
+| A | [evaluations/cases/trello_board_automation_english.json](../evaluations/cases/trello_board_automation_english.json) | English evaluation specification for trello.board_automation. |
+| A | [evaluations/cases/trello_board_automation_recovery.json](../evaluations/cases/trello_board_automation_recovery.json) | Recovery evaluation specification for trello.board_automation. |
+| A | [evaluations/cases/trello_board_automation_taglish.json](../evaluations/cases/trello_board_automation_taglish.json) | Taglish evaluation specification for trello.board_automation. |
 | A | [evaluations/cases/word_citations_english.json](../evaluations/cases/word_citations_english.json) | English evaluation specification for word.citations. |
 | A | [evaluations/cases/word_citations_recovery.json](../evaluations/cases/word_citations_recovery.json) | Recovery evaluation specification for word.citations. |
 | A | [evaluations/cases/word_citations_taglish.json](../evaluations/cases/word_citations_taglish.json) | Taglish evaluation specification for word.citations. |
@@ -407,7 +419,7 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [evaluations/cases/zoom_meeting_setup_english.json](../evaluations/cases/zoom_meeting_setup_english.json) | English evaluation specification for zoom.meeting_setup. |
 | A | [evaluations/cases/zoom_meeting_setup_recovery.json](../evaluations/cases/zoom_meeting_setup_recovery.json) | Recovery evaluation specification for zoom.meeting_setup. |
 | A | [evaluations/cases/zoom_meeting_setup_taglish.json](../evaluations/cases/zoom_meeting_setup_taglish.json) | Taglish evaluation specification for zoom.meeting_setup. |
-| A | [evaluations/fixtures/setups.json](../evaluations/fixtures/setups.json) | Concrete synthetic practice setups for every application area, including consenting meeting accounts, configured room resources, pivot totals, alternative form paths, filter matches/exclusions, child/parent/sibling access review, Anki note/card comparisons, Classroom rubric maps and Kahoot assigned-session sharing/report checks. Three manual synthetic research setups added for Zotero/Word, Acrobat and Overleaf; previous setups preserved. |
+| A | [evaluations/fixtures/setups.json](../evaluations/fixtures/setups.json) | Concrete synthetic practice setups for every application area, including consenting meeting accounts, configured room resources, pivot totals, alternative form paths, filter matches/exclusions, child/parent/sibling access review, Anki note/card comparisons, Classroom rubric maps and Kahoot assigned-session sharing/report checks. Three manual synthetic research setups added for Zotero/Word, Acrobat and Overleaf; previous setups preserved. Four manual productivity/content setups without new static assets. |
 | A | [evaluations/run_template.json](../evaluations/run_template.json) | Empty real-run evidence and measurement record. |
 | A | [evaluations/runtime_cases.json](../evaluations/runtime_cases.json) | Shared adverse observation and inference test scenarios. |
 | A | [skills/acrobat/fillable_forms.json](../skills/acrobat/fillable_forms.json) | Task data: Prepare and preview a fillable PDF form on Mac. |
@@ -422,6 +434,7 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [skills/anki/deck_maintenance.json](../skills/anki/deck_maintenance.json) | Task data: Organize Anki notes and cards on Mac. |
 | A | [skills/canva/audio_timing.json](../skills/canva/audio_timing.json) | Task data: Trim and time Canva audio. |
 | A | [skills/canva/branding.json](../skills/canva/branding.json) | Task data: Apply Canva brand assets. |
+| A | [skills/canva/bulk_personalization.json](../skills/canva/bulk_personalization.json) | Task data: Map data to personalized Canva designs with Bulk Create on Mac. |
 | A | [skills/canva/export_images.json](../skills/canva/export_images.json) | Task data: Download Canva images. |
 | A | [skills/canva/export_pdf.json](../skills/canva/export_pdf.json) | Task data: Prepare a Canva PDF for print or accessibility. |
 | A | [skills/canva/frames_crop.json](../skills/canva/frames_crop.json) | Task data: Crop images inside Canva frames. |
@@ -485,6 +498,7 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [skills/kahoot/assignments_and_reports.json](../skills/kahoot/assignments_and_reports.json) | Task data: Assign self-paced Kahoot quizzes and locate reports on Mac. |
 | A | [skills/meet/host_management.json](../skills/meet/host_management.json) | Task data: Manage Google Meet host controls on Mac. |
 | A | [skills/meet/presentation_controls.json](../skills/meet/presentation_controls.json) | Task data: Choose and stop a Google Meet presentation on Mac. |
+| A | [skills/notion/relations_rollups.json](../skills/notion/relations_rollups.json) | Task data: Connect Notion databases with relations and rollups on Mac. |
 | A | [skills/outlook/scheduling.json](../skills/outlook/scheduling.json) | Task data: Schedule an Outlook meeting with availability and a room on Mac. |
 | A | [skills/overleaf/compile_troubleshooting.json](../skills/overleaf/compile_troubleshooting.json) | Task data: Trace Overleaf compile errors to sources and verify the PDF on Mac. |
 | A | [skills/photoshop/adjustment_layer.json](../skills/photoshop/adjustment_layer.json) | Task data: Target an adjustment layer. |
@@ -519,6 +533,7 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [skills/safari/download_destination.json](../skills/safari/download_destination.json) | Task data: Change Safari download destination. |
 | A | [skills/safari/locate_download.json](../skills/safari/locate_download.json) | Task data: Locate a Safari download. |
 | A | [skills/safari/save_pdf.json](../skills/safari/save_pdf.json) | Task data: Save a Safari page as PDF. |
+| A | [skills/slack/workflow_builder.json](../skills/slack/workflow_builder.json) | Task data: Connect Slack workflow triggers and steps on Mac. |
 | A | [skills/teams/breakout_classrooms.json](../skills/teams/breakout_classrooms.json) | Task data: Manage Teams breakout classrooms on Mac. |
 | A | [skills/teams/meeting_scheduling.json](../skills/teams/meeting_scheduling.json) | Task data: Schedule a Teams meeting on Mac. |
 | A | [skills/terminal/copy_move.json](../skills/terminal/copy_move.json) | Task data: Copy or move a practice file carefully. |
@@ -527,6 +542,7 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [skills/terminal/inspect_files.json](../skills/terminal/inspect_files.json) | Task data: Inspect files from Terminal. |
 | A | [skills/terminal/navigate.json](../skills/terminal/navigate.json) | Task data: Navigate folders in Terminal. |
 | A | [skills/terminal/understand_stop.json](../skills/terminal/understand_stop.json) | Task data: Understand and stop a Terminal command. |
+| A | [skills/trello/board_automation.json](../skills/trello/board_automation.json) | Task data: Choose and configure Trello board automation types on Mac. |
 | A | [skills/word/citations.json](../skills/word/citations.json) | Task data: Insert a citation and bibliography. |
 | A | [skills/word/headings.json](../skills/word/headings.json) | Task data: Structure a Word document with headings. |
 | A | [skills/word/image_wrapping.json](../skills/word/image_wrapping.json) | Task data: Control image text wrapping. |
@@ -538,8 +554,8 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [skills/word/zotero_citations.json](../skills/word/zotero_citations.json) | Task data: Organize Zotero references and cite in Word on Mac. |
 | A | [skills/zoom/breakout_rooms.json](../skills/zoom/breakout_rooms.json) | Task data: Manage Zoom breakout rooms on Mac. |
 | A | [skills/zoom/meeting_setup.json](../skills/zoom/meeting_setup.json) | Task data: Schedule a Zoom meeting on Mac. |
-| A | [tests/SkillLibraryTests.swift](../tests/SkillLibraryTests.swift) | Actual Swift decoding, matching, identity and progression tests, including Google service-domain boundaries and shared-host ambiguity (plus Classroom and Kahoot creator/player domain boundaries; not executed on the Linux authoring host). Overleaf domain boundary checks added; not executed on the Linux authoring host. |
+| A | [tests/SkillLibraryTests.swift](../tests/SkillLibraryTests.swift) | Actual Swift decoding, matching, identity and progression tests, including Google service-domain boundaries and shared-host ambiguity (plus Classroom and Kahoot creator/player domain boundaries; not executed on the Linux authoring host). Overleaf domain boundary checks added; not executed on the Linux authoring host. Notion/Slack/Trello browser domain boundary checks added; not executed on Linux. |
 | A | [tests/test_application_skills.py](../tests/test_application_skills.py) | Contract regression tests using disposable seed records. |
-| A | [tests/test_rich_skills.py](../tests/test_rich_skills.py) | Version 2, profile coverage, distinct desktop/Google meeting and Calendar intent routing, Google Workspace data intent routing and shared-host coverage, study/classroom routing and surfaces, and bundle regression tests. Research routing, preserved built-in citation choice, Mac surfaces and manual observation boundaries added. |
+| A | [tests/test_rich_skills.py](../tests/test_rich_skills.py) | Version 2, profile coverage, distinct desktop/Google meeting and Calendar intent routing, Google Workspace data intent routing and shared-host coverage, study/classroom routing and surfaces, and bundle regression tests. Research routing, preserved built-in citation choice, Mac surfaces and manual observation boundaries added. Productivity/content routing, Canva separation and browser confirmation coverage. |
 | A | [tools/application_skills.py](../tools/application_skills.py) | Dependency-free authoring validation, matching and resource packaging. |
 | A | [tools/practice_assets.py](../tools/practice_assets.py) | Creates original disposable PNG, SVG, PDF, WAV, CSV and text fixtures. |

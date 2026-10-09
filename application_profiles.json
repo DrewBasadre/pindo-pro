@@ -553,6 +553,70 @@
         "Recompile from scratch",
         "source"
       ]
+    },
+    {
+      "id": "notion.web",
+      "name": "Notion web",
+      "aliases": [
+        "Notion",
+        "Notion web"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "notion.com",
+        "notion.so"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "database",
+        "data source",
+        "view",
+        "Relation",
+        "Rollup",
+        "Calculate"
+      ]
+    },
+    {
+      "id": "slack.web",
+      "name": "Slack web",
+      "aliases": [
+        "Slack",
+        "Slack web"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "app.slack.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Agents & tools",
+        "Workflows",
+        "Workflow Builder",
+        "Choose an event",
+        "steps",
+        "variables"
+      ]
+    },
+    {
+      "id": "trello.web",
+      "name": "Trello web",
+      "aliases": [
+        "Trello",
+        "Trello web"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "trello.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Automation",
+        "Rule",
+        "Card button",
+        "Board button",
+        "Scheduled",
+        "Due Date"
+      ]
     }
   ]
 }

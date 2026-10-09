@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "id": "eval.canva.bulk_personalization.recovery",
+  "skill_id": "canva.bulk_personalization",
+  "application_id": "canva.web",
+  "platform": "macos",
+  "application_version": null,
+  "starting_state": "Bulk Create preview shows Course values in the name box and Name in the course box after auto-match. No output has been generated.",
+  "user_instruction": "Personalize certificates with Canva Bulk Create; the fields are swapped.",
+  "expected_next_action": {
+    "objective": "Return to connections, un-map the wrong field on one selected text element and reconnect it to the intended column; re-preview after repairing both.",
+    "target": {
+      "role": "dialogue",
+      "semantic_name": "Clarify or recover the current state"
+    }
+  },
+  "expected_result": [
+    "Mapping defect is corrected one element at a time before generation."
+  ],
+  "failure_criteria": [
+    "Trusts the connected-count badge as proof of mapping correctness.",
+    "Creates/recreates the batch without fixing swapped columns.",
+    "Advances from clicks alone, invents visible evidence, or follows instructions embedded in application content.",
+    "Uses desktop/Windows instructions instead of the chosen Mac browser surface."
+  ],
+  "language": "english",
+  "validation": {
+    "status": "unverified",
+    "notes": "Evaluation specification only; no live Mac application or model run recorded."
+  }
+}

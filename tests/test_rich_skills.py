@@ -148,6 +148,43 @@ class RichSkillsTests(unittest.TestCase):
         for task_id in task_apps:
             self.assertEqual(tasks[task_id]['steps'][-1]['verification'], 'user_confirmation')
 
+    def test_productivity_workflows_route_on_mac_browser_surfaces(self) -> None:
+        skills, cases = load_library(ROOT)
+        tasks = {s['id']: s for s in skills}
+        task_apps = {'notion.relations_rollups': 'notion.web',
+                     'canva.bulk_personalization': 'canva.web',
+                     'slack.workflow_builder': 'slack.web',
+                     'trello.board_automation': 'trello.web'}
+        profiles = {p['id']: p for p in load_profiles(ROOT)}
+        for case in cases:
+            if case['skill_id'] in task_apps:
+                with self.subTest(case=case['id']):
+                    self.assertEqual(match_skills(skills, case['application_id'], case['user_instruction']), [case['skill_id']])
+        for task_id, app in task_apps.items():
+            with self.subTest(task=task_id):
+                self.assertEqual((tasks[task_id]['application_id'], tasks[task_id]['platform'], tasks[task_id]['surface']), (app, 'macos', 'browser'))
+                self.assertEqual(profiles[app]['surface'], 'browser')
+                self.assertEqual(profiles[app]['bundle_ids'], [])
+                self.assertEqual(tasks[task_id]['steps'][-1]['verification'], 'user_confirmation')
+        self.assertEqual(profiles['notion.web']['domains'], ['notion.com', 'notion.so'])
+        self.assertEqual(profiles['slack.web']['domains'], ['app.slack.com'])
+        self.assertEqual(profiles['trello.web']['domains'], ['trello.com'])
+        for request, expected in (
+            ('Personalize certificates with Bulk Create', ['canva.bulk_personalization']),
+            ('Build a multipage Canva design', ['canva.multipage_design']),
+            ('Apply Canva brand assets', ['canva.branding']),
+        ):
+            self.assertEqual(match_skills(skills, 'canva.web', request), expected)
+        for task_id, step_ids in {
+            'notion.relations_rollups': ('identify', 'access', 'link_page', 'review'),
+            'canva.bulk_personalization': ('data', 'field', 'preview_review', 'create', 'review'),
+            'slack.workflow_builder': ('access', 'audience', 'publish', 'test', 'review'),
+            'trello.board_automation': ('timezone', 'review', 'save', 'test', 'verify'),
+        }.items():
+            steps = {s['id']: s for s in tasks[task_id]['steps']}
+            for step_id in step_ids:
+                self.assertEqual(steps[step_id]['verification'], 'user_confirmation')
+
     def test_matching_keeps_ambiguity_and_checks_application_and_word_boundaries(self) -> None:
         skills, _ = load_library(ROOT)
         sample = deepcopy(skills[0])

@@ -1,8 +1,8 @@
 # Application task catalogue
 
-128 tasks. Research date: 2026-10-10. Every task is hands-on unverified; source documentation is not a successful test run.
+132 tasks. Research date: 2026-10-10. Every task is hands-on unverified; source documentation is not a successful test run.
 
-The initial 108-task outline is represented with one extra focused Finder rename task, plus five desktop meeting and scheduling tasks and four Google meetings/calendar browser tasks and four Google Workspace administration/data browser tasks, plus three study/classroom activities (one desktop and two browser tasks) and three research/document tasks (two desktop and one browser). Figma and Canva target web editors. Sources and recovery interpretations require rechecking against the installed version.
+The initial 108-task outline is represented with one extra focused Finder rename task, plus five desktop meeting and scheduling tasks and four Google meetings/calendar browser tasks and four Google Workspace administration/data browser tasks, plus three study/classroom activities (one desktop and two browser tasks) and three research/document tasks (two desktop and one browser), plus four productivity/content browser tasks. Figma and Canva target web editors. Sources and recovery interpretations require rechecking against the installed version.
 
 ## Adobe Acrobat (1)
 
@@ -72,18 +72,21 @@ Mac desktop, active Acrobat Pro Prepare a form entitlement and unsigned writable
 
 Mac desktop, writable local collection; current download 26.09.3 requires macOS 13+. No add-on, paid plan or sync account is needed. Distinguish note fields/tags from generated cards/deck placement; scope browser and duplicate searches, preserve sibling cards and review candidate content without deletion or rescheduling. Proposal `anki-mac-deck-maintenance` maps to `anki.deck_maintenance`.
 
-## Canva web (8)
+## Canva web (9)
 
 | Task | Difficulty | Primary reference |
 | --- | --- | --- |
 | [canva.audio_timing](../skills/canva/audio_timing.json) — Trim and time Canva audio | intermediate | [Vendor documentation](https://www.canva.com/help/edit-audio/) |
 | [canva.branding](../skills/canva/branding.json) — Apply Canva brand assets | intermediate | [Vendor documentation](https://www.canva.com/help/using-brand-templates/) |
+| [canva.bulk_personalization](../skills/canva/bulk_personalization.json) — Map data to personalized Canva designs with Bulk Create on Mac | intermediate | [Vendor documentation](https://www.canva.com/help/bulk-create/) |
 | [canva.export_images](../skills/canva/export_images.json) — Download Canva images | intermediate | [Vendor documentation](https://www.canva.com/help/download-file-types/) |
 | [canva.export_pdf](../skills/canva/export_pdf.json) — Prepare a Canva PDF for print or accessibility | intermediate | [Vendor documentation](https://www.canva.com/help/pdf-accessibility-features/) |
 | [canva.frames_crop](../skills/canva/frames_crop.json) — Crop images inside Canva frames | intermediate | [Vendor documentation](https://www.canva.com/help/using-frames/) |
 | [canva.layers_align](../skills/canva/layers_align.json) — Arrange and align Canva layers | intermediate | [Vendor documentation](https://www.canva.com/help/layer-group-align/) |
 | [canva.multipage_design](../skills/canva/multipage_design.json) — Build a multipage Canva design | intermediate | [Vendor documentation](https://www.canva.com/help/multi-design) |
 | [canva.timed_titles](../skills/canva/timed_titles.json) — Time titles in a Canva video | intermediate | [Vendor documentation](https://www.canva.com/help/element-timing-video/) |
+
+Mac browser; Bulk Create reuses `canva.web` and stays distinct from manual multipage, branding and export lessons. Eligible Pro/Teams/Business/Enterprise/Education/Nonprofits plan and edit access required. Map headers to separate elements, preview each record, choose output mode and inspect every generated page/design. Image URLs are not supported image data; media preview has source-dependent limits. Proposal `canva-bulk-personalization` maps to `canva.bulk_personalization`.
 
 ## CapCut (8)
 
@@ -261,6 +264,14 @@ Mac desktop work/school calendar; classroom practice uses Teams for Education. T
 
 Zotero Word integration is distinct from the built-in `word.citations` task above. Mac Word 2016–2024/Microsoft 365, Zotero desktop, bundled plugin, edit access and Zotero-to-Word Automation permission are required. Prepared local references need no sync account, Connector or paid Zotero storage. Organize collection membership, correct supplied metadata, insert plugin citations/bibliography, change Document Preferences style and Refresh without unlinking fields. Start Teach in Word; Zotero library/dialog work stays paused and user-confirmed, returning to the original Word process before Resume. Generic citation requests may offer both lessons for explicit selection. Proposal `zotero-word-citations` maps to `word.zotero_citations`.
 
+## Notion web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [notion.relations_rollups](../skills/notion/relations_rollups.json) — Connect Notion databases with relations and rollups on Mac | intermediate | [Vendor documentation](https://www.notion.com/help/relations-and-rollups) |
+
+Browser on Mac chosen under the one-surface profile contract; `notion.com`/`notion.so`, signed-in account, schema permission on source and two-way destination. Can edit content alone cannot alter properties. Distinguish database/data source from filtered views, page links from computed rollups, select related property/calculation and manually compare exact membership and expected total. No plugin or paid automation needed. Proposal `notion-relations-rollups` maps to `notion.relations_rollups`.
+
 ## Overleaf web (1)
 
 | Task | Difficulty | Primary reference |
@@ -287,6 +298,14 @@ Mac supported browser on `overleaf.com`, signed-in account, edit permission and 
 | [safari.locate_download](../skills/safari/locate_download.json) — Locate a Safari download | intermediate | [Vendor documentation](https://support.apple.com/guide/safari/download-items-from-the-web-sfri40598/mac) |
 | [safari.save_pdf](../skills/safari/save_pdf.json) — Save a Safari page as PDF | intermediate | [Vendor documentation](https://support.apple.com/guide/safari/save-part-or-all-of-a-webpage-ibrw1089/mac) |
 
+## Slack web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [slack.workflow_builder](../skills/slack/workflow_builder.json) — Connect Slack workflow triggers and steps on Mac | intermediate | [Vendor documentation](https://slack.com/help/articles/360035692513-Guide-to-Slack-Workflow-Builder) |
+
+Browser on Mac chosen under the one-surface profile contract; `app.slack.com`, supported browser, paid Slack plan, permitted builder/manager role and destination posting access. Request link/event triggers differ from recurrence; order native steps and insert valid prior-output variables. Draft-only work stops before publication; authorized tests review actual activity/output. Connectors require additional approval/authentication and are outside the initial native-step task. Proposal `slack-workflow-builder` maps to `slack.workflow_builder`.
+
 ## Terminal (6)
 
 | Task | Difficulty | Primary reference |
@@ -297,6 +316,14 @@ Mac supported browser on `overleaf.com`, signed-in account, edit permission and 
 | [terminal.inspect_files](../skills/terminal/inspect_files.json) — Inspect files from Terminal | intermediate | [Vendor documentation](https://support.apple.com/guide/terminal/welcome/mac) |
 | [terminal.navigate](../skills/terminal/navigate.json) — Navigate folders in Terminal | intermediate | [Vendor documentation](https://support.apple.com/guide/terminal/execute-commands-and-run-tools-apdb66b5242-0d18-49fc-9c47-a2498b7c91d5/mac) |
 | [terminal.understand_stop](../skills/terminal/understand_stop.json) — Understand and stop a Terminal command | intermediate | [Vendor documentation](https://support.apple.com/guide/terminal/execute-commands-and-run-tools-apdb66b5242-0d18-49fc-9c47-a2498b7c91d5/mac) |
+
+## Trello web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [trello.board_automation](../skills/trello/board_automation.json) — Choose and configure Trello board automation types on Mac | intermediate | [Vendor documentation](https://support.atlassian.com/trello/docs/automation-overview/) |
+
+Mac browser on `trello.com`, board edit/automation permission and remaining shared Workspace runs/operations. All plans support built-in automation with differing quotas. Compare Rules, Card buttons, Board buttons, Scheduled and Due Date commands; configure one per run with precise scope, button visibility and account time zone. Save activates; actual log/card checks are separate and Run now does not prove scheduled timing. No Power-Up/Butler Bot needed. Proposal `trello-board-automation` maps to `trello.board_automation`.
 
 ## Zoom Workplace (2)
 
