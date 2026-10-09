@@ -38,7 +38,7 @@ the app. The panel stays open and watches the selected window locally. Pause,
 resume and result confirmation are available. Turn Teach off for the existing
 action mode described above.
 
-The library contains **122 tasks across 24 application areas**, **369 task cases**
+The library contains **125 tasks across 27 application areas**, **378 task cases**
 and **15 shared runtime scenarios**. Office, CapCut, Figma web, Canva web and
 Photoshop are the first hands-on test set. The broader catalogue includes FL
 Studio, Illustrator, Premiere, After Effects, macOS utilities, and desktop Zoom,
@@ -47,7 +47,8 @@ Mac browsers. Google workflows cover presentation/host controls, recurring-serie
 edit scope and eligible appointment schedules, plus Sheets pivot analysis, Forms
 branching, Gmail label/filter previews and Drive inherited sharing. Sheets and
 Forms share a hostname and require explicit editor selection. All workflows
-remain hands-on unverified.
+remain hands-on unverified. Study activities add Anki desktop deck/note maintenance,
+Classroom teacher rubric building and Kahoot self-paced assignments/reports on Mac browsers.
 
 ```powershell
 py -B tools/application_skills.py --check-bundle PinDo/Resources/ApplicationSkills.json

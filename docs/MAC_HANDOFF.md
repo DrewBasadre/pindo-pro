@@ -62,6 +62,9 @@ Record exact macOS version, application build, browser, account plan, language a
 | Google Forms on Mac browser | `google_forms.branching` | supported question types, answer destinations, section exits and every alternative preview path |
 | Gmail on Mac browser | `gmail.labels_and_filters` | advanced-search preview, exclusions, labels, automatic actions and retroactive scope |
 | Google Drive on Mac browser | `drive.sharing_permissions` | direct versus inherited roles, General access, disabled changes and parent/sibling impacts |
+| Anki Mac desktop | `anki.deck_maintenance` | note/card modes, tags, scoped filters, sibling deck placement and duplicate candidate review |
+| Google Classroom on Mac browser | `classroom.rubric_builder` | teacher/student controls, scoring/order, ungraded edit availability and saved attachment |
+| Kahoot! creator on Mac browser | `kahoot.assignments_and_reports` | deadline/zone, plan gates, consenting sharing, assigned-session reports and source-edit boundary |
 | Google Calendar on Mac browser | `google_calendar.recurring_events` | `google_calendar.office_hours`, occurrence/series scope, appointment eligibility, availability, booking windows, buffers and daily cap |
 
 For meeting practice use consenting test accounts and organization-approved room resources from `setups.json`. Record Zoom calendar integration and policy locks, Teams calendar mode/Exchange access/organizer role, and Outlook account type/free-busy/room-directory access. Verify invitee identities, time zones, actual transfers, room booking responses and invitation submission with the user when outside the pinned capture. Unknown availability is not free and a pending room is not reserved. No extra raster/media assets or plugin are needed for these five tasks.
@@ -73,6 +76,8 @@ For Google Workspace administration/data use `google_sheets`, `google_forms`, `g
 Run each task's English, Taglish and recovery cases. Begin with one lesson per app. Generated guidance can follow the request language; stored objectives/explanations currently provide an English fallback. Test language quality rather than assuming intent matching proves translation quality.
 
 Run the shared scenarios in `evaluations/runtime_cases.json`. Some require a controlled local response; there is no automatic live-app test driver. A predicate unit test does not establish that a live runtime scenario passed.
+
+For study/classroom practice use `anki`, `classroom` and `kahoot` setups. Record actual Mac/app or browser versions, roles and plan/policy. Keep Anki local without sync; compare note identity before calling similar cards duplicates and verify moved/untouched siblings. Use an ungraded titled Classroom draft, configure fields one at a time and review the saved rubric without posting. Kahoot creation is immediately available; review test audience before sharing and manually verify submission and learner access. Match reports by session/deadline, not source title alone; quiz edits do not update previous assignments. Test missing controls, student/player views and plan gates as separate recovery cases.
 
 ## Record evidence
 
@@ -98,6 +103,8 @@ Copy `evaluations/run_template.json` into a local results directory for each rea
 Task files describe procedures; they are not macros. The host owns progression while inference supplies guidance and evidence. Preserve this separation while continuing development.
 
 ## Known limits to investigate
+
+- Study and classroom activities batch validation on 2026-10-10: generation and bundle checking passed for 125 tasks and 378 specifications; all 35 Python tests passed, including English/Taglish/recovery routing and distinct Mac surfaces. All 122 prior tasks, 24 profiles and 369 cases are retained unchanged as data. Swift Classroom/creator-versus-player domain checks were added but not executed on this Linux host. Native Xcode/Swift checks and live Mac Anki/Classroom/Kahoot execution are unavailable; all three tasks remain unverified with empty tested-version arrays. The existing `qwen3-vl:8b` selection is unchanged.
 
 - Single-window capture may exclude menus; menu availability is not proof of an open menu. Affected seed steps require confirmation.
 - Modal windows pause watching; Resume can adopt a window in the same app. Return from an external viewer before further visual checks, or confirm a designated manual-review step while paused.

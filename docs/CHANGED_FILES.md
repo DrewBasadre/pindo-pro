@@ -1,8 +1,8 @@
 # Changed files
 
-The inherited inventory was compared with `origin/main`; the desktop meetings, Google meetings/calendar and Google Workspace administration/data batches extend it from their current local HEADs without remote Git operations. A = created; M = modified. No tracked files are deleted. Ignored local build assets and authoring scratch scripts are not part of the change.
+The inherited inventory was compared with `origin/main`; the desktop meetings, Google meetings/calendar, Google Workspace administration/data and study/classroom activities batches extend it from their current local HEADs without remote Git operations. A = created; M = modified. No tracked files are deleted. Ignored local build assets and authoring scratch scripts are not part of the change.
 
-513 files are listed individually. Most are independently editable task and evaluation data; the generated app resource duplicates them intentionally for packaging.
+525 files are listed individually. Most are independently editable task and evaluation data; the generated app resource duplicates them intentionally for packaging.
 
 | Change | File | Purpose |
 | --- | --- | --- |
@@ -15,11 +15,11 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [PinDo/TutorSession.swift](../PinDo/TutorSession.swift) | Teaching state, debounce, cancellation, stale responses and progression. |
 | A | [PinDo/TutorView.swift](../PinDo/TutorView.swift) | Lesson selection, prerequisites, explanations and pause/confirmation controls. |
 | M | [README.md](../README.md) | Teach-mode overview and entry points for development and Mac testing. |
-| A | [application_profiles.json](../application_profiles.json) | Application aliases, known bundle IDs, surfaces, domains and terminology, including distinct Zoom/Teams/Outlook desktop and Google Meet/Calendar and Sheets/Forms/Gmail/Drive browser profiles with unconfirmed bundle IDs left empty; shared-host editors require explicit selection. |
-| A | [docs/APPLICATION_SKILLS.md](../docs/APPLICATION_SKILLS.md) | Version 2 contract, execution flow, observation limits, meeting/data prerequisites, shared-host selection and evidence policy. |
+| A | [application_profiles.json](../application_profiles.json) | Application aliases, known bundle IDs, surfaces, domains and terminology, including distinct Zoom/Teams/Outlook desktop and Google Meet/Calendar and Sheets/Forms/Gmail/Drive/Classroom/Kahoot browser profiles plus Anki desktop with unconfirmed bundle IDs left empty; shared-host editors require explicit selection. |
+| A | [docs/APPLICATION_SKILLS.md](../docs/APPLICATION_SKILLS.md) | Version 2 contract, execution flow, observation limits, meeting/data prerequisites, shared-host selection, study/classroom prerequisites and evidence policy. |
 | A | [docs/CHANGED_FILES.md](../docs/CHANGED_FILES.md) | Complete created/modified file report for this branch. |
 | A | [docs/MAC_HANDOFF.md](../docs/MAC_HANDOFF.md) | Exact continuation/build steps and available-app validation instructions. |
-| A | [docs/SKILL_CATALOGUE.md](../docs/SKILL_CATALOGUE.md) | Task-by-task inventory, proposal mappings and vendor references, including five desktop meeting tasks and four Google meetings/calendar browser tasks and four Google Workspace administration/data tasks. |
+| A | [docs/SKILL_CATALOGUE.md](../docs/SKILL_CATALOGUE.md) | Task-by-task inventory, proposal mappings and vendor references, including meeting/data batches and three study/classroom activity tasks. |
 | A | [evaluations/cases/after_effects_alpha_export_english.json](../evaluations/cases/after_effects_alpha_export_english.json) | English evaluation specification for after_effects.alpha_export. |
 | A | [evaluations/cases/after_effects_alpha_export_recovery.json](../evaluations/cases/after_effects_alpha_export_recovery.json) | Recovery evaluation specification for after_effects.alpha_export. |
 | A | [evaluations/cases/after_effects_alpha_export_taglish.json](../evaluations/cases/after_effects_alpha_export_taglish.json) | Taglish evaluation specification for after_effects.alpha_export. |
@@ -44,6 +44,9 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [evaluations/cases/after_effects_track_matte_english.json](../evaluations/cases/after_effects_track_matte_english.json) | English evaluation specification for after_effects.track_matte. |
 | A | [evaluations/cases/after_effects_track_matte_recovery.json](../evaluations/cases/after_effects_track_matte_recovery.json) | Recovery evaluation specification for after_effects.track_matte. |
 | A | [evaluations/cases/after_effects_track_matte_taglish.json](../evaluations/cases/after_effects_track_matte_taglish.json) | Taglish evaluation specification for after_effects.track_matte. |
+| A | [evaluations/cases/anki_deck_maintenance_english.json](../evaluations/cases/anki_deck_maintenance_english.json) | English evaluation specification for anki.deck_maintenance. |
+| A | [evaluations/cases/anki_deck_maintenance_recovery.json](../evaluations/cases/anki_deck_maintenance_recovery.json) | Recovery evaluation specification for anki.deck_maintenance. |
+| A | [evaluations/cases/anki_deck_maintenance_taglish.json](../evaluations/cases/anki_deck_maintenance_taglish.json) | Taglish evaluation specification for anki.deck_maintenance. |
 | A | [evaluations/cases/canva_audio_timing_english.json](../evaluations/cases/canva_audio_timing_english.json) | English evaluation specification for canva.audio_timing. |
 | A | [evaluations/cases/canva_audio_timing_recovery.json](../evaluations/cases/canva_audio_timing_recovery.json) | Recovery evaluation specification for canva.audio_timing. |
 | A | [evaluations/cases/canva_audio_timing_taglish.json](../evaluations/cases/canva_audio_timing_taglish.json) | Taglish evaluation specification for canva.audio_timing. |
@@ -92,6 +95,9 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [evaluations/cases/capcut_tracked_blur_english.json](../evaluations/cases/capcut_tracked_blur_english.json) | English evaluation specification for capcut.tracked_blur. |
 | A | [evaluations/cases/capcut_tracked_blur_recovery.json](../evaluations/cases/capcut_tracked_blur_recovery.json) | Recovery evaluation specification for capcut.tracked_blur. |
 | A | [evaluations/cases/capcut_tracked_blur_taglish.json](../evaluations/cases/capcut_tracked_blur_taglish.json) | Taglish evaluation specification for capcut.tracked_blur. |
+| A | [evaluations/cases/classroom_rubric_builder_english.json](../evaluations/cases/classroom_rubric_builder_english.json) | English evaluation specification for classroom.rubric_builder. |
+| A | [evaluations/cases/classroom_rubric_builder_recovery.json](../evaluations/cases/classroom_rubric_builder_recovery.json) | Recovery evaluation specification for classroom.rubric_builder. |
+| A | [evaluations/cases/classroom_rubric_builder_taglish.json](../evaluations/cases/classroom_rubric_builder_taglish.json) | Taglish evaluation specification for classroom.rubric_builder. |
 | A | [evaluations/cases/drive_sharing_permissions_english.json](../evaluations/cases/drive_sharing_permissions_english.json) | English evaluation specification for drive.sharing_permissions. |
 | A | [evaluations/cases/drive_sharing_permissions_recovery.json](../evaluations/cases/drive_sharing_permissions_recovery.json) | Recovery evaluation specification for drive.sharing_permissions. |
 | A | [evaluations/cases/drive_sharing_permissions_taglish.json](../evaluations/cases/drive_sharing_permissions_taglish.json) | Taglish evaluation specification for drive.sharing_permissions. |
@@ -228,6 +234,9 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [evaluations/cases/illustrator_type_on_path_english.json](../evaluations/cases/illustrator_type_on_path_english.json) | English evaluation specification for illustrator.type_on_path. |
 | A | [evaluations/cases/illustrator_type_on_path_recovery.json](../evaluations/cases/illustrator_type_on_path_recovery.json) | Recovery evaluation specification for illustrator.type_on_path. |
 | A | [evaluations/cases/illustrator_type_on_path_taglish.json](../evaluations/cases/illustrator_type_on_path_taglish.json) | Taglish evaluation specification for illustrator.type_on_path. |
+| A | [evaluations/cases/kahoot_assignments_and_reports_english.json](../evaluations/cases/kahoot_assignments_and_reports_english.json) | English evaluation specification for kahoot.assignments_and_reports. |
+| A | [evaluations/cases/kahoot_assignments_and_reports_recovery.json](../evaluations/cases/kahoot_assignments_and_reports_recovery.json) | Recovery evaluation specification for kahoot.assignments_and_reports. |
+| A | [evaluations/cases/kahoot_assignments_and_reports_taglish.json](../evaluations/cases/kahoot_assignments_and_reports_taglish.json) | Taglish evaluation specification for kahoot.assignments_and_reports. |
 | A | [evaluations/cases/meet_host_management_english.json](../evaluations/cases/meet_host_management_english.json) | English evaluation specification for meet.host_management. |
 | A | [evaluations/cases/meet_host_management_recovery.json](../evaluations/cases/meet_host_management_recovery.json) | Recovery evaluation specification for meet.host_management. |
 | A | [evaluations/cases/meet_host_management_taglish.json](../evaluations/cases/meet_host_management_taglish.json) | Taglish evaluation specification for meet.host_management. |
@@ -389,7 +398,7 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [evaluations/cases/zoom_meeting_setup_english.json](../evaluations/cases/zoom_meeting_setup_english.json) | English evaluation specification for zoom.meeting_setup. |
 | A | [evaluations/cases/zoom_meeting_setup_recovery.json](../evaluations/cases/zoom_meeting_setup_recovery.json) | Recovery evaluation specification for zoom.meeting_setup. |
 | A | [evaluations/cases/zoom_meeting_setup_taglish.json](../evaluations/cases/zoom_meeting_setup_taglish.json) | Taglish evaluation specification for zoom.meeting_setup. |
-| A | [evaluations/fixtures/setups.json](../evaluations/fixtures/setups.json) | Concrete synthetic practice setups for every application area, including consenting meeting accounts, configured room resources, pivot totals, alternative form paths, filter matches/exclusions and child/parent/sibling access review. |
+| A | [evaluations/fixtures/setups.json](../evaluations/fixtures/setups.json) | Concrete synthetic practice setups for every application area, including consenting meeting accounts, configured room resources, pivot totals, alternative form paths, filter matches/exclusions, child/parent/sibling access review, Anki note/card comparisons, Classroom rubric maps and Kahoot assigned-session sharing/report checks. |
 | A | [evaluations/run_template.json](../evaluations/run_template.json) | Empty real-run evidence and measurement record. |
 | A | [evaluations/runtime_cases.json](../evaluations/runtime_cases.json) | Shared adverse observation and inference test scenarios. |
 | A | [skills/after_effects/alpha_export.json](../skills/after_effects/alpha_export.json) | Task data: Render a composition with transparency. |
@@ -400,6 +409,7 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [skills/after_effects/parenting.json](../skills/after_effects/parenting.json) | Task data: Control layers with parenting. |
 | A | [skills/after_effects/precompose.json](../skills/after_effects/precompose.json) | Task data: Precompose related layers. |
 | A | [skills/after_effects/track_matte.json](../skills/after_effects/track_matte.json) | Task data: Reveal a layer with a track matte. |
+| A | [skills/anki/deck_maintenance.json](../skills/anki/deck_maintenance.json) | Task data: Organize Anki notes and cards on Mac. |
 | A | [skills/canva/audio_timing.json](../skills/canva/audio_timing.json) | Task data: Trim and time Canva audio. |
 | A | [skills/canva/branding.json](../skills/canva/branding.json) | Task data: Apply Canva brand assets. |
 | A | [skills/canva/export_images.json](../skills/canva/export_images.json) | Task data: Download Canva images. |
@@ -416,6 +426,7 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [skills/capcut/keyframes.json](../skills/capcut/keyframes.json) | Task data: Animate CapCut transform keyframes. |
 | A | [skills/capcut/speed_ramp.json](../skills/capcut/speed_ramp.json) | Task data: Create a CapCut speed ramp. |
 | A | [skills/capcut/tracked_blur.json](../skills/capcut/tracked_blur.json) | Task data: Track a face blur in CapCut. |
+| A | [skills/classroom/rubric_builder.json](../skills/classroom/rubric_builder.json) | Task data: Build and review a Classroom rubric on Mac. |
 | A | [skills/drive/sharing_permissions.json](../skills/drive/sharing_permissions.json) | Task data: Interpret and review Google Drive sharing on Mac. |
 | A | [skills/excel/absolute_references.json](../skills/excel/absolute_references.json) | Task data: Use absolute and mixed references. |
 | A | [skills/excel/chart.json](../skills/excel/chart.json) | Task data: Create an Excel chart. |
@@ -461,6 +472,7 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [skills/illustrator/pen_paths.json](../skills/illustrator/pen_paths.json) | Task data: Draw editable Pen paths. |
 | A | [skills/illustrator/shape_builder.json](../skills/illustrator/shape_builder.json) | Task data: Combine shapes with Shape Builder. |
 | A | [skills/illustrator/type_on_path.json](../skills/illustrator/type_on_path.json) | Task data: Place type on a path. |
+| A | [skills/kahoot/assignments_and_reports.json](../skills/kahoot/assignments_and_reports.json) | Task data: Assign self-paced Kahoot quizzes and locate reports on Mac. |
 | A | [skills/meet/host_management.json](../skills/meet/host_management.json) | Task data: Manage Google Meet host controls on Mac. |
 | A | [skills/meet/presentation_controls.json](../skills/meet/presentation_controls.json) | Task data: Choose and stop a Google Meet presentation on Mac. |
 | A | [skills/outlook/scheduling.json](../skills/outlook/scheduling.json) | Task data: Schedule an Outlook meeting with availability and a room on Mac. |
@@ -514,8 +526,8 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [skills/word/tracked_changes.json](../skills/word/tracked_changes.json) | Task data: Review tracked changes in Word. |
 | A | [skills/zoom/breakout_rooms.json](../skills/zoom/breakout_rooms.json) | Task data: Manage Zoom breakout rooms on Mac. |
 | A | [skills/zoom/meeting_setup.json](../skills/zoom/meeting_setup.json) | Task data: Schedule a Zoom meeting on Mac. |
-| A | [tests/SkillLibraryTests.swift](../tests/SkillLibraryTests.swift) | Actual Swift decoding, matching, identity and progression tests, including Google service-domain boundaries and shared-host ambiguity (not executed on the Linux authoring host). |
+| A | [tests/SkillLibraryTests.swift](../tests/SkillLibraryTests.swift) | Actual Swift decoding, matching, identity and progression tests, including Google service-domain boundaries and shared-host ambiguity (plus Classroom and Kahoot creator/player domain boundaries; not executed on the Linux authoring host). |
 | A | [tests/test_application_skills.py](../tests/test_application_skills.py) | Contract regression tests using disposable seed records. |
-| A | [tests/test_rich_skills.py](../tests/test_rich_skills.py) | Version 2, profile coverage, distinct desktop/Google meeting and Calendar intent routing, Google Workspace data intent routing and shared-host coverage, and bundle regression tests. |
+| A | [tests/test_rich_skills.py](../tests/test_rich_skills.py) | Version 2, profile coverage, distinct desktop/Google meeting and Calendar intent routing, Google Workspace data intent routing and shared-host coverage, study/classroom routing and surfaces, and bundle regression tests. |
 | A | [tools/application_skills.py](../tools/application_skills.py) | Dependency-free authoring validation, matching and resource packaging. |
 | A | [tools/practice_assets.py](../tools/practice_assets.py) | Creates original disposable PNG, SVG, PDF, WAV, CSV and text fixtures. |

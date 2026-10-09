@@ -93,6 +93,29 @@ class RichSkillsTests(unittest.TestCase):
         self.assertEqual(profiles['google.gmail']['domains'], ['mail.google.com'])
         self.assertEqual(profiles['google.drive']['domains'], ['drive.google.com'])
 
+    def test_study_requests_route_with_distinct_mac_surfaces(self) -> None:
+        skills, cases = load_library(ROOT)
+        task_apps = {'anki.deck_maintenance': ('anki.desktop', 'desktop'),
+                     'classroom.rubric_builder': ('google.classroom', 'browser'),
+                     'kahoot.assignments_and_reports': ('kahoot.web', 'browser')}
+        for case in cases:
+            if case['skill_id'] in task_apps:
+                with self.subTest(case=case['id']):
+                    self.assertEqual(match_skills(skills, case['application_id'], case['user_instruction']), [case['skill_id']])
+                    for other_app, _ in set(task_apps.values()) - {task_apps[case['skill_id']]}:
+                        self.assertEqual(match_skills(skills, other_app, case['user_instruction']), [])
+        profiles = {p['id']: p for p in load_profiles(ROOT)}
+        for task in skills:
+            if task['id'] in task_apps:
+                app, surface = task_apps[task['id']]
+                self.assertEqual((task['application_id'], task['platform'], task['surface']), (app, 'macos', surface))
+                self.assertEqual(profiles[app]['surface'], surface)
+                self.assertEqual(profiles[app]['bundle_ids'], [])
+        self.assertEqual(profiles['anki.desktop']['domains'], [])
+        self.assertEqual(profiles['google.classroom']['domains'], ['classroom.google.com'])
+        # The player join hostname must not identify a host assignment lesson.
+        self.assertEqual(profiles['kahoot.web']['domains'], ['create.kahoot.it'])
+
     def test_matching_keeps_ambiguity_and_checks_application_and_word_boundaries(self) -> None:
         skills, _ = load_library(ROOT)
         sample = deepcopy(skills[0])

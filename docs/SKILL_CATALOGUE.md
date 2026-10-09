@@ -1,8 +1,8 @@
 # Application task catalogue
 
-122 tasks. Research date: 2026-10-10. Every task is hands-on unverified; source documentation is not a successful test run.
+125 tasks. Research date: 2026-10-10. Every task is hands-on unverified; source documentation is not a successful test run.
 
-The initial 108-task outline is represented with one extra focused Finder rename task, plus five desktop meeting and scheduling tasks and four Google meetings/calendar browser tasks and four Google Workspace administration/data browser tasks. Figma and Canva target web editors. Sources and recovery interpretations require rechecking against the installed version.
+The initial 108-task outline is represented with one extra focused Finder rename task, plus five desktop meeting and scheduling tasks and four Google meetings/calendar browser tasks and four Google Workspace administration/data browser tasks, plus three study/classroom activities (one desktop and two browser tasks). Figma and Canva target web editors. Sources and recovery interpretations require rechecking against the installed version.
 
 ## Adobe After Effects (8)
 
@@ -55,6 +55,14 @@ The initial 108-task outline is represented with one extra focused Finder rename
 | [premiere.proxies](../skills/premiere/proxies.json) — Create and attach Premiere proxies | intermediate | [Vendor documentation](https://helpx.adobe.com/premiere/desktop/organize-media/ingest-proxy-workflow/create-proxies.html) |
 | [premiere.relink](../skills/premiere/relink.json) — Relink missing Premiere media | intermediate | [Vendor documentation](https://helpx.adobe.com/premiere/desktop/organize-media/ingest-proxy-workflow/relink-offline-clips.html) |
 | [premiere.timeline_edit](../skills/premiere/timeline_edit.json) — Build a Premiere timeline edit | intermediate | [Vendor documentation](https://helpx.adobe.com/premiere-pro/using/adding-clips-sequences.html) |
+
+## Anki (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [anki.deck_maintenance](../skills/anki/deck_maintenance.json) — Organize Anki notes and cards on Mac | intermediate | [Vendor documentation](https://docs.ankiweb.net/browsing.html) |
+
+Mac desktop, writable local collection; current download 26.09.3 requires macOS 13+. No add-on, paid plan or sync account is needed. Distinguish note fields/tags from generated cards/deck placement; scope browser and duplicate searches, preserve sibling cards and review candidate content without deletion or rescheduling. Proposal `anki-mac-deck-maintenance` maps to `anki.deck_maintenance`.
 
 ## Canva web (8)
 
@@ -137,6 +145,14 @@ Mac browser on `mail.google.com`, signed-in Gmail-enabled account and available 
 
 Mac browser on `calendar.google.com`, signed-in account and writable calendar. Recurrence setup is distinct from one-occurrence, following-events or whole-series edit scope; confirm the actual dialog and compare dates. Appointment schedules need account eligibility: personal/Business Starter supports one booking page; Frontline/Essentials/unsupported legacy plans cannot create schedules. Premium features vary; inspect enabled availability, booking-window, buffer and daily-cap settings and pause for required unavailable controls. Booking-page review is not proof of booking enforcement. Proposals `google-calendar-recurring-events` and `google-calendar-office-hours` map to `google_calendar.recurring_events` and `google_calendar.office_hours`.
 
+## Google Classroom web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [classroom.rubric_builder](../skills/classroom/rubric_builder.json) — Build and review a Classroom rubric on Mac | intermediate | [Vendor documentation](https://support.google.com/edu/classroom/answer/9335069?hl=en) |
+
+Mac browser on `classroom.google.com`, eligible account and teacher access to a titled ungraded assignment. Manual criteria/level/point configuration needs no Gemini add-on; verify enabled controls and scoring/order. Review the saved attachment without posting or grading. Student views cannot build rubrics; edits lock after grading starts. Proposal `classroom-rubric-builder` maps to `classroom.rubric_builder`.
+
 ## Google Drive web (1)
 
 | Task | Difficulty | Primary reference |
@@ -169,6 +185,14 @@ Mac browser on `meet.google.com`; Chrome is the tab-sharing reference. Distingui
 | [google_sheets.pivot_analysis](../skills/google_sheets/pivot_analysis.json) — Analyze a Google Sheets pivot table on Mac | intermediate | [Vendor documentation](https://support.google.com/docs/answer/1272900?hl=en) |
 
 Mac browser on `sheets.google.com` or `docs.google.com/spreadsheets`, signed-in account with native spreadsheet edit access. Inspect source boundaries/headers, Rows/Columns/Values/Filters, Summarize by and Show as; compare the filtered practice totals against source records. No Connected Sheets or premium plan is required for this ordinary pivot. Confirm the Sheets editor in PinDo on the shared hostname. Proposal `google-sheets-pivot-analysis` maps to `google_sheets.pivot_analysis`.
+
+## Kahoot! web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [kahoot.assignments_and_reports](../skills/kahoot/assignments_and_reports.json) — Assign self-paced Kahoot quizzes and locate reports on Mac | intermediate | [Vendor documentation](https://support.kahoot.com/hc/en-us/articles/360039411334-How-to-assign-a-kahoot-in-web-platform) |
+
+Mac browser on `create.kahoot.it` with signed-in permitted host and plan-available Assign/report controls. Player `kahoot.it` is excluded from host routing. Review future deadline/hour/zone and plan-dependent options, share session access only to a consenting test destination, then locate the specific assigned-session report. Source quiz edits do not update existing assignments; revised content needs a new session and access details. Proposal `kahoot-assignments-and-reports` maps to `kahoot.assignments_and_reports`.
 
 ## Microsoft Excel (8)
 

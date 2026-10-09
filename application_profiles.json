@@ -454,6 +454,65 @@
         "Commenter",
         "Editor"
       ]
+    },
+    {
+      "id": "anki.desktop",
+      "name": "Anki",
+      "aliases": [
+        "Anki",
+        "Anki desktop"
+      ],
+      "bundle_ids": [],
+      "domains": [],
+      "surface": "desktop",
+      "terminology": [
+        "deck",
+        "note",
+        "card",
+        "tag",
+        "Browse"
+      ]
+    },
+    {
+      "id": "google.classroom",
+      "name": "Google Classroom web",
+      "aliases": [
+        "Google Classroom",
+        "Classroom web"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "classroom.google.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Classwork",
+        "assignment",
+        "rubric",
+        "criterion",
+        "level"
+      ]
+    },
+    {
+      "id": "kahoot.web",
+      "name": "Kahoot! web",
+      "aliases": [
+        "Kahoot!",
+        "Kahoot",
+        "Kahoot creator"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "create.kahoot.it"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Library",
+        "Assign",
+        "assignment",
+        "Reports",
+        "Assigned kahoots"
+      ]
     }
   ]
 }
