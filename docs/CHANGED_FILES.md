@@ -1,8 +1,8 @@
 # Changed files
 
-The inherited inventory was compared with `origin/main`; the desktop meetings batch extends it from the current local HEAD without remote Git operations. A = created; M = modified. No tracked files are deleted. Ignored local build assets and authoring scratch scripts are not part of the change.
+The inherited inventory was compared with `origin/main`; the desktop meetings and Google meetings/calendar batches extend it from their current local HEADs without remote Git operations. A = created; M = modified. No tracked files are deleted. Ignored local build assets and authoring scratch scripts are not part of the change.
 
-481 files are listed individually. Most are independently editable task and evaluation data; the generated app resource duplicates them intentionally for packaging.
+497 files are listed individually. Most are independently editable task and evaluation data; the generated app resource duplicates them intentionally for packaging.
 
 | Change | File | Purpose |
 | --- | --- | --- |
@@ -15,11 +15,11 @@ The inherited inventory was compared with `origin/main`; the desktop meetings ba
 | A | [PinDo/TutorSession.swift](../PinDo/TutorSession.swift) | Teaching state, debounce, cancellation, stale responses and progression. |
 | A | [PinDo/TutorView.swift](../PinDo/TutorView.swift) | Lesson selection, prerequisites, explanations and pause/confirmation controls. |
 | M | [README.md](../README.md) | Teach-mode overview and entry points for development and Mac testing. |
-| A | [application_profiles.json](../application_profiles.json) | Application aliases, known bundle IDs, surfaces, domains and terminology, including distinct Zoom/Teams/Outlook desktop profiles with unconfirmed bundle IDs left empty. |
+| A | [application_profiles.json](../application_profiles.json) | Application aliases, known bundle IDs, surfaces, domains and terminology, including distinct Zoom/Teams/Outlook desktop and Google Meet/Calendar browser profiles with unconfirmed bundle IDs left empty. |
 | A | [docs/APPLICATION_SKILLS.md](../docs/APPLICATION_SKILLS.md) | Version 2 contract, execution flow, observation limits, meeting prerequisites and evidence policy. |
 | A | [docs/CHANGED_FILES.md](../docs/CHANGED_FILES.md) | Complete created/modified file report for this branch. |
 | A | [docs/MAC_HANDOFF.md](../docs/MAC_HANDOFF.md) | Exact continuation/build steps and available-app validation instructions. |
-| A | [docs/SKILL_CATALOGUE.md](../docs/SKILL_CATALOGUE.md) | Task-by-task inventory, proposal mappings and vendor references, including five desktop meeting tasks. |
+| A | [docs/SKILL_CATALOGUE.md](../docs/SKILL_CATALOGUE.md) | Task-by-task inventory, proposal mappings and vendor references, including five desktop meeting tasks and four Google meetings/calendar browser tasks. |
 | A | [evaluations/cases/after_effects_alpha_export_english.json](../evaluations/cases/after_effects_alpha_export_english.json) | English evaluation specification for after_effects.alpha_export. |
 | A | [evaluations/cases/after_effects_alpha_export_recovery.json](../evaluations/cases/after_effects_alpha_export_recovery.json) | Recovery evaluation specification for after_effects.alpha_export. |
 | A | [evaluations/cases/after_effects_alpha_export_taglish.json](../evaluations/cases/after_effects_alpha_export_taglish.json) | Taglish evaluation specification for after_effects.alpha_export. |
@@ -186,6 +186,12 @@ The inherited inventory was compared with `origin/main`; the desktop meetings ba
 | A | [evaluations/cases/fl_studio_unique_arrangement_english.json](../evaluations/cases/fl_studio_unique_arrangement_english.json) | English evaluation specification for fl_studio.unique_arrangement. |
 | A | [evaluations/cases/fl_studio_unique_arrangement_recovery.json](../evaluations/cases/fl_studio_unique_arrangement_recovery.json) | Recovery evaluation specification for fl_studio.unique_arrangement. |
 | A | [evaluations/cases/fl_studio_unique_arrangement_taglish.json](../evaluations/cases/fl_studio_unique_arrangement_taglish.json) | Taglish evaluation specification for fl_studio.unique_arrangement. |
+| A | [evaluations/cases/google_calendar_office_hours_english.json](../evaluations/cases/google_calendar_office_hours_english.json) | English evaluation specification for google_calendar.office_hours. |
+| A | [evaluations/cases/google_calendar_office_hours_recovery.json](../evaluations/cases/google_calendar_office_hours_recovery.json) | Recovery evaluation specification for google_calendar.office_hours. |
+| A | [evaluations/cases/google_calendar_office_hours_taglish.json](../evaluations/cases/google_calendar_office_hours_taglish.json) | Taglish evaluation specification for google_calendar.office_hours. |
+| A | [evaluations/cases/google_calendar_recurring_events_english.json](../evaluations/cases/google_calendar_recurring_events_english.json) | English evaluation specification for google_calendar.recurring_events. |
+| A | [evaluations/cases/google_calendar_recurring_events_recovery.json](../evaluations/cases/google_calendar_recurring_events_recovery.json) | Recovery evaluation specification for google_calendar.recurring_events. |
+| A | [evaluations/cases/google_calendar_recurring_events_taglish.json](../evaluations/cases/google_calendar_recurring_events_taglish.json) | Taglish evaluation specification for google_calendar.recurring_events. |
 | A | [evaluations/cases/illustrator_artboards_english.json](../evaluations/cases/illustrator_artboards_english.json) | English evaluation specification for illustrator.artboards. |
 | A | [evaluations/cases/illustrator_artboards_recovery.json](../evaluations/cases/illustrator_artboards_recovery.json) | Recovery evaluation specification for illustrator.artboards. |
 | A | [evaluations/cases/illustrator_artboards_taglish.json](../evaluations/cases/illustrator_artboards_taglish.json) | Taglish evaluation specification for illustrator.artboards. |
@@ -210,6 +216,12 @@ The inherited inventory was compared with `origin/main`; the desktop meetings ba
 | A | [evaluations/cases/illustrator_type_on_path_english.json](../evaluations/cases/illustrator_type_on_path_english.json) | English evaluation specification for illustrator.type_on_path. |
 | A | [evaluations/cases/illustrator_type_on_path_recovery.json](../evaluations/cases/illustrator_type_on_path_recovery.json) | Recovery evaluation specification for illustrator.type_on_path. |
 | A | [evaluations/cases/illustrator_type_on_path_taglish.json](../evaluations/cases/illustrator_type_on_path_taglish.json) | Taglish evaluation specification for illustrator.type_on_path. |
+| A | [evaluations/cases/meet_host_management_english.json](../evaluations/cases/meet_host_management_english.json) | English evaluation specification for meet.host_management. |
+| A | [evaluations/cases/meet_host_management_recovery.json](../evaluations/cases/meet_host_management_recovery.json) | Recovery evaluation specification for meet.host_management. |
+| A | [evaluations/cases/meet_host_management_taglish.json](../evaluations/cases/meet_host_management_taglish.json) | Taglish evaluation specification for meet.host_management. |
+| A | [evaluations/cases/meet_presentation_controls_english.json](../evaluations/cases/meet_presentation_controls_english.json) | English evaluation specification for meet.presentation_controls. |
+| A | [evaluations/cases/meet_presentation_controls_recovery.json](../evaluations/cases/meet_presentation_controls_recovery.json) | Recovery evaluation specification for meet.presentation_controls. |
+| A | [evaluations/cases/meet_presentation_controls_taglish.json](../evaluations/cases/meet_presentation_controls_taglish.json) | Taglish evaluation specification for meet.presentation_controls. |
 | A | [evaluations/cases/outlook_scheduling_english.json](../evaluations/cases/outlook_scheduling_english.json) | English evaluation specification for outlook.scheduling. |
 | A | [evaluations/cases/outlook_scheduling_recovery.json](../evaluations/cases/outlook_scheduling_recovery.json) | Recovery evaluation specification for outlook.scheduling. |
 | A | [evaluations/cases/outlook_scheduling_taglish.json](../evaluations/cases/outlook_scheduling_taglish.json) | Taglish evaluation specification for outlook.scheduling. |
@@ -423,6 +435,8 @@ The inherited inventory was compared with `origin/main`; the desktop meetings ba
 | A | [skills/fl_studio/record_takes.json](../skills/fl_studio/record_takes.json) | Task data: Record audio takes in FL Studio. |
 | A | [skills/fl_studio/sidechain.json](../skills/fl_studio/sidechain.json) | Task data: Set up sidechain compression. |
 | A | [skills/fl_studio/unique_arrangement.json](../skills/fl_studio/unique_arrangement.json) | Task data: Make a unique arrangement variation. |
+| A | [skills/google_calendar/office_hours.json](../skills/google_calendar/office_hours.json) | Task data: Build Google Calendar office-hours appointment schedules on Mac. |
+| A | [skills/google_calendar/recurring_events.json](../skills/google_calendar/recurring_events.json) | Task data: Configure and edit recurring Google Calendar events on Mac. |
 | A | [skills/illustrator/artboards.json](../skills/illustrator/artboards.json) | Task data: Organize Illustrator artboards. |
 | A | [skills/illustrator/clipping_mask.json](../skills/illustrator/clipping_mask.json) | Task data: Create an Illustrator clipping mask. |
 | A | [skills/illustrator/export.json](../skills/illustrator/export.json) | Task data: Deliver SVG or PDF artwork. |
@@ -431,6 +445,8 @@ The inherited inventory was compared with `origin/main`; the desktop meetings ba
 | A | [skills/illustrator/pen_paths.json](../skills/illustrator/pen_paths.json) | Task data: Draw editable Pen paths. |
 | A | [skills/illustrator/shape_builder.json](../skills/illustrator/shape_builder.json) | Task data: Combine shapes with Shape Builder. |
 | A | [skills/illustrator/type_on_path.json](../skills/illustrator/type_on_path.json) | Task data: Place type on a path. |
+| A | [skills/meet/host_management.json](../skills/meet/host_management.json) | Task data: Manage Google Meet host controls on Mac. |
+| A | [skills/meet/presentation_controls.json](../skills/meet/presentation_controls.json) | Task data: Choose and stop a Google Meet presentation on Mac. |
 | A | [skills/outlook/scheduling.json](../skills/outlook/scheduling.json) | Task data: Schedule an Outlook meeting with availability and a room on Mac. |
 | A | [skills/photoshop/adjustment_layer.json](../skills/photoshop/adjustment_layer.json) | Task data: Target an adjustment layer. |
 | A | [skills/photoshop/clipping_mask.json](../skills/photoshop/clipping_mask.json) | Task data: Clip artwork to a base layer. |
@@ -482,8 +498,8 @@ The inherited inventory was compared with `origin/main`; the desktop meetings ba
 | A | [skills/word/tracked_changes.json](../skills/word/tracked_changes.json) | Task data: Review tracked changes in Word. |
 | A | [skills/zoom/breakout_rooms.json](../skills/zoom/breakout_rooms.json) | Task data: Manage Zoom breakout rooms on Mac. |
 | A | [skills/zoom/meeting_setup.json](../skills/zoom/meeting_setup.json) | Task data: Schedule a Zoom meeting on Mac. |
-| A | [tests/SkillLibraryTests.swift](../tests/SkillLibraryTests.swift) | Actual Swift decoding, matching, identity and progression tests. |
+| A | [tests/SkillLibraryTests.swift](../tests/SkillLibraryTests.swift) | Actual Swift decoding, matching, identity and progression tests, including Google service-domain boundaries (not executed on the Linux authoring host). |
 | A | [tests/test_application_skills.py](../tests/test_application_skills.py) | Contract regression tests using disposable seed records. |
-| A | [tests/test_rich_skills.py](../tests/test_rich_skills.py) | Version 2, profile coverage, distinct meeting intent routing and bundle regression tests. |
+| A | [tests/test_rich_skills.py](../tests/test_rich_skills.py) | Version 2, profile coverage, distinct desktop/Google meeting and Calendar intent routing, and bundle regression tests. |
 | A | [tools/application_skills.py](../tools/application_skills.py) | Dependency-free authoring validation, matching and resource packaging. |
 | A | [tools/practice_assets.py](../tools/practice_assets.py) | Creates original disposable PNG, SVG, PDF, WAV, CSV and text fixtures. |

@@ -20,6 +20,16 @@ struct SkillLibraryTests {
         precondition(profile.matches(name: "Safari", bundleID: nil, host: "www.example.com"))
         precondition(!profile.matches(name: "Safari", bundleID: nil, host: "example.com.evil.test"))
         precondition(!profile.matches(name: "Example", bundleID: nil, host: nil))
+        for (applicationID, domain, otherDomain) in [
+            ("google.meet", "meet.google.com", "calendar.google.com"),
+            ("google.calendar", "calendar.google.com", "meet.google.com")
+        ] {
+            let googleProfile = library.applications.first { $0.id == applicationID }!
+            precondition(googleProfile.matches(name: "Google Chrome", bundleID: nil, host: domain))
+            precondition(!googleProfile.matches(name: "Google Chrome", bundleID: nil, host: otherDomain))
+            precondition(!googleProfile.matches(name: "Safari", bundleID: nil, host: domain + ".evil.test"))
+            precondition(!googleProfile.matches(name: googleProfile.name, bundleID: nil, host: nil))
+        }
         for changed in 0..<7 {
             let accepted = TeachingProgress.isCurrent(session: 1, currentSession: changed == 1 ? 2 : 1,
                 step: 2, currentStep: changed == 2 ? 3 : 2, observation: 3, currentObservation: changed == 3 ? 4 : 3,

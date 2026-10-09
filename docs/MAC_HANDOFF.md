@@ -57,8 +57,12 @@ Record exact macOS version, application build, browser, account plan, language a
 | Zoom Workplace Mac | `zoom.meeting_setup` | `zoom.breakout_rooms`, administrator locks, host/co-host vs participant controls |
 | Teams Mac | `teams.meeting_scheduling` | `teams.breakout_classrooms`, organizer/manager permissions and automatic/manual assignment |
 | Outlook Mac | `outlook.scheduling` | availability, Room Finder account/directory access and attendee/room responses |
+| Google Meet on Mac browser | `meet.presentation_controls` | `meet.host_management`, tab/window/display boundaries, Mac grants, role/edition limits and leave versus end |
+| Google Calendar on Mac browser | `google_calendar.recurring_events` | `google_calendar.office_hours`, occurrence/series scope, appointment eligibility, availability, booking windows, buffers and daily cap |
 
 For meeting practice use consenting test accounts and organization-approved room resources from `setups.json`. Record Zoom calendar integration and policy locks, Teams calendar mode/Exchange access/organizer role, and Outlook account type/free-busy/room-directory access. Verify invitee identities, time zones, actual transfers, room booking responses and invitation submission with the user when outside the pinned capture. Unknown availability is not free and a pending room is not reserved. No extra raster/media assets or plugin are needed for these five tasks.
+
+For Google practice use the `meet` and `google_calendar` setups. Record both exact browser builds and service account editions; verify the focused service domain even when a Calendar event opens a Meet call. PinDo Screen Recording permission does not grant Chrome screen-sharing access. Confirm Mac sharing pickers/permission prompts, remote content/audio, co-host access and participant exit outcomes manually. Repeat sharing for each boundary, and leave/end in separate consenting calls. For recurring edits compare an earlier, selected and later occurrence for each supported scope. Review saved appointment rules and booking-page preview without a real booking; use separate consenting runs for busy conflicts and actual buffer/cap enforcement or invitation delivery. Required unavailable features are blocked for that account. No new plugin or static asset is required.
 
 Run each task's English, Taglish and recovery cases. Begin with one lesson per app. Generated guidance can follow the request language; stored objectives/explanations currently provide an English fallback. Test language quality rather than assuming intent matching proves translation quality.
 
@@ -96,6 +100,7 @@ Task files describe procedures; they are not macros. The host owns progression w
 - Creative canvases and audio have limited Accessibility representation. Visual judgments remain unverified; listening and subjective checks require the user.
 - Watching reacts to input and supported Accessibility notifications, not continuous video. A background render with no notification may require fresh user activity.
 - Recovery cases check the next guidance and pause behavior; full end-to-end workflows require manual runs.
+- The Google meetings/calendar batch was authored on Linux. Generation/check-bundle validated 118 tasks and 357 cases; all 33 Python tests passed. New Swift Google domain checks, native app builds and live Mac browser workflows could not run here. Account/role eligibility, Mac sharing dialogs, recurrence integrity and appointment rule enforcement still need live evidence.
 - The desktop meetings batch was authored on Linux. Native Xcode/Swift checks and live Zoom/Teams/Outlook GUI execution are unavailable here; all tested-version arrays remain empty and cases retain null versions. Portable schema/routing validation cannot establish Mac GUI correctness.
 
 See [CHANGED_FILES.md](CHANGED_FILES.md) for every created/modified file and its purpose. No project redesign or dependency migration is included.

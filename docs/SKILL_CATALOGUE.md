@@ -1,8 +1,8 @@
 # Application task catalogue
 
-114 tasks. Research date: 2026-10-10. Every task is hands-on unverified; source documentation is not a successful test run.
+118 tasks. Research date: 2026-10-10. Every task is hands-on unverified; source documentation is not a successful test run.
 
-The initial 108-task outline is represented with one extra focused Finder rename task, plus five desktop meeting and scheduling tasks. Figma and Canva target web editors. Sources and recovery interpretations require rechecking against the installed version.
+The initial 108-task outline is represented with one extra focused Finder rename task, plus five desktop meeting and scheduling tasks and four Google meetings/calendar browser tasks. Figma and Canva target web editors. Sources and recovery interpretations require rechecking against the installed version.
 
 ## Adobe After Effects (8)
 
@@ -119,6 +119,24 @@ The initial 108-task outline is represented with one extra focused Finder rename
 | [finder.organize](../skills/finder/organize.json) — Organize Finder files into a folder | intermediate | [Vendor documentation](https://support.apple.com/guide/mac-help/organize-files-with-folders-mh26885/mac) |
 | [finder.rename](../skills/finder/rename.json) — Rename a Finder item | intermediate | [Vendor documentation](https://support.apple.com/guide/mac-help/rename-files-folders-and-disks-mchlp1144/mac) |
 | [finder.tags_search](../skills/finder/tags_search.json) — Tag and search Finder items | intermediate | [Vendor documentation](https://support.apple.com/guide/mac-help/change-finder-settings-mchlp2803/mac) |
+
+## Google Calendar web (2)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [google_calendar.office_hours](../skills/google_calendar/office_hours.json) — Build Google Calendar office-hours appointment schedules on Mac | intermediate | [Vendor documentation](https://support.google.com/calendar/answer/10729749) |
+| [google_calendar.recurring_events](../skills/google_calendar/recurring_events.json) — Configure and edit recurring Google Calendar events on Mac | intermediate | [Vendor documentation](https://support.google.com/calendar/answer/37115?hl=en) |
+
+Mac browser on `calendar.google.com`, signed-in account and writable calendar. Recurrence setup is distinct from one-occurrence, following-events or whole-series edit scope; confirm the actual dialog and compare dates. Appointment schedules need account eligibility: personal/Business Starter supports one booking page; Frontline/Essentials/unsupported legacy plans cannot create schedules. Premium features vary; inspect enabled availability, booking-window, buffer and daily-cap settings and pause for required unavailable controls. Booking-page review is not proof of booking enforcement. Proposals `google-calendar-recurring-events` and `google-calendar-office-hours` map to `google_calendar.recurring_events` and `google_calendar.office_hours`.
+
+## Google Meet web (2)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [meet.host_management](../skills/meet/host_management.json) — Manage Google Meet host controls on Mac | intermediate | [Vendor documentation](https://support.google.com/meet/answer/10885841?hl=en) |
+| [meet.presentation_controls](../skills/meet/presentation_controls.json) — Choose and stop a Google Meet presentation on Mac | intermediate | [Vendor documentation](https://support.google.com/meet/answer/9308856?hl=en) |
+
+Mac browser on `meet.google.com`; Chrome is the tab-sharing reference. Distinguish tab/window/display boundaries, your own active share and Stop presenting. System sharing permission and pickers can be outside the capture. Host/co-host authority, host management, account edition and main-room status gate restrictions and co-host options; Leave meeting differs from End meeting for all. Before-call co-host setup belongs to the Calendar creator's Video call options and does not make Calendar recurrence controls Meet controls. Proposals `meet-presentation-controls` and `meet-host-management` map to `meet.presentation_controls` and `meet.host_management`.
 
 ## Microsoft Excel (8)
 

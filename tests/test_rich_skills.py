@@ -47,6 +47,24 @@ class RichSkillsTests(unittest.TestCase):
                 with self.subTest(skill=skill['id'], intent=intent):
                     self.assertIn(skill['id'], match_skills(skills, skill['application_id'], intent))
 
+    def test_google_meeting_and_calendar_requests_route_by_application(self) -> None:
+        skills, cases = load_library(ROOT)
+        google_ids = {'meet.presentation_controls', 'meet.host_management',
+                      'google_calendar.recurring_events', 'google_calendar.office_hours'}
+        for case in cases:
+            if case['skill_id'] not in google_ids:
+                continue
+            with self.subTest(case=case['id']):
+                self.assertEqual(match_skills(skills, case['application_id'], case['user_instruction']), [case['skill_id']])
+        for app, request in (
+            ('google.meet', 'Create a recurring Calendar event'),
+            ('google.meet', 'Create office hours with booking limits'),
+            ('google.calendar', 'Share a tab and stop presenting'),
+            ('google.calendar', 'Grant host controls to Alex'),
+        ):
+            with self.subTest(app=app, request=request):
+                self.assertEqual(match_skills(skills, app, request), [])
+
     def test_matching_keeps_ambiguity_and_checks_application_and_word_boundaries(self) -> None:
         skills, _ = load_library(ROOT)
         sample = deepcopy(skills[0])

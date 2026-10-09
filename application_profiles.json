@@ -324,6 +324,48 @@
         "Request Responses",
         "RSVP"
       ]
+    },
+    {
+      "id": "google.meet",
+      "name": "Google Meet web",
+      "aliases": [
+        "Google Meet",
+        "Google Meet web"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "meet.google.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Present now",
+        "You are presenting",
+        "Host controls",
+        "Host management",
+        "Grant host controls",
+        "End meeting for all"
+      ]
+    },
+    {
+      "id": "google.calendar",
+      "name": "Google Calendar web",
+      "aliases": [
+        "Google Calendar",
+        "Google Calendar web"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "calendar.google.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Does not repeat",
+        "Custom recurrence",
+        "This event",
+        "Appointment schedule",
+        "Scheduling window",
+        "Booked appointment settings"
+      ]
     }
   ]
 }
