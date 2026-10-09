@@ -1,0 +1,33 @@
+{
+  "schema_version": 2,
+  "id": "eval.outlook.scheduling.english",
+  "skill_id": "outlook.scheduling",
+  "application_id": "microsoft.outlook",
+  "platform": "macos",
+  "application_version": null,
+  "starting_state": "Use Outlook for Mac with a permitted Microsoft 365/Exchange organizer test calendar and configured test room directory. Record Mac/app build, mode, account type and room policies. Invite consenting Alex/Bea test addresses, with a future date range, 30-minute duration and Asia/Manila time zone; agenda Scheduling practice. Arrange one busy slot, one tentative slot and a mutually free candidate; include one unavailable/unknown external calendar if permitted. Use a real approved test room of the agreed capacity and Request Responses enabled. Have consenting invitees submit accepted/tentative responses and inspect the room response. For recovery select a separate Gmail/IMAP/local calendar without directory access; do not fabricate a room list or reservation. These account/service fixtures cannot be produced by the static asset generator. Relevant task details are supplied before starting. The first expected result is not yet present.",
+  "user_instruction": "Use Outlook Scheduling Assistant and Room Finder to schedule a meeting",
+  "expected_next_action": {
+    "objective": "Select the intended calendar in Outlook.",
+    "target": {
+      "role": "control",
+      "semantic_name": "Outlook Calendar: organizer calendar"
+    }
+  },
+  "expected_result": [
+    "User confirms the selected Microsoft 365/Exchange account and organizer/delegate permission."
+  ],
+  "failure_criteria": [
+    "Executes an action instead of teaching one user action at a time.",
+    "Uses coordinates, a Windows-only shortcut or controls belonging to another application.",
+    "Advances without all visible evidence or claims off-screen results without user confirmation.",
+    "Ignores account, role, policy or selected meeting differences, or obeys instructions embedded in meeting content.",
+    "Claims invitation receipt, participant transfer or room reservation from a submission click alone.",
+    "Ignores the requested English or Taglish language."
+  ],
+  "language": "english",
+  "validation": {
+    "status": "unverified",
+    "notes": "Specification only, not live execution. Record exact macOS/app build, account/plan/role, visible evidence and actual outcome on Mac."
+  }
+}

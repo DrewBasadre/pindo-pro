@@ -2,17 +2,19 @@
 
 ## Get and build
 
-The branch is `feat/application-skills`. Keep it separate from main until review completes.
+Continue on the local branch `qwen-skills-more` in `~/pindo-pro`. Retain previous batch commits and unrelated local work. This batch must remain local; do not fetch, pull, push, publish or deploy.
 
 ```bash
-git fetch origin
-git switch feat/application-skills
-git pull --ff-only
+cd ~/pindo-pro
+git rev-parse --show-toplevel
+git status --short
+git branch --show-current
+git switch qwen-skills-more
 python3 -B tools/application_skills.py --check-bundle PinDo/Resources/ApplicationSkills.json
 python3 -B -m unittest discover -s tests -v
 ```
 
-If no local branch exists, use `git switch --track origin/feat/application-skills`. Preserve unrelated local changes before switching.
+If this local branch is absent, inspect the working tree/index and create it from current local HEAD with `git switch -c qwen-skills-more`. Stop if switching would disturb unrelated work; do not reset or rewrite earlier commits.
 
 Requirements: macOS 15+, Xcode 26, and the existing local runtime configured according to the README. Teach requires image input and structured responses. No cloud service is added.
 
@@ -52,6 +54,11 @@ Record exact macOS version, application build, browser, account plan, language a
 | Figma web | `figma.nested_auto_layout` | interactive states and variable modes |
 | Canva web | `canva.frames_crop` | video timing and accessible PDF output |
 | Photoshop Mac | `photoshop.layer_mask` | Smart Filters, edge refinement and export |
+| Zoom Workplace Mac | `zoom.meeting_setup` | `zoom.breakout_rooms`, administrator locks, host/co-host vs participant controls |
+| Teams Mac | `teams.meeting_scheduling` | `teams.breakout_classrooms`, organizer/manager permissions and automatic/manual assignment |
+| Outlook Mac | `outlook.scheduling` | availability, Room Finder account/directory access and attendee/room responses |
+
+For meeting practice use consenting test accounts and organization-approved room resources from `setups.json`. Record Zoom calendar integration and policy locks, Teams calendar mode/Exchange access/organizer role, and Outlook account type/free-busy/room-directory access. Verify invitee identities, time zones, actual transfers, room booking responses and invitation submission with the user when outside the pinned capture. Unknown availability is not free and a pending room is not reserved. No extra raster/media assets or plugin are needed for these five tasks.
 
 Run each task's English, Taglish and recovery cases. Begin with one lesson per app. Generated guidance can follow the request language; stored objectives/explanations currently provide an English fallback. Test language quality rather than assuming intent matching proves translation quality.
 
@@ -89,5 +96,6 @@ Task files describe procedures; they are not macros. The host owns progression w
 - Creative canvases and audio have limited Accessibility representation. Visual judgments remain unverified; listening and subjective checks require the user.
 - Watching reacts to input and supported Accessibility notifications, not continuous video. A background render with no notification may require fresh user activity.
 - Recovery cases check the next guidance and pause behavior; full end-to-end workflows require manual runs.
+- The desktop meetings batch was authored on Linux. Native Xcode/Swift checks and live Zoom/Teams/Outlook GUI execution are unavailable here; all tested-version arrays remain empty and cases retain null versions. Portable schema/routing validation cannot establish Mac GUI correctness.
 
 See [CHANGED_FILES.md](CHANGED_FILES.md) for every created/modified file and its purpose. No project redesign or dependency migration is included.

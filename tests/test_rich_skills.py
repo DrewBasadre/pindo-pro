@@ -14,7 +14,31 @@ ROOT = Path(__file__).resolve().parents[1]
 class RichSkillsTests(unittest.TestCase):
     def test_bundle_is_current_and_profiles_cover_every_skill(self) -> None:
         self.assertEqual((ROOT / 'PinDo/Resources/ApplicationSkills.json').read_text(encoding='utf-8'), bundle_data(ROOT))
-        self.assertEqual(len(load_profiles(ROOT)), 15)
+        profiles = load_profiles(ROOT)
+        skills, _ = load_library(ROOT)
+        self.assertEqual({profile['id'] for profile in profiles}, {skill['application_id'] for skill in skills})
+
+    def test_meeting_requests_keep_applications_and_workflows_distinct(self) -> None:
+        skills, cases = load_library(ROOT)
+        meeting_ids = {
+            'zoom.meeting_setup': 'zoom.workplace',
+            'zoom.breakout_rooms': 'zoom.workplace',
+            'teams.meeting_scheduling': 'microsoft.teams',
+            'teams.breakout_classrooms': 'microsoft.teams',
+            'outlook.scheduling': 'microsoft.outlook',
+        }
+        for case in cases:
+            if case['skill_id'] not in meeting_ids:
+                continue
+            with self.subTest(case=case['id']):
+                self.assertEqual(match_skills(skills, case['application_id'], case['user_instruction']), [case['skill_id']])
+        for app, expected in (
+            ('zoom.workplace', ['zoom.breakout_rooms']),
+            ('microsoft.teams', ['teams.breakout_classrooms']),
+            ('microsoft.outlook', []),
+        ):
+            with self.subTest(app=app):
+                self.assertEqual(match_skills(skills, app, 'Create breakout rooms'), expected)
 
     def test_every_documented_intent_routes_to_its_skill(self) -> None:
         skills, _ = load_library(ROOT)

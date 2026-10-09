@@ -266,6 +266,64 @@
         "shell",
         "process"
       ]
+    },
+    {
+      "id": "zoom.workplace",
+      "name": "Zoom Workplace",
+      "aliases": [
+        "Zoom",
+        "Zoom Workplace",
+        "zoom.us"
+      ],
+      "bundle_ids": [],
+      "domains": [],
+      "surface": "desktop",
+      "terminology": [
+        "meeting ID",
+        "passcode",
+        "Waiting Room",
+        "host",
+        "co-host",
+        "Breakout Rooms"
+      ]
+    },
+    {
+      "id": "microsoft.teams",
+      "name": "Microsoft Teams",
+      "aliases": [
+        "Teams",
+        "Microsoft Teams",
+        "Microsoft Teams for Education"
+      ],
+      "bundle_ids": [],
+      "domains": [],
+      "surface": "desktop",
+      "terminology": [
+        "Calendar",
+        "organizer",
+        "Required attendees",
+        "Rooms",
+        "Assign participants"
+      ]
+    },
+    {
+      "id": "microsoft.outlook",
+      "name": "Microsoft Outlook",
+      "aliases": [
+        "Outlook",
+        "Microsoft Outlook",
+        "Outlook for Mac"
+      ],
+      "bundle_ids": [],
+      "domains": [],
+      "surface": "desktop",
+      "terminology": [
+        "Scheduling Assistant",
+        "Room Finder",
+        "New Event",
+        "Request Responses",
+        "RSVP"
+      ]
     }
   ]
 }

@@ -1,8 +1,8 @@
 # Application task catalogue
 
-109 tasks. Research date: 2026-10-10. Every task is hands-on unverified; source documentation is not a successful test run.
+114 tasks. Research date: 2026-10-10. Every task is hands-on unverified; source documentation is not a successful test run.
 
-The 108-task outline is represented with one extra focused Finder rename task. Figma and Canva target web editors. Sources and recovery interpretations require rechecking against the installed version.
+The initial 108-task outline is represented with one extra focused Finder rename task, plus five desktop meeting and scheduling tasks. Figma and Canva target web editors. Sources and recovery interpretations require rechecking against the installed version.
 
 ## Adobe After Effects (8)
 
@@ -133,6 +133,14 @@ The 108-task outline is represented with one extra focused Finder rename task. F
 | [excel.pivot_table](../skills/excel/pivot_table.json) — Summarize data with a PivotTable | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/excel/get-started/create-a-pivottable-to-analyze-worksheet-data) |
 | [excel.totals_averages](../skills/excel/totals_averages.json) — Calculate totals and averages in Excel | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/excel/calculate-an-average) |
 
+## Microsoft Outlook (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [outlook.scheduling](../skills/outlook/scheduling.json) — Schedule an Outlook meeting with availability and a room on Mac | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/outlook/event-scheduling-room-finder-and-rsvp-in-outlook-for-mac) |
+
+Mac desktop; Microsoft 365/Exchange organizer calendar, free/busy access and organization room directory required. Request Responses must be enabled. Suggested availability is not a reservation; review actual attendee/room responses. Proposal `outlook-mac-scheduling` maps to `outlook.scheduling`.
+
 ## Microsoft PowerPoint (8)
 
 | Task | Difficulty | Primary reference |
@@ -145,6 +153,15 @@ The 108-task outline is represented with one extra focused Finder rename task. F
 | [powerpoint.slide_layout](../skills/powerpoint/slide_layout.json) — Change a slide layout | intermediate | [Vendor documentation](https://support.microsoft.com/en-gb/powerpoint/training/apply-a-slide-layout) |
 | [powerpoint.slide_master](../skills/powerpoint/slide_master.json) — Customize a slide master | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/powerpoint/training/customize-a-slide-master) |
 | [powerpoint.speaker_notes](../skills/powerpoint/speaker_notes.json) — Add speaker notes in PowerPoint | intermediate | [Vendor documentation](https://support.microsoft.com/en-US/PowerPoint/training/add-speaker-notes-to-your-slides) |
+
+## Microsoft Teams (2)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [teams.breakout_classrooms](../skills/teams/breakout_classrooms.json) — Manage Teams breakout classrooms on Mac | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/teams/education/create-and-manage-breakout-rooms-during-class-meetings) |
+| [teams.meeting_scheduling](../skills/teams/meeting_scheduling.json) — Schedule a Teams meeting on Mac | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/teams/meetings/schedule-a-meeting-in-microsoft-teams) |
+
+Mac desktop work/school calendar; classroom practice uses Teams for Education. The organizer creates rooms; explicit in-meeting room-manager delegation is distinct from presenter status. Calendar mode and Exchange integration affect scheduling controls. Proposals `teams-breakout-classrooms` and `teams-meeting-scheduling` map to `teams.breakout_classrooms` and `teams.meeting_scheduling`.
 
 ## Microsoft Word (8)
 
@@ -187,3 +204,12 @@ The 108-task outline is represented with one extra focused Finder rename task. F
 | [terminal.inspect_files](../skills/terminal/inspect_files.json) — Inspect files from Terminal | intermediate | [Vendor documentation](https://support.apple.com/guide/terminal/welcome/mac) |
 | [terminal.navigate](../skills/terminal/navigate.json) — Navigate folders in Terminal | intermediate | [Vendor documentation](https://support.apple.com/guide/terminal/execute-commands-and-run-tools-apdb66b5242-0d18-49fc-9c47-a2498b7c91d5/mac) |
 | [terminal.understand_stop](../skills/terminal/understand_stop.json) — Understand and stop a Terminal command | intermediate | [Vendor documentation](https://support.apple.com/guide/terminal/execute-commands-and-run-tools-apdb66b5242-0d18-49fc-9c47-a2498b7c91d5/mac) |
+
+## Zoom Workplace (2)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [zoom.breakout_rooms](../skills/zoom/breakout_rooms.json) — Manage Zoom breakout rooms on Mac | intermediate | [Vendor documentation](https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0062540) |
+| [zoom.meeting_setup](../skills/zoom/meeting_setup.json) — Schedule a Zoom meeting on Mac | intermediate | [Vendor documentation](https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0060700) |
+
+Mac desktop, with Zoom’s current minimum supported client version. Scheduling needs a host account or granted scheduling privilege; automatic email invitations need calendar integration. Hosts/co-hosts manage rooms; administrator locks cannot be bypassed and moving participants while rooms are open needs additional enablement. Proposals `zoom-breakout-rooms` and `zoom-mac-meeting-setup` map to `zoom.breakout_rooms` and `zoom.meeting_setup`.
