@@ -50,8 +50,9 @@ struct SkillLibraryTests {
             precondition(!googleProfile.matches(name: "Safari", bundleID: nil, host: domain + ".evil.test"))
             precondition(!googleProfile.matches(name: googleProfile.name, bundleID: nil, host: nil))
         }
+        // TutorSession prefers website profiles over the browser's desktop profile.
         let sharedEditorProfiles = library.applications.filter {
-            $0.matches(name: "Safari", bundleID: nil, host: "docs.google.com")
+            $0.surface == "browser" && $0.matches(name: "Safari", bundleID: nil, host: "docs.google.com")
         }
         precondition(Set(sharedEditorProfiles.map(\.id)) == Set(["google.sheets", "google.forms"]))
         // A shared host requires explicit app selection, never array-order selection.
