@@ -1,13 +1,50 @@
 # Changed files
 
-Compared with `origin/main`. A = created; M = modified. No tracked files are deleted. Ignored local build assets and authoring scratch scripts are not part of the change.
+The inherited inventory was compared with `origin/main`; the desktop meetings, Google meetings/calendar, Google Workspace administration/data, study/classroom activities, research/document preparation and productivity/content workflows batches extend it from their current local HEADs without remote Git operations. Local reconciliation preserves main's MAI-UI runtime and UI while retaining all six skill commits and 23 additional tasks. The bundle now contains 136 macOS tasks and 411 cases. PR follow-up integrates remote main into the feature branch and resolves the bundle and README conflicts, retaining main's current cover art, layout and team credits. Main and the PR remain unmerged. A = created; M = modified. No tracked files are deleted. Ignored local build assets and authoring scratch scripts are not part of the change.
 
-461 files are listed individually. Most are independently editable task and evaluation data; the generated app resource duplicates them intentionally for packaging.
+590 files are listed individually. Most are independently editable task and evaluation data; the generated app resource duplicates them intentionally for packaging.
 
 | Change | File | Purpose |
 | --- | --- | --- |
+| A | [docs/pindo-cover.png](../docs/pindo-cover.png) | Main's current README cover art, retained unchanged. |
+| M | [PLAN.md](../PLAN.md) | Main's existing project plan and implementation context. |
+| M | [PinDo.xcodeproj/project.pbxproj](../PinDo.xcodeproj/project.pbxproj) | Main's native build configuration. |
+| M | [PinDo/Agent.swift](../PinDo/Agent.swift) | Main's bounded action runner, grounding and execution safeguards. |
+| A | [PinDo/Cloud.swift](../PinDo/Cloud.swift) | Main's optional cloud provider and Keychain-backed configuration. |
+| A | [PinDo/Config.swift](../PinDo/Config.swift) | Main's MAI-UI local default, validated loopback endpoint and inference timeouts. |
+| A | [PinDo/Grounding.swift](../PinDo/Grounding.swift) | Main's visual target parsing and grounding validation. |
+| A | [PinDo/GroundingGeometry.swift](../PinDo/GroundingGeometry.swift) | Main's screenshot and display coordinate transforms. |
+| A | [PinDo/GuideSession.swift](../PinDo/GuideSession.swift) | Main's guide lifecycle and target highlighting. |
+| A | [PinDo/IntentPolicy.swift](../PinDo/IntentPolicy.swift) | Main's automatic question, Guide, Do and Teach routing. |
+| M | [PinDo/PinDoApp.swift](../PinDo/PinDoApp.swift) | Main's application lifecycle and permission behavior. |
+| A | [PinDo/PointerOverlay.swift](../PinDo/PointerOverlay.swift) | Main's pointer/highlight overlay and display behavior. |
+| A | [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md) | Main's current runtime, model and UI architecture. |
+| A | [docs/DISCLOSURES.md](../docs/DISCLOSURES.md) | Main's existing disclosures and runtime limits. |
+| A | [docs/PINDO_FINAL_BENCHMARK.md](../docs/PINDO_FINAL_BENCHMARK.md) | Main's historical benchmark evidence; no new measurements claimed. |
+| A | [docs/RELEASE_REPORT.md](../docs/RELEASE_REPORT.md) | Main's historical release checks and documented limitations. |
+| A | [evaluations/cases/canva_add_shape_english.json](../evaluations/cases/canva_add_shape_english.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/canva_add_shape_recovery.json](../evaluations/cases/canva_add_shape_recovery.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/canva_add_shape_taglish.json](../evaluations/cases/canva_add_shape_taglish.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/canva_add_text_english.json](../evaluations/cases/canva_add_text_english.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/canva_add_text_recovery.json](../evaluations/cases/canva_add_text_recovery.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/canva_add_text_taglish.json](../evaluations/cases/canva_add_text_taglish.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/canva_text_effects_english.json](../evaluations/cases/canva_text_effects_english.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/canva_text_effects_recovery.json](../evaluations/cases/canva_text_effects_recovery.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/canva_text_effects_taglish.json](../evaluations/cases/canva_text_effects_taglish.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/excel_fill_table_english.json](../evaluations/cases/excel_fill_table_english.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/excel_fill_table_recovery.json](../evaluations/cases/excel_fill_table_recovery.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/excel_fill_table_taglish.json](../evaluations/cases/excel_fill_table_taglish.json) | Main's retained task evaluation specification. |
+| A | [skills/canva/add_shape.json](../skills/canva/add_shape.json) | Main's macOS lesson: Add a shape in Canva. |
+| A | [skills/canva/add_text.json](../skills/canva/add_text.json) | Main's macOS lesson: Add text or a heading in Canva. |
+| A | [skills/canva/text_effects.json](../skills/canva/text_effects.json) | Main's macOS lesson: Apply a text effect in Canva. |
+| A | [skills/excel/fill_table.json](../skills/excel/fill_table.json) | Main's macOS lesson: Fill a student ID and name table. |
+| A | [tests/CloudTests.swift](../tests/CloudTests.swift) | Main's optional cloud configuration checks. |
+| A | [tests/ConfigTests.swift](../tests/ConfigTests.swift) | Main's local model, endpoint and timeout checks. |
+| A | [tests/GroundingTests.swift](../tests/GroundingTests.swift) | Main's grounding and coordinate checks. |
+| A | [tests/InaccessibleTarget.swift](../tests/InaccessibleTarget.swift) | Main's native accessibility test target. |
+| A | [tests/IntentPolicyTests.swift](../tests/IntentPolicyTests.swift) | Main's intent-routing checks. |
 | A | [.github/workflows/skills.yml](../.github/workflows/skills.yml) | Windows validation plus native macOS build, Swift tests and bundle check. |
-| M | [PinDo/QuickBar.swift](../PinDo/QuickBar.swift) | Adds explicit Teach routing and preserves the panel during a lesson. |
+| M | [PinDo/QuickBar.swift](../PinDo/QuickBar.swift) | Retains main's automatic question/Guide/Do/Teach routing, settings and panel behavior. |
 | A | [PinDo/Resources/ApplicationSkills.json](../PinDo/Resources/ApplicationSkills.json) | Generated deterministic resource containing all profiles and tasks. |
 | A | [PinDo/SkillLibrary.swift](../PinDo/SkillLibrary.swift) | Swift data reader, application/task matching and progression predicates. |
 | A | [PinDo/TutorClient.swift](../PinDo/TutorClient.swift) | Bounded local vision request, structured guidance and response metrics. |
@@ -15,11 +52,14 @@ Compared with `origin/main`. A = created; M = modified. No tracked files are del
 | A | [PinDo/TutorSession.swift](../PinDo/TutorSession.swift) | Teaching state, debounce, cancellation, stale responses and progression. |
 | A | [PinDo/TutorView.swift](../PinDo/TutorView.swift) | Lesson selection, prerequisites, explanations and pause/confirmation controls. |
 | M | [README.md](../README.md) | Teach-mode overview and entry points for development and Mac testing. |
-| A | [application_profiles.json](../application_profiles.json) | Application aliases, known bundle IDs, surfaces, domains and terminology. |
-| A | [docs/APPLICATION_SKILLS.md](../docs/APPLICATION_SKILLS.md) | Version 2 contract, execution flow, observation limits and evidence policy. |
+| A | [application_profiles.json](../application_profiles.json) | Application aliases, known bundle IDs, surfaces, domains and terminology, including distinct Zoom/Teams/Outlook desktop and Google Meet/Calendar and Sheets/Forms/Gmail/Drive/Classroom/Kahoot browser profiles plus Anki desktop with unconfirmed bundle IDs left empty; shared-host editors require explicit selection. Word profile reused for Zotero integration; new Acrobat desktop and Overleaf browser profiles, verified overleaf.com domain and unknown bundle IDs empty. Productivity/content: main's Canva profile reused with its known desktop-wrapper bundle ID; Notion, Slack and Trello browser profiles added with service domains and empty unknown bundle IDs. |
+| A | [docs/APPLICATION_SKILLS.md](../docs/APPLICATION_SKILLS.md) | Version 2 contract, execution flow, observation limits, meeting/data prerequisites, shared-host selection, study/classroom prerequisites and evidence policy. Research/document counts, plugin/license/access requirements, paused Zotero transitions and validation boundaries. Productivity/content counts, browser surface decisions, plan/permission gates and validation limitations. |
 | A | [docs/CHANGED_FILES.md](../docs/CHANGED_FILES.md) | Complete created/modified file report for this branch. |
-| A | [docs/MAC_HANDOFF.md](../docs/MAC_HANDOFF.md) | Exact continuation/build steps and available-app validation instructions. |
-| A | [docs/SKILL_CATALOGUE.md](../docs/SKILL_CATALOGUE.md) | Task-by-task inventory and vendor references. |
+| A | [docs/MAC_HANDOFF.md](../docs/MAC_HANDOFF.md) | Exact continuation/build steps and available-app validation instructions. Productivity/content browser setup and manual test boundaries. |
+| A | [docs/SKILL_CATALOGUE.md](../docs/SKILL_CATALOGUE.md) | Task-by-task inventory, proposal mappings and vendor references, including meeting/data batches and three study/classroom activity tasks. Research/document task inventory, proposal mappings, vendor references and Mac prerequisites. Four productivity/content task entries and proposal mappings. |
+| A | [evaluations/cases/acrobat_fillable_forms_english.json](../evaluations/cases/acrobat_fillable_forms_english.json) | English evaluation specification for acrobat.fillable_forms. |
+| A | [evaluations/cases/acrobat_fillable_forms_recovery.json](../evaluations/cases/acrobat_fillable_forms_recovery.json) | Recovery evaluation specification for acrobat.fillable_forms. |
+| A | [evaluations/cases/acrobat_fillable_forms_taglish.json](../evaluations/cases/acrobat_fillable_forms_taglish.json) | Taglish evaluation specification for acrobat.fillable_forms. |
 | A | [evaluations/cases/after_effects_alpha_export_english.json](../evaluations/cases/after_effects_alpha_export_english.json) | English evaluation specification for after_effects.alpha_export. |
 | A | [evaluations/cases/after_effects_alpha_export_recovery.json](../evaluations/cases/after_effects_alpha_export_recovery.json) | Recovery evaluation specification for after_effects.alpha_export. |
 | A | [evaluations/cases/after_effects_alpha_export_taglish.json](../evaluations/cases/after_effects_alpha_export_taglish.json) | Taglish evaluation specification for after_effects.alpha_export. |
@@ -44,12 +84,18 @@ Compared with `origin/main`. A = created; M = modified. No tracked files are del
 | A | [evaluations/cases/after_effects_track_matte_english.json](../evaluations/cases/after_effects_track_matte_english.json) | English evaluation specification for after_effects.track_matte. |
 | A | [evaluations/cases/after_effects_track_matte_recovery.json](../evaluations/cases/after_effects_track_matte_recovery.json) | Recovery evaluation specification for after_effects.track_matte. |
 | A | [evaluations/cases/after_effects_track_matte_taglish.json](../evaluations/cases/after_effects_track_matte_taglish.json) | Taglish evaluation specification for after_effects.track_matte. |
+| A | [evaluations/cases/anki_deck_maintenance_english.json](../evaluations/cases/anki_deck_maintenance_english.json) | English evaluation specification for anki.deck_maintenance. |
+| A | [evaluations/cases/anki_deck_maintenance_recovery.json](../evaluations/cases/anki_deck_maintenance_recovery.json) | Recovery evaluation specification for anki.deck_maintenance. |
+| A | [evaluations/cases/anki_deck_maintenance_taglish.json](../evaluations/cases/anki_deck_maintenance_taglish.json) | Taglish evaluation specification for anki.deck_maintenance. |
 | A | [evaluations/cases/canva_audio_timing_english.json](../evaluations/cases/canva_audio_timing_english.json) | English evaluation specification for canva.audio_timing. |
 | A | [evaluations/cases/canva_audio_timing_recovery.json](../evaluations/cases/canva_audio_timing_recovery.json) | Recovery evaluation specification for canva.audio_timing. |
 | A | [evaluations/cases/canva_audio_timing_taglish.json](../evaluations/cases/canva_audio_timing_taglish.json) | Taglish evaluation specification for canva.audio_timing. |
 | A | [evaluations/cases/canva_branding_english.json](../evaluations/cases/canva_branding_english.json) | English evaluation specification for canva.branding. |
 | A | [evaluations/cases/canva_branding_recovery.json](../evaluations/cases/canva_branding_recovery.json) | Recovery evaluation specification for canva.branding. |
 | A | [evaluations/cases/canva_branding_taglish.json](../evaluations/cases/canva_branding_taglish.json) | Taglish evaluation specification for canva.branding. |
+| A | [evaluations/cases/canva_bulk_personalization_english.json](../evaluations/cases/canva_bulk_personalization_english.json) | English evaluation specification for canva.bulk_personalization. |
+| A | [evaluations/cases/canva_bulk_personalization_recovery.json](../evaluations/cases/canva_bulk_personalization_recovery.json) | Recovery evaluation specification for canva.bulk_personalization. |
+| A | [evaluations/cases/canva_bulk_personalization_taglish.json](../evaluations/cases/canva_bulk_personalization_taglish.json) | Taglish evaluation specification for canva.bulk_personalization. |
 | A | [evaluations/cases/canva_export_images_english.json](../evaluations/cases/canva_export_images_english.json) | English evaluation specification for canva.export_images. |
 | A | [evaluations/cases/canva_export_images_recovery.json](../evaluations/cases/canva_export_images_recovery.json) | Recovery evaluation specification for canva.export_images. |
 | A | [evaluations/cases/canva_export_images_taglish.json](../evaluations/cases/canva_export_images_taglish.json) | Taglish evaluation specification for canva.export_images. |
@@ -92,6 +138,12 @@ Compared with `origin/main`. A = created; M = modified. No tracked files are del
 | A | [evaluations/cases/capcut_tracked_blur_english.json](../evaluations/cases/capcut_tracked_blur_english.json) | English evaluation specification for capcut.tracked_blur. |
 | A | [evaluations/cases/capcut_tracked_blur_recovery.json](../evaluations/cases/capcut_tracked_blur_recovery.json) | Recovery evaluation specification for capcut.tracked_blur. |
 | A | [evaluations/cases/capcut_tracked_blur_taglish.json](../evaluations/cases/capcut_tracked_blur_taglish.json) | Taglish evaluation specification for capcut.tracked_blur. |
+| A | [evaluations/cases/classroom_rubric_builder_english.json](../evaluations/cases/classroom_rubric_builder_english.json) | English evaluation specification for classroom.rubric_builder. |
+| A | [evaluations/cases/classroom_rubric_builder_recovery.json](../evaluations/cases/classroom_rubric_builder_recovery.json) | Recovery evaluation specification for classroom.rubric_builder. |
+| A | [evaluations/cases/classroom_rubric_builder_taglish.json](../evaluations/cases/classroom_rubric_builder_taglish.json) | Taglish evaluation specification for classroom.rubric_builder. |
+| A | [evaluations/cases/drive_sharing_permissions_english.json](../evaluations/cases/drive_sharing_permissions_english.json) | English evaluation specification for drive.sharing_permissions. |
+| A | [evaluations/cases/drive_sharing_permissions_recovery.json](../evaluations/cases/drive_sharing_permissions_recovery.json) | Recovery evaluation specification for drive.sharing_permissions. |
+| A | [evaluations/cases/drive_sharing_permissions_taglish.json](../evaluations/cases/drive_sharing_permissions_taglish.json) | Taglish evaluation specification for drive.sharing_permissions. |
 | A | [evaluations/cases/excel_absolute_references_english.json](../evaluations/cases/excel_absolute_references_english.json) | English evaluation specification for excel.absolute_references. |
 | A | [evaluations/cases/excel_absolute_references_recovery.json](../evaluations/cases/excel_absolute_references_recovery.json) | Recovery evaluation specification for excel.absolute_references. |
 | A | [evaluations/cases/excel_absolute_references_taglish.json](../evaluations/cases/excel_absolute_references_taglish.json) | Taglish evaluation specification for excel.absolute_references. |
@@ -186,6 +238,21 @@ Compared with `origin/main`. A = created; M = modified. No tracked files are del
 | A | [evaluations/cases/fl_studio_unique_arrangement_english.json](../evaluations/cases/fl_studio_unique_arrangement_english.json) | English evaluation specification for fl_studio.unique_arrangement. |
 | A | [evaluations/cases/fl_studio_unique_arrangement_recovery.json](../evaluations/cases/fl_studio_unique_arrangement_recovery.json) | Recovery evaluation specification for fl_studio.unique_arrangement. |
 | A | [evaluations/cases/fl_studio_unique_arrangement_taglish.json](../evaluations/cases/fl_studio_unique_arrangement_taglish.json) | Taglish evaluation specification for fl_studio.unique_arrangement. |
+| A | [evaluations/cases/gmail_labels_and_filters_english.json](../evaluations/cases/gmail_labels_and_filters_english.json) | English evaluation specification for gmail.labels_and_filters. |
+| A | [evaluations/cases/gmail_labels_and_filters_recovery.json](../evaluations/cases/gmail_labels_and_filters_recovery.json) | Recovery evaluation specification for gmail.labels_and_filters. |
+| A | [evaluations/cases/gmail_labels_and_filters_taglish.json](../evaluations/cases/gmail_labels_and_filters_taglish.json) | Taglish evaluation specification for gmail.labels_and_filters. |
+| A | [evaluations/cases/google_calendar_office_hours_english.json](../evaluations/cases/google_calendar_office_hours_english.json) | English evaluation specification for google_calendar.office_hours. |
+| A | [evaluations/cases/google_calendar_office_hours_recovery.json](../evaluations/cases/google_calendar_office_hours_recovery.json) | Recovery evaluation specification for google_calendar.office_hours. |
+| A | [evaluations/cases/google_calendar_office_hours_taglish.json](../evaluations/cases/google_calendar_office_hours_taglish.json) | Taglish evaluation specification for google_calendar.office_hours. |
+| A | [evaluations/cases/google_calendar_recurring_events_english.json](../evaluations/cases/google_calendar_recurring_events_english.json) | English evaluation specification for google_calendar.recurring_events. |
+| A | [evaluations/cases/google_calendar_recurring_events_recovery.json](../evaluations/cases/google_calendar_recurring_events_recovery.json) | Recovery evaluation specification for google_calendar.recurring_events. |
+| A | [evaluations/cases/google_calendar_recurring_events_taglish.json](../evaluations/cases/google_calendar_recurring_events_taglish.json) | Taglish evaluation specification for google_calendar.recurring_events. |
+| A | [evaluations/cases/google_forms_branching_english.json](../evaluations/cases/google_forms_branching_english.json) | English evaluation specification for google_forms.branching. |
+| A | [evaluations/cases/google_forms_branching_recovery.json](../evaluations/cases/google_forms_branching_recovery.json) | Recovery evaluation specification for google_forms.branching. |
+| A | [evaluations/cases/google_forms_branching_taglish.json](../evaluations/cases/google_forms_branching_taglish.json) | Taglish evaluation specification for google_forms.branching. |
+| A | [evaluations/cases/google_sheets_pivot_analysis_english.json](../evaluations/cases/google_sheets_pivot_analysis_english.json) | English evaluation specification for google_sheets.pivot_analysis. |
+| A | [evaluations/cases/google_sheets_pivot_analysis_recovery.json](../evaluations/cases/google_sheets_pivot_analysis_recovery.json) | Recovery evaluation specification for google_sheets.pivot_analysis. |
+| A | [evaluations/cases/google_sheets_pivot_analysis_taglish.json](../evaluations/cases/google_sheets_pivot_analysis_taglish.json) | Taglish evaluation specification for google_sheets.pivot_analysis. |
 | A | [evaluations/cases/illustrator_artboards_english.json](../evaluations/cases/illustrator_artboards_english.json) | English evaluation specification for illustrator.artboards. |
 | A | [evaluations/cases/illustrator_artboards_recovery.json](../evaluations/cases/illustrator_artboards_recovery.json) | Recovery evaluation specification for illustrator.artboards. |
 | A | [evaluations/cases/illustrator_artboards_taglish.json](../evaluations/cases/illustrator_artboards_taglish.json) | Taglish evaluation specification for illustrator.artboards. |
@@ -210,6 +277,24 @@ Compared with `origin/main`. A = created; M = modified. No tracked files are del
 | A | [evaluations/cases/illustrator_type_on_path_english.json](../evaluations/cases/illustrator_type_on_path_english.json) | English evaluation specification for illustrator.type_on_path. |
 | A | [evaluations/cases/illustrator_type_on_path_recovery.json](../evaluations/cases/illustrator_type_on_path_recovery.json) | Recovery evaluation specification for illustrator.type_on_path. |
 | A | [evaluations/cases/illustrator_type_on_path_taglish.json](../evaluations/cases/illustrator_type_on_path_taglish.json) | Taglish evaluation specification for illustrator.type_on_path. |
+| A | [evaluations/cases/kahoot_assignments_and_reports_english.json](../evaluations/cases/kahoot_assignments_and_reports_english.json) | English evaluation specification for kahoot.assignments_and_reports. |
+| A | [evaluations/cases/kahoot_assignments_and_reports_recovery.json](../evaluations/cases/kahoot_assignments_and_reports_recovery.json) | Recovery evaluation specification for kahoot.assignments_and_reports. |
+| A | [evaluations/cases/kahoot_assignments_and_reports_taglish.json](../evaluations/cases/kahoot_assignments_and_reports_taglish.json) | Taglish evaluation specification for kahoot.assignments_and_reports. |
+| A | [evaluations/cases/meet_host_management_english.json](../evaluations/cases/meet_host_management_english.json) | English evaluation specification for meet.host_management. |
+| A | [evaluations/cases/meet_host_management_recovery.json](../evaluations/cases/meet_host_management_recovery.json) | Recovery evaluation specification for meet.host_management. |
+| A | [evaluations/cases/meet_host_management_taglish.json](../evaluations/cases/meet_host_management_taglish.json) | Taglish evaluation specification for meet.host_management. |
+| A | [evaluations/cases/meet_presentation_controls_english.json](../evaluations/cases/meet_presentation_controls_english.json) | English evaluation specification for meet.presentation_controls. |
+| A | [evaluations/cases/meet_presentation_controls_recovery.json](../evaluations/cases/meet_presentation_controls_recovery.json) | Recovery evaluation specification for meet.presentation_controls. |
+| A | [evaluations/cases/meet_presentation_controls_taglish.json](../evaluations/cases/meet_presentation_controls_taglish.json) | Taglish evaluation specification for meet.presentation_controls. |
+| A | [evaluations/cases/notion_relations_rollups_english.json](../evaluations/cases/notion_relations_rollups_english.json) | English evaluation specification for notion.relations_rollups. |
+| A | [evaluations/cases/notion_relations_rollups_recovery.json](../evaluations/cases/notion_relations_rollups_recovery.json) | Recovery evaluation specification for notion.relations_rollups. |
+| A | [evaluations/cases/notion_relations_rollups_taglish.json](../evaluations/cases/notion_relations_rollups_taglish.json) | Taglish evaluation specification for notion.relations_rollups. |
+| A | [evaluations/cases/outlook_scheduling_english.json](../evaluations/cases/outlook_scheduling_english.json) | English evaluation specification for outlook.scheduling. |
+| A | [evaluations/cases/outlook_scheduling_recovery.json](../evaluations/cases/outlook_scheduling_recovery.json) | Recovery evaluation specification for outlook.scheduling. |
+| A | [evaluations/cases/outlook_scheduling_taglish.json](../evaluations/cases/outlook_scheduling_taglish.json) | Taglish evaluation specification for outlook.scheduling. |
+| A | [evaluations/cases/overleaf_compile_troubleshooting_english.json](../evaluations/cases/overleaf_compile_troubleshooting_english.json) | English evaluation specification for overleaf.compile_troubleshooting. |
+| A | [evaluations/cases/overleaf_compile_troubleshooting_recovery.json](../evaluations/cases/overleaf_compile_troubleshooting_recovery.json) | Recovery evaluation specification for overleaf.compile_troubleshooting. |
+| A | [evaluations/cases/overleaf_compile_troubleshooting_taglish.json](../evaluations/cases/overleaf_compile_troubleshooting_taglish.json) | Taglish evaluation specification for overleaf.compile_troubleshooting. |
 | A | [evaluations/cases/photoshop_adjustment_layer_english.json](../evaluations/cases/photoshop_adjustment_layer_english.json) | English evaluation specification for photoshop.adjustment_layer. |
 | A | [evaluations/cases/photoshop_adjustment_layer_recovery.json](../evaluations/cases/photoshop_adjustment_layer_recovery.json) | Recovery evaluation specification for photoshop.adjustment_layer. |
 | A | [evaluations/cases/photoshop_adjustment_layer_taglish.json](../evaluations/cases/photoshop_adjustment_layer_taglish.json) | Taglish evaluation specification for photoshop.adjustment_layer. |
@@ -308,6 +393,15 @@ Compared with `origin/main`. A = created; M = modified. No tracked files are del
 | A | [evaluations/cases/safari_save_pdf_english.json](../evaluations/cases/safari_save_pdf_english.json) | English evaluation specification for safari.save_pdf. |
 | A | [evaluations/cases/safari_save_pdf_recovery.json](../evaluations/cases/safari_save_pdf_recovery.json) | Recovery evaluation specification for safari.save_pdf. |
 | A | [evaluations/cases/safari_save_pdf_taglish.json](../evaluations/cases/safari_save_pdf_taglish.json) | Taglish evaluation specification for safari.save_pdf. |
+| A | [evaluations/cases/slack_workflow_builder_english.json](../evaluations/cases/slack_workflow_builder_english.json) | English evaluation specification for slack.workflow_builder. |
+| A | [evaluations/cases/slack_workflow_builder_recovery.json](../evaluations/cases/slack_workflow_builder_recovery.json) | Recovery evaluation specification for slack.workflow_builder. |
+| A | [evaluations/cases/slack_workflow_builder_taglish.json](../evaluations/cases/slack_workflow_builder_taglish.json) | Taglish evaluation specification for slack.workflow_builder. |
+| A | [evaluations/cases/teams_breakout_classrooms_english.json](../evaluations/cases/teams_breakout_classrooms_english.json) | English evaluation specification for teams.breakout_classrooms. |
+| A | [evaluations/cases/teams_breakout_classrooms_recovery.json](../evaluations/cases/teams_breakout_classrooms_recovery.json) | Recovery evaluation specification for teams.breakout_classrooms. |
+| A | [evaluations/cases/teams_breakout_classrooms_taglish.json](../evaluations/cases/teams_breakout_classrooms_taglish.json) | Taglish evaluation specification for teams.breakout_classrooms. |
+| A | [evaluations/cases/teams_meeting_scheduling_english.json](../evaluations/cases/teams_meeting_scheduling_english.json) | English evaluation specification for teams.meeting_scheduling. |
+| A | [evaluations/cases/teams_meeting_scheduling_recovery.json](../evaluations/cases/teams_meeting_scheduling_recovery.json) | Recovery evaluation specification for teams.meeting_scheduling. |
+| A | [evaluations/cases/teams_meeting_scheduling_taglish.json](../evaluations/cases/teams_meeting_scheduling_taglish.json) | Taglish evaluation specification for teams.meeting_scheduling. |
 | A | [evaluations/cases/terminal_copy_move_english.json](../evaluations/cases/terminal_copy_move_english.json) | English evaluation specification for terminal.copy_move. |
 | A | [evaluations/cases/terminal_copy_move_recovery.json](../evaluations/cases/terminal_copy_move_recovery.json) | Recovery evaluation specification for terminal.copy_move. |
 | A | [evaluations/cases/terminal_copy_move_taglish.json](../evaluations/cases/terminal_copy_move_taglish.json) | Taglish evaluation specification for terminal.copy_move. |
@@ -326,6 +420,9 @@ Compared with `origin/main`. A = created; M = modified. No tracked files are del
 | A | [evaluations/cases/terminal_understand_stop_english.json](../evaluations/cases/terminal_understand_stop_english.json) | English evaluation specification for terminal.understand_stop. |
 | A | [evaluations/cases/terminal_understand_stop_recovery.json](../evaluations/cases/terminal_understand_stop_recovery.json) | Recovery evaluation specification for terminal.understand_stop. |
 | A | [evaluations/cases/terminal_understand_stop_taglish.json](../evaluations/cases/terminal_understand_stop_taglish.json) | Taglish evaluation specification for terminal.understand_stop. |
+| A | [evaluations/cases/trello_board_automation_english.json](../evaluations/cases/trello_board_automation_english.json) | English evaluation specification for trello.board_automation. |
+| A | [evaluations/cases/trello_board_automation_recovery.json](../evaluations/cases/trello_board_automation_recovery.json) | Recovery evaluation specification for trello.board_automation. |
+| A | [evaluations/cases/trello_board_automation_taglish.json](../evaluations/cases/trello_board_automation_taglish.json) | Taglish evaluation specification for trello.board_automation. |
 | A | [evaluations/cases/word_citations_english.json](../evaluations/cases/word_citations_english.json) | English evaluation specification for word.citations. |
 | A | [evaluations/cases/word_citations_recovery.json](../evaluations/cases/word_citations_recovery.json) | Recovery evaluation specification for word.citations. |
 | A | [evaluations/cases/word_citations_taglish.json](../evaluations/cases/word_citations_taglish.json) | Taglish evaluation specification for word.citations. |
@@ -350,9 +447,19 @@ Compared with `origin/main`. A = created; M = modified. No tracked files are del
 | A | [evaluations/cases/word_tracked_changes_english.json](../evaluations/cases/word_tracked_changes_english.json) | English evaluation specification for word.tracked_changes. |
 | A | [evaluations/cases/word_tracked_changes_recovery.json](../evaluations/cases/word_tracked_changes_recovery.json) | Recovery evaluation specification for word.tracked_changes. |
 | A | [evaluations/cases/word_tracked_changes_taglish.json](../evaluations/cases/word_tracked_changes_taglish.json) | Taglish evaluation specification for word.tracked_changes. |
-| A | [evaluations/fixtures/setups.json](../evaluations/fixtures/setups.json) | Concrete synthetic practice setups for every application area. |
+| A | [evaluations/cases/word_zotero_citations_english.json](../evaluations/cases/word_zotero_citations_english.json) | English evaluation specification for word.zotero_citations. |
+| A | [evaluations/cases/word_zotero_citations_recovery.json](../evaluations/cases/word_zotero_citations_recovery.json) | Recovery evaluation specification for word.zotero_citations. |
+| A | [evaluations/cases/word_zotero_citations_taglish.json](../evaluations/cases/word_zotero_citations_taglish.json) | Taglish evaluation specification for word.zotero_citations. |
+| A | [evaluations/cases/zoom_breakout_rooms_english.json](../evaluations/cases/zoom_breakout_rooms_english.json) | English evaluation specification for zoom.breakout_rooms. |
+| A | [evaluations/cases/zoom_breakout_rooms_recovery.json](../evaluations/cases/zoom_breakout_rooms_recovery.json) | Recovery evaluation specification for zoom.breakout_rooms. |
+| A | [evaluations/cases/zoom_breakout_rooms_taglish.json](../evaluations/cases/zoom_breakout_rooms_taglish.json) | Taglish evaluation specification for zoom.breakout_rooms. |
+| A | [evaluations/cases/zoom_meeting_setup_english.json](../evaluations/cases/zoom_meeting_setup_english.json) | English evaluation specification for zoom.meeting_setup. |
+| A | [evaluations/cases/zoom_meeting_setup_recovery.json](../evaluations/cases/zoom_meeting_setup_recovery.json) | Recovery evaluation specification for zoom.meeting_setup. |
+| A | [evaluations/cases/zoom_meeting_setup_taglish.json](../evaluations/cases/zoom_meeting_setup_taglish.json) | Taglish evaluation specification for zoom.meeting_setup. |
+| A | [evaluations/fixtures/setups.json](../evaluations/fixtures/setups.json) | Concrete synthetic practice setups for every application area, including consenting meeting accounts, configured room resources, pivot totals, alternative form paths, filter matches/exclusions, child/parent/sibling access review, Anki note/card comparisons, Classroom rubric maps and Kahoot assigned-session sharing/report checks. Three manual synthetic research setups added for Zotero/Word, Acrobat and Overleaf; previous setups preserved. Four manual productivity/content setups without new static assets. |
 | A | [evaluations/run_template.json](../evaluations/run_template.json) | Empty real-run evidence and measurement record. |
 | A | [evaluations/runtime_cases.json](../evaluations/runtime_cases.json) | Shared adverse observation and inference test scenarios. |
+| A | [skills/acrobat/fillable_forms.json](../skills/acrobat/fillable_forms.json) | Task data: Prepare and preview a fillable PDF form on Mac. |
 | A | [skills/after_effects/alpha_export.json](../skills/after_effects/alpha_export.json) | Task data: Render a composition with transparency. |
 | A | [skills/after_effects/composition.json](../skills/after_effects/composition.json) | Task data: Set up an After Effects composition. |
 | A | [skills/after_effects/graph_editor.json](../skills/after_effects/graph_editor.json) | Task data: Shape motion in the Graph Editor. |
@@ -361,8 +468,10 @@ Compared with `origin/main`. A = created; M = modified. No tracked files are del
 | A | [skills/after_effects/parenting.json](../skills/after_effects/parenting.json) | Task data: Control layers with parenting. |
 | A | [skills/after_effects/precompose.json](../skills/after_effects/precompose.json) | Task data: Precompose related layers. |
 | A | [skills/after_effects/track_matte.json](../skills/after_effects/track_matte.json) | Task data: Reveal a layer with a track matte. |
+| A | [skills/anki/deck_maintenance.json](../skills/anki/deck_maintenance.json) | Task data: Organize Anki notes and cards on Mac. |
 | A | [skills/canva/audio_timing.json](../skills/canva/audio_timing.json) | Task data: Trim and time Canva audio. |
 | A | [skills/canva/branding.json](../skills/canva/branding.json) | Task data: Apply Canva brand assets. |
+| A | [skills/canva/bulk_personalization.json](../skills/canva/bulk_personalization.json) | Task data: Map data to personalized Canva designs with Bulk Create on Mac. |
 | A | [skills/canva/export_images.json](../skills/canva/export_images.json) | Task data: Download Canva images. |
 | A | [skills/canva/export_pdf.json](../skills/canva/export_pdf.json) | Task data: Prepare a Canva PDF for print or accessibility. |
 | A | [skills/canva/frames_crop.json](../skills/canva/frames_crop.json) | Task data: Crop images inside Canva frames. |
@@ -377,6 +486,8 @@ Compared with `origin/main`. A = created; M = modified. No tracked files are del
 | A | [skills/capcut/keyframes.json](../skills/capcut/keyframes.json) | Task data: Animate CapCut transform keyframes. |
 | A | [skills/capcut/speed_ramp.json](../skills/capcut/speed_ramp.json) | Task data: Create a CapCut speed ramp. |
 | A | [skills/capcut/tracked_blur.json](../skills/capcut/tracked_blur.json) | Task data: Track a face blur in CapCut. |
+| A | [skills/classroom/rubric_builder.json](../skills/classroom/rubric_builder.json) | Task data: Build and review a Classroom rubric on Mac. |
+| A | [skills/drive/sharing_permissions.json](../skills/drive/sharing_permissions.json) | Task data: Interpret and review Google Drive sharing on Mac. |
 | A | [skills/excel/absolute_references.json](../skills/excel/absolute_references.json) | Task data: Use absolute and mixed references. |
 | A | [skills/excel/chart.json](../skills/excel/chart.json) | Task data: Create an Excel chart. |
 | A | [skills/excel/clean_csv.json](../skills/excel/clean_csv.json) | Task data: Import and clean a CSV in Excel. |
@@ -408,6 +519,11 @@ Compared with `origin/main`. A = created; M = modified. No tracked files are del
 | A | [skills/fl_studio/record_takes.json](../skills/fl_studio/record_takes.json) | Task data: Record audio takes in FL Studio. |
 | A | [skills/fl_studio/sidechain.json](../skills/fl_studio/sidechain.json) | Task data: Set up sidechain compression. |
 | A | [skills/fl_studio/unique_arrangement.json](../skills/fl_studio/unique_arrangement.json) | Task data: Make a unique arrangement variation. |
+| A | [skills/gmail/labels_and_filters.json](../skills/gmail/labels_and_filters.json) | Task data: Preview and apply Gmail label filters on Mac. |
+| A | [skills/google_calendar/office_hours.json](../skills/google_calendar/office_hours.json) | Task data: Build Google Calendar office-hours appointment schedules on Mac. |
+| A | [skills/google_calendar/recurring_events.json](../skills/google_calendar/recurring_events.json) | Task data: Configure and edit recurring Google Calendar events on Mac. |
+| A | [skills/google_forms/branching.json](../skills/google_forms/branching.json) | Task data: Build and preview Google Forms branches on Mac. |
+| A | [skills/google_sheets/pivot_analysis.json](../skills/google_sheets/pivot_analysis.json) | Task data: Analyze a Google Sheets pivot table on Mac. |
 | A | [skills/illustrator/artboards.json](../skills/illustrator/artboards.json) | Task data: Organize Illustrator artboards. |
 | A | [skills/illustrator/clipping_mask.json](../skills/illustrator/clipping_mask.json) | Task data: Create an Illustrator clipping mask. |
 | A | [skills/illustrator/export.json](../skills/illustrator/export.json) | Task data: Deliver SVG or PDF artwork. |
@@ -416,6 +532,12 @@ Compared with `origin/main`. A = created; M = modified. No tracked files are del
 | A | [skills/illustrator/pen_paths.json](../skills/illustrator/pen_paths.json) | Task data: Draw editable Pen paths. |
 | A | [skills/illustrator/shape_builder.json](../skills/illustrator/shape_builder.json) | Task data: Combine shapes with Shape Builder. |
 | A | [skills/illustrator/type_on_path.json](../skills/illustrator/type_on_path.json) | Task data: Place type on a path. |
+| A | [skills/kahoot/assignments_and_reports.json](../skills/kahoot/assignments_and_reports.json) | Task data: Assign self-paced Kahoot quizzes and locate reports on Mac. |
+| A | [skills/meet/host_management.json](../skills/meet/host_management.json) | Task data: Manage Google Meet host controls on Mac. |
+| A | [skills/meet/presentation_controls.json](../skills/meet/presentation_controls.json) | Task data: Choose and stop a Google Meet presentation on Mac. |
+| A | [skills/notion/relations_rollups.json](../skills/notion/relations_rollups.json) | Task data: Connect Notion databases with relations and rollups on Mac. |
+| A | [skills/outlook/scheduling.json](../skills/outlook/scheduling.json) | Task data: Schedule an Outlook meeting with availability and a room on Mac. |
+| A | [skills/overleaf/compile_troubleshooting.json](../skills/overleaf/compile_troubleshooting.json) | Task data: Trace Overleaf compile errors to sources and verify the PDF on Mac. |
 | A | [skills/photoshop/adjustment_layer.json](../skills/photoshop/adjustment_layer.json) | Task data: Target an adjustment layer. |
 | A | [skills/photoshop/clipping_mask.json](../skills/photoshop/clipping_mask.json) | Task data: Clip artwork to a base layer. |
 | A | [skills/photoshop/export.json](../skills/photoshop/export.json) | Task data: Export a Photoshop image. |
@@ -448,12 +570,16 @@ Compared with `origin/main`. A = created; M = modified. No tracked files are del
 | A | [skills/safari/download_destination.json](../skills/safari/download_destination.json) | Task data: Change Safari download destination. |
 | A | [skills/safari/locate_download.json](../skills/safari/locate_download.json) | Task data: Locate a Safari download. |
 | A | [skills/safari/save_pdf.json](../skills/safari/save_pdf.json) | Task data: Save a Safari page as PDF. |
+| A | [skills/slack/workflow_builder.json](../skills/slack/workflow_builder.json) | Task data: Connect Slack workflow triggers and steps on Mac. |
+| A | [skills/teams/breakout_classrooms.json](../skills/teams/breakout_classrooms.json) | Task data: Manage Teams breakout classrooms on Mac. |
+| A | [skills/teams/meeting_scheduling.json](../skills/teams/meeting_scheduling.json) | Task data: Schedule a Teams meeting on Mac. |
 | A | [skills/terminal/copy_move.json](../skills/terminal/copy_move.json) | Task data: Copy or move a practice file carefully. |
 | A | [skills/terminal/create_folder.json](../skills/terminal/create_folder.json) | Task data: Create a practice folder in Terminal. |
 | A | [skills/terminal/find_files.json](../skills/terminal/find_files.json) | Task data: Find files within a known directory. |
 | A | [skills/terminal/inspect_files.json](../skills/terminal/inspect_files.json) | Task data: Inspect files from Terminal. |
 | A | [skills/terminal/navigate.json](../skills/terminal/navigate.json) | Task data: Navigate folders in Terminal. |
 | A | [skills/terminal/understand_stop.json](../skills/terminal/understand_stop.json) | Task data: Understand and stop a Terminal command. |
+| A | [skills/trello/board_automation.json](../skills/trello/board_automation.json) | Task data: Choose and configure Trello board automation types on Mac. |
 | A | [skills/word/citations.json](../skills/word/citations.json) | Task data: Insert a citation and bibliography. |
 | A | [skills/word/headings.json](../skills/word/headings.json) | Task data: Structure a Word document with headings. |
 | A | [skills/word/image_wrapping.json](../skills/word/image_wrapping.json) | Task data: Control image text wrapping. |
@@ -462,8 +588,11 @@ Compared with `origin/main`. A = created; M = modified. No tracked files are del
 | A | [skills/word/section_break.json](../skills/word/section_break.json) | Task data: Create an independent document section. |
 | A | [skills/word/table_of_contents.json](../skills/word/table_of_contents.json) | Task data: Insert and update a table of contents. |
 | A | [skills/word/tracked_changes.json](../skills/word/tracked_changes.json) | Task data: Review tracked changes in Word. |
-| A | [tests/SkillLibraryTests.swift](../tests/SkillLibraryTests.swift) | Actual Swift decoding, matching, identity and progression tests. |
+| A | [skills/word/zotero_citations.json](../skills/word/zotero_citations.json) | Task data: Organize Zotero references and cite in Word on Mac. |
+| A | [skills/zoom/breakout_rooms.json](../skills/zoom/breakout_rooms.json) | Task data: Manage Zoom breakout rooms on Mac. |
+| A | [skills/zoom/meeting_setup.json](../skills/zoom/meeting_setup.json) | Task data: Schedule a Zoom meeting on Mac. |
+| A | [tests/SkillLibraryTests.swift](../tests/SkillLibraryTests.swift) | Actual Swift decoding, matching, identity and progression tests, including Google service-domain boundaries and shared-host ambiguity (plus Classroom and Kahoot creator/player domain boundaries; not executed on the Linux authoring host). Overleaf domain boundary checks added; not executed on the Linux authoring host. Notion/Slack/Trello browser domain boundary checks added; not executed on Linux. |
 | A | [tests/test_application_skills.py](../tests/test_application_skills.py) | Contract regression tests using disposable seed records. |
-| A | [tests/test_rich_skills.py](../tests/test_rich_skills.py) | Version 2, coverage, intent routing and bundle regression tests. |
+| A | [tests/test_rich_skills.py](../tests/test_rich_skills.py) | Version 2, profile coverage, distinct desktop/Google meeting and Calendar intent routing, Google Workspace data intent routing and shared-host coverage, study/classroom routing and surfaces, and bundle regression tests. Research routing, preserved built-in citation choice, Mac surfaces and manual observation boundaries added. Productivity/content routing, Canva separation and browser confirmation coverage. |
 | A | [tools/application_skills.py](../tools/application_skills.py) | Dependency-free authoring validation, matching and resource packaging. |
 | A | [tools/practice_assets.py](../tools/practice_assets.py) | Creates original disposable PNG, SVG, PDF, WAV, CSV and text fixtures. |

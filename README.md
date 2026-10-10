@@ -184,10 +184,15 @@ Verified on the development Mac (details in [the benchmark](docs/PINDO_FINAL_BEN
 
 ## Application skills and Teach mode
 
-[`PinDo/Resources/ApplicationSkills.json`](PinDo/Resources/ApplicationSkills.json) holds **113 lessons** with
-**342 evaluation cases** across Office, Canva, Finder, Figma, Adobe apps, CapCut and more.
+[`PinDo/Resources/ApplicationSkills.json`](PinDo/Resources/ApplicationSkills.json) holds **136 lessons** with
+**411 evaluation cases** across Office, Canva, Finder, Figma, Adobe apps, CapCut and more.
 - **Teach** follows them step by step.
 - **Do and Guide** use the matching lesson as a known procedure.
+
+The six added groups contribute 23 Mac lessons: desktop meetings/scheduling, Google meetings/calendar,
+Google Workspace administration/data, study/classroom activities, research/documents, and productivity/content.
+They use the same configured local model, **MAI-UI 8B** by default, and the existing Guide/Do/Teach UI.
+These new workflows remain hands-on unverified; the earlier benchmark does not establish their accuracy.
 
 Most lessons are written from documentation and are marked unverified until tested hands-on. See
 [the skill contract](docs/APPLICATION_SKILLS.md) and [catalogue](docs/SKILL_CATALOGUE.md).

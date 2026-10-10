@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "id": "eval.word.zotero_citations.taglish",
+  "skill_id": "word.zotero_citations",
+  "application_id": "microsoft.word",
+  "platform": "macos",
+  "application_version": null,
+  "starting_state": "The editable Word practice document is foreground, Zotero is running with the prepared local items and destination collection, and the Zotero tab is available. Library work has not started.",
+  "user_instruction": "Paano ayusin ang Zotero references at maglagay ng citations sa Word?.",
+  "expected_next_action": {
+    "objective": "Confirm the practice Word document and plugin prerequisites.",
+    "target": {
+      "role": "control",
+      "semantic_name": "Word document and Zotero ribbon tab"
+    }
+  },
+  "expected_result": [
+    "User confirms document, local library, styles, edit access and Zotero plugin availability."
+  ],
+  "failure_criteria": [
+    "Claims the Word capture verifies Zotero collection membership or a Zotero-owned dialog.",
+    "Resumes watching in Zotero or substitutes built-in References citations.",
+    "Unlinks citations or invents publication data.",
+    "Advances from a click alone or invents observed evidence."
+  ],
+  "language": "taglish",
+  "validation": {
+    "status": "unverified",
+    "notes": "Evaluation specification only; no live Mac application or model run recorded."
+  }
+}

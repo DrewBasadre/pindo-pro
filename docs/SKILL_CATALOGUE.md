@@ -1,8 +1,16 @@
 # Application task catalogue
 
-109 tasks. Research date: 2026-10-10. Every task is hands-on unverified; source documentation is not a successful test run.
+136 tasks. Research date: 2026-10-10. Every task is hands-on unverified; source documentation is not a successful test run.
 
-The 108-task outline is represented with one extra focused Finder rename task. Figma and Canva target web editors. Sources and recovery interpretations require rechecking against the installed version.
+The initial 108-task outline is represented with one extra focused Finder rename task, plus five desktop meeting and scheduling tasks and four Google meetings/calendar browser tasks and four Google Workspace administration/data browser tasks, plus three study/classroom activities (one desktop and two browser tasks) and three research/document tasks (two desktop and one browser), plus four productivity/content browser tasks and main's three focused Canva editor lessons and Excel student-table lesson. Figma and Canva target web editors. Sources and recovery interpretations require rechecking against the installed version.
+
+## Adobe Acrobat (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [acrobat.fillable_forms](../skills/acrobat/fillable_forms.json) — Prepare and preview a fillable PDF form on Mac | intermediate | [Vendor documentation](https://helpx.adobe.com/acrobat/using/pdf-forms.html) |
+
+Mac desktop, active Acrobat Pro Prepare a form entitlement and unsigned writable PDF. Reader and Fill & Sign do not configure reusable interactive fields. Inspect detection/type, unique names/tooltips, text and checkbox properties, Required and manual keyboard order, then preview every field and save a blank reusable local copy. Required flags do not prove submit enforcement; saved fillability and full order need manual checks. Proposal `acrobat-fillable-forms` maps to `acrobat.fillable_forms`.
 
 ## Adobe After Effects (8)
 
@@ -56,18 +64,32 @@ The 108-task outline is represented with one extra focused Finder rename task. F
 | [premiere.relink](../skills/premiere/relink.json) — Relink missing Premiere media | intermediate | [Vendor documentation](https://helpx.adobe.com/premiere/desktop/organize-media/ingest-proxy-workflow/relink-offline-clips.html) |
 | [premiere.timeline_edit](../skills/premiere/timeline_edit.json) — Build a Premiere timeline edit | intermediate | [Vendor documentation](https://helpx.adobe.com/premiere-pro/using/adding-clips-sequences.html) |
 
-## Canva web (8)
+## Anki (1)
 
 | Task | Difficulty | Primary reference |
 | --- | --- | --- |
+| [anki.deck_maintenance](../skills/anki/deck_maintenance.json) — Organize Anki notes and cards on Mac | intermediate | [Vendor documentation](https://docs.ankiweb.net/browsing.html) |
+
+Mac desktop, writable local collection; current download 26.09.3 requires macOS 13+. No add-on, paid plan or sync account is needed. Distinguish note fields/tags from generated cards/deck placement; scope browser and duplicate searches, preserve sibling cards and review candidate content without deletion or rescheduling. Proposal `anki-mac-deck-maintenance` maps to `anki.deck_maintenance`.
+
+## Canva web / desktop wrapper (12)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [canva.add_shape](../skills/canva/add_shape.json) — Add a shape in Canva | foundation | [Vendor documentation](https://www.canva.com/help/) |
+| [canva.add_text](../skills/canva/add_text.json) — Add text or a heading in Canva | foundation | [Vendor documentation](https://www.canva.com/help/) |
 | [canva.audio_timing](../skills/canva/audio_timing.json) — Trim and time Canva audio | intermediate | [Vendor documentation](https://www.canva.com/help/edit-audio/) |
 | [canva.branding](../skills/canva/branding.json) — Apply Canva brand assets | intermediate | [Vendor documentation](https://www.canva.com/help/using-brand-templates/) |
+| [canva.bulk_personalization](../skills/canva/bulk_personalization.json) — Map data to personalized Canva designs with Bulk Create on Mac | intermediate | [Vendor documentation](https://www.canva.com/help/bulk-create/) |
 | [canva.export_images](../skills/canva/export_images.json) — Download Canva images | intermediate | [Vendor documentation](https://www.canva.com/help/download-file-types/) |
 | [canva.export_pdf](../skills/canva/export_pdf.json) — Prepare a Canva PDF for print or accessibility | intermediate | [Vendor documentation](https://www.canva.com/help/pdf-accessibility-features/) |
 | [canva.frames_crop](../skills/canva/frames_crop.json) — Crop images inside Canva frames | intermediate | [Vendor documentation](https://www.canva.com/help/using-frames/) |
 | [canva.layers_align](../skills/canva/layers_align.json) — Arrange and align Canva layers | intermediate | [Vendor documentation](https://www.canva.com/help/layer-group-align/) |
 | [canva.multipage_design](../skills/canva/multipage_design.json) — Build a multipage Canva design | intermediate | [Vendor documentation](https://www.canva.com/help/multi-design) |
+| [canva.text_effects](../skills/canva/text_effects.json) — Apply a text effect in Canva | foundation | [Vendor documentation](https://www.canva.com/help/) |
 | [canva.timed_titles](../skills/canva/timed_titles.json) — Time titles in a Canva video | intermediate | [Vendor documentation](https://www.canva.com/help/element-timing-video/) |
+
+Mac browser; Bulk Create reuses `canva.web` and stays distinct from manual multipage, branding and export lessons. Eligible Pro/Teams/Business/Enterprise/Education/Nonprofits plan and edit access required. Map headers to separate elements, preview each record, choose output mode and inspect every generated page/design. Image URLs are not supported image data; media preview has source-dependent limits. Proposal `canva-bulk-personalization` maps to `canva.bulk_personalization`.
 
 ## CapCut (8)
 
@@ -120,7 +142,73 @@ The 108-task outline is represented with one extra focused Finder rename task. F
 | [finder.rename](../skills/finder/rename.json) — Rename a Finder item | intermediate | [Vendor documentation](https://support.apple.com/guide/mac-help/rename-files-folders-and-disks-mchlp1144/mac) |
 | [finder.tags_search](../skills/finder/tags_search.json) — Tag and search Finder items | intermediate | [Vendor documentation](https://support.apple.com/guide/mac-help/change-finder-settings-mchlp2803/mac) |
 
-## Microsoft Excel (8)
+## Gmail web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [gmail.labels_and_filters](../skills/gmail/labels_and_filters.json) — Preview and apply Gmail label filters on Mac | intermediate | [Vendor documentation](https://support.google.com/mail/answer/6579?hl=en) |
+
+Mac browser on `mail.google.com`, signed-in Gmail-enabled account and available search/filter controls. Search previews matching and excluded practice messages before rule creation. Review exact label, automatic actions and whether existing matching conversations are affected. Threads and future replies need separate checks; forwarding setup is outside this practice. Proposal `gmail-labels-and-filters` maps to `gmail.labels_and_filters`.
+
+## Google Calendar web (2)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [google_calendar.office_hours](../skills/google_calendar/office_hours.json) — Build Google Calendar office-hours appointment schedules on Mac | intermediate | [Vendor documentation](https://support.google.com/calendar/answer/10729749) |
+| [google_calendar.recurring_events](../skills/google_calendar/recurring_events.json) — Configure and edit recurring Google Calendar events on Mac | intermediate | [Vendor documentation](https://support.google.com/calendar/answer/37115?hl=en) |
+
+Mac browser on `calendar.google.com`, signed-in account and writable calendar. Recurrence setup is distinct from one-occurrence, following-events or whole-series edit scope; confirm the actual dialog and compare dates. Appointment schedules need account eligibility: personal/Business Starter supports one booking page; Frontline/Essentials/unsupported legacy plans cannot create schedules. Premium features vary; inspect enabled availability, booking-window, buffer and daily-cap settings and pause for required unavailable controls. Booking-page review is not proof of booking enforcement. Proposals `google-calendar-recurring-events` and `google-calendar-office-hours` map to `google_calendar.recurring_events` and `google_calendar.office_hours`.
+
+## Google Classroom web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [classroom.rubric_builder](../skills/classroom/rubric_builder.json) — Build and review a Classroom rubric on Mac | intermediate | [Vendor documentation](https://support.google.com/edu/classroom/answer/9335069?hl=en) |
+
+Mac browser on `classroom.google.com`, eligible account and teacher access to a titled ungraded assignment. Manual criteria/level/point configuration needs no Gemini add-on; verify enabled controls and scoring/order. Review the saved attachment without posting or grading. Student views cannot build rubrics; edits lock after grading starts. Proposal `classroom-rubric-builder` maps to `classroom.rubric_builder`.
+
+## Google Drive web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [drive.sharing_permissions](../skills/drive/sharing_permissions.json) — Interpret and review Google Drive sharing on Mac | intermediate | [Vendor documentation](https://support.google.com/drive/answer/2494822?hl=en) |
+
+Mac browser on `drive.google.com`, signed-in account and My Drive item access; changes require owner/permitted-editor authority. Interpret Viewer/Commenter/Editor, General access and parent inheritance. A lower direct grant or Restricted general access cannot revoke higher inherited access. Review child, parent and sibling practice grants without changing folder permissions; shared-drive membership and limited-access configuration need separate owner/manager review. Proposal `drive-sharing-permissions` maps to `drive.sharing_permissions`.
+
+## Google Forms web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [google_forms.branching](../skills/google_forms/branching.json) — Build and preview Google Forms branches on Mac | intermediate | [Vendor documentation](https://support.google.com/docs/answer/141062?hl=en) |
+
+Mac browser on `forms.google.com` or `docs.google.com/forms`, with form owner/editor access. Multiple choice and Dropdown support answer navigation; Checkboxes does not. Create named sections, map answers and review each section exit, then preview every path from the beginning without publishing/submitting. Report unavailable preview navigation as blocked; external responders require publication. Confirm the Forms editor in PinDo on the shared hostname. Proposal `google-forms-branching` maps to `google_forms.branching`.
+
+## Google Meet web (2)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [meet.host_management](../skills/meet/host_management.json) — Manage Google Meet host controls on Mac | intermediate | [Vendor documentation](https://support.google.com/meet/answer/10885841?hl=en) |
+| [meet.presentation_controls](../skills/meet/presentation_controls.json) — Choose and stop a Google Meet presentation on Mac | intermediate | [Vendor documentation](https://support.google.com/meet/answer/9308856?hl=en) |
+
+Mac browser on `meet.google.com`; Chrome is the tab-sharing reference. Distinguish tab/window/display boundaries, your own active share and Stop presenting. System sharing permission and pickers can be outside the capture. Host/co-host authority, host management, account edition and main-room status gate restrictions and co-host options; Leave meeting differs from End meeting for all. Before-call co-host setup belongs to the Calendar creator's Video call options and does not make Calendar recurrence controls Meet controls. Proposals `meet-presentation-controls` and `meet-host-management` map to `meet.presentation_controls` and `meet.host_management`.
+
+## Google Sheets web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [google_sheets.pivot_analysis](../skills/google_sheets/pivot_analysis.json) — Analyze a Google Sheets pivot table on Mac | intermediate | [Vendor documentation](https://support.google.com/docs/answer/1272900?hl=en) |
+
+Mac browser on `sheets.google.com` or `docs.google.com/spreadsheets`, signed-in account with native spreadsheet edit access. Inspect source boundaries/headers, Rows/Columns/Values/Filters, Summarize by and Show as; compare the filtered practice totals against source records. No Connected Sheets or premium plan is required for this ordinary pivot. Confirm the Sheets editor in PinDo on the shared hostname. Proposal `google-sheets-pivot-analysis` maps to `google_sheets.pivot_analysis`.
+
+## Kahoot! web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [kahoot.assignments_and_reports](../skills/kahoot/assignments_and_reports.json) — Assign self-paced Kahoot quizzes and locate reports on Mac | intermediate | [Vendor documentation](https://support.kahoot.com/hc/en-us/articles/360039411334-How-to-assign-a-kahoot-in-web-platform) |
+
+Mac browser on `create.kahoot.it` with signed-in permitted host and plan-available Assign/report controls. Player `kahoot.it` is excluded from host routing. Review future deadline/hour/zone and plan-dependent options, share session access only to a consenting test destination, then locate the specific assigned-session report. Source quiz edits do not update existing assignments; revised content needs a new session and access details. Proposal `kahoot-assignments-and-reports` maps to `kahoot.assignments_and_reports`.
+
+## Microsoft Excel (9)
 
 | Task | Difficulty | Primary reference |
 | --- | --- | --- |
@@ -129,9 +217,18 @@ The 108-task outline is represented with one extra focused Finder rename task. F
 | [excel.clean_csv](../skills/excel/clean_csv.json) — Import and clean a CSV in Excel | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/excel/power-query-data-sources-in-excel-versions) |
 | [excel.conditional_formula](../skills/excel/conditional_formula.json) — Write an IF formula | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/Excel/get-started/overview-of-formulas-in-excel) |
 | [excel.dropdown](../skills/excel/dropdown.json) — Create a data validation dropdown | intermediate | [Vendor documentation](https://support.microsoft.com/en-gb/excel/get-started/create-a-drop-down-list) |
+| [excel.fill_table](../skills/excel/fill_table.json) — Fill a student ID and name table | foundation | [Vendor documentation](https://support.microsoft.com/en-gb/excel/get-started/create-a-drop-down-list) |
 | [excel.lookup](../skills/excel/lookup.json) — Look up a value with XLOOKUP | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/excel/functions/xlookup-function) |
 | [excel.pivot_table](../skills/excel/pivot_table.json) — Summarize data with a PivotTable | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/excel/get-started/create-a-pivottable-to-analyze-worksheet-data) |
 | [excel.totals_averages](../skills/excel/totals_averages.json) — Calculate totals and averages in Excel | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/excel/calculate-an-average) |
+
+## Microsoft Outlook (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [outlook.scheduling](../skills/outlook/scheduling.json) — Schedule an Outlook meeting with availability and a room on Mac | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/outlook/event-scheduling-room-finder-and-rsvp-in-outlook-for-mac) |
+
+Mac desktop; Microsoft 365/Exchange organizer calendar, free/busy access and organization room directory required. Request Responses must be enabled. Suggested availability is not a reservation; review actual attendee/room responses. Proposal `outlook-mac-scheduling` maps to `outlook.scheduling`.
 
 ## Microsoft PowerPoint (8)
 
@@ -146,7 +243,16 @@ The 108-task outline is represented with one extra focused Finder rename task. F
 | [powerpoint.slide_master](../skills/powerpoint/slide_master.json) — Customize a slide master | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/powerpoint/training/customize-a-slide-master) |
 | [powerpoint.speaker_notes](../skills/powerpoint/speaker_notes.json) — Add speaker notes in PowerPoint | intermediate | [Vendor documentation](https://support.microsoft.com/en-US/PowerPoint/training/add-speaker-notes-to-your-slides) |
 
-## Microsoft Word (8)
+## Microsoft Teams (2)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [teams.breakout_classrooms](../skills/teams/breakout_classrooms.json) — Manage Teams breakout classrooms on Mac | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/teams/education/create-and-manage-breakout-rooms-during-class-meetings) |
+| [teams.meeting_scheduling](../skills/teams/meeting_scheduling.json) — Schedule a Teams meeting on Mac | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/teams/meetings/schedule-a-meeting-in-microsoft-teams) |
+
+Mac desktop work/school calendar; classroom practice uses Teams for Education. The organizer creates rooms; explicit in-meeting room-manager delegation is distinct from presenter status. Calendar mode and Exchange integration affect scheduling controls. Proposals `teams-breakout-classrooms` and `teams-meeting-scheduling` map to `teams.breakout_classrooms` and `teams.meeting_scheduling`.
+
+## Microsoft Word (9)
 
 | Task | Difficulty | Primary reference |
 | --- | --- | --- |
@@ -158,6 +264,25 @@ The 108-task outline is represented with one extra focused Finder rename task. F
 | [word.section_break](../skills/word/section_break.json) — Create an independent document section | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/office/insert-a-section-break-eef20fd8-e38c-4ba6-a027-e503bdf8375c) |
 | [word.table_of_contents](../skills/word/table_of_contents.json) — Insert and update a table of contents | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/word/training/insert-a-table-of-contents) |
 | [word.tracked_changes](../skills/word/tracked_changes.json) — Review tracked changes in Word | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/accessibility/word/use-a-screen-reader-to-track-and-review-changes-in-a-document-in-word) |
+| [word.zotero_citations](../skills/word/zotero_citations.json) — Organize Zotero references and cite in Word on Mac | intermediate | [Vendor documentation](https://www.zotero.org/support/word_processor_plugin_usage) |
+
+Zotero Word integration is distinct from the built-in `word.citations` task above. Mac Word 2016–2024/Microsoft 365, Zotero desktop, bundled plugin, edit access and Zotero-to-Word Automation permission are required. Prepared local references need no sync account, Connector or paid Zotero storage. Organize collection membership, correct supplied metadata, insert plugin citations/bibliography, change Document Preferences style and Refresh without unlinking fields. Start Teach in Word; Zotero library/dialog work stays paused and user-confirmed, returning to the original Word process before Resume. Generic citation requests may offer both lessons for explicit selection. Proposal `zotero-word-citations` maps to `word.zotero_citations`.
+
+## Notion web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [notion.relations_rollups](../skills/notion/relations_rollups.json) — Connect Notion databases with relations and rollups on Mac | intermediate | [Vendor documentation](https://www.notion.com/help/relations-and-rollups) |
+
+Browser on Mac chosen under the one-surface profile contract; `notion.com`/`notion.so`, signed-in account, schema permission on source and two-way destination. Can edit content alone cannot alter properties. Distinguish database/data source from filtered views, page links from computed rollups, select related property/calculation and manually compare exact membership and expected total. No plugin or paid automation needed. Proposal `notion-relations-rollups` maps to `notion.relations_rollups`.
+
+## Overleaf web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [overleaf.compile_troubleshooting](../skills/overleaf/compile_troubleshooting.json) — Trace Overleaf compile errors to sources and verify the PDF on Mac | intermediate | [Vendor documentation](https://docs.overleaf.com/troubleshooting-and-support/fixing-latex-errors/fixing-errors-in-generated-files) |
+
+Mac supported browser on `overleaf.com`, signed-in account, edit permission and network. No paid feature/plugin is needed for the small setup; compile-time/collaborator limits still apply. Use Stop on first error and fresh logs, trace generated `.toc`/`.aux`/`.bbl` symptoms to editable `.tex`/`.bib` inputs, then Recompile from scratch and inspect the fresh PDF. Never treat auxiliary artifacts as editable sources or accept a stale/error-tolerant PDF. Proposal `overleaf-compile-troubleshooting` maps to `overleaf.compile_troubleshooting`.
 
 ## Preview (4)
 
@@ -177,6 +302,14 @@ The 108-task outline is represented with one extra focused Finder rename task. F
 | [safari.locate_download](../skills/safari/locate_download.json) — Locate a Safari download | intermediate | [Vendor documentation](https://support.apple.com/guide/safari/download-items-from-the-web-sfri40598/mac) |
 | [safari.save_pdf](../skills/safari/save_pdf.json) — Save a Safari page as PDF | intermediate | [Vendor documentation](https://support.apple.com/guide/safari/save-part-or-all-of-a-webpage-ibrw1089/mac) |
 
+## Slack web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [slack.workflow_builder](../skills/slack/workflow_builder.json) — Connect Slack workflow triggers and steps on Mac | intermediate | [Vendor documentation](https://slack.com/help/articles/360035692513-Guide-to-Slack-Workflow-Builder) |
+
+Browser on Mac chosen under the one-surface profile contract; `app.slack.com`, supported browser, paid Slack plan, permitted builder/manager role and destination posting access. Request link/event triggers differ from recurrence; order native steps and insert valid prior-output variables. Draft-only work stops before publication; authorized tests review actual activity/output. Connectors require additional approval/authentication and are outside the initial native-step task. Proposal `slack-workflow-builder` maps to `slack.workflow_builder`.
+
 ## Terminal (6)
 
 | Task | Difficulty | Primary reference |
@@ -187,3 +320,20 @@ The 108-task outline is represented with one extra focused Finder rename task. F
 | [terminal.inspect_files](../skills/terminal/inspect_files.json) — Inspect files from Terminal | intermediate | [Vendor documentation](https://support.apple.com/guide/terminal/welcome/mac) |
 | [terminal.navigate](../skills/terminal/navigate.json) — Navigate folders in Terminal | intermediate | [Vendor documentation](https://support.apple.com/guide/terminal/execute-commands-and-run-tools-apdb66b5242-0d18-49fc-9c47-a2498b7c91d5/mac) |
 | [terminal.understand_stop](../skills/terminal/understand_stop.json) — Understand and stop a Terminal command | intermediate | [Vendor documentation](https://support.apple.com/guide/terminal/execute-commands-and-run-tools-apdb66b5242-0d18-49fc-9c47-a2498b7c91d5/mac) |
+
+## Trello web (1)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [trello.board_automation](../skills/trello/board_automation.json) — Choose and configure Trello board automation types on Mac | intermediate | [Vendor documentation](https://support.atlassian.com/trello/docs/automation-overview/) |
+
+Mac browser on `trello.com`, board edit/automation permission and remaining shared Workspace runs/operations. All plans support built-in automation with differing quotas. Compare Rules, Card buttons, Board buttons, Scheduled and Due Date commands; configure one per run with precise scope, button visibility and account time zone. Save activates; actual log/card checks are separate and Run now does not prove scheduled timing. No Power-Up/Butler Bot needed. Proposal `trello-board-automation` maps to `trello.board_automation`.
+
+## Zoom Workplace (2)
+
+| Task | Difficulty | Primary reference |
+| --- | --- | --- |
+| [zoom.breakout_rooms](../skills/zoom/breakout_rooms.json) — Manage Zoom breakout rooms on Mac | intermediate | [Vendor documentation](https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0062540) |
+| [zoom.meeting_setup](../skills/zoom/meeting_setup.json) — Schedule a Zoom meeting on Mac | intermediate | [Vendor documentation](https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0060700) |
+
+Mac desktop, with Zoom’s current minimum supported client version. Scheduling needs a host account or granted scheduling privilege; automatic email invitations need calendar integration. Hosts/co-hosts manage rooms; administrator locks cannot be bypassed and moving participants while rooms are open needs additional enablement. Proposals `zoom-breakout-rooms` and `zoom-mac-meeting-setup` map to `zoom.breakout_rooms` and `zoom.meeting_setup`.

@@ -14,7 +14,31 @@ ROOT = Path(__file__).resolve().parents[1]
 class RichSkillsTests(unittest.TestCase):
     def test_bundle_is_current_and_profiles_cover_every_skill(self) -> None:
         self.assertEqual((ROOT / 'PinDo/Resources/ApplicationSkills.json').read_text(encoding='utf-8'), bundle_data(ROOT))
-        self.assertEqual(len(load_profiles(ROOT)), 15)
+        profiles = load_profiles(ROOT)
+        skills, _ = load_library(ROOT)
+        self.assertEqual({profile['id'] for profile in profiles}, {skill['application_id'] for skill in skills})
+
+    def test_meeting_requests_keep_applications_and_workflows_distinct(self) -> None:
+        skills, cases = load_library(ROOT)
+        meeting_ids = {
+            'zoom.meeting_setup': 'zoom.workplace',
+            'zoom.breakout_rooms': 'zoom.workplace',
+            'teams.meeting_scheduling': 'microsoft.teams',
+            'teams.breakout_classrooms': 'microsoft.teams',
+            'outlook.scheduling': 'microsoft.outlook',
+        }
+        for case in cases:
+            if case['skill_id'] not in meeting_ids:
+                continue
+            with self.subTest(case=case['id']):
+                self.assertEqual(match_skills(skills, case['application_id'], case['user_instruction']), [case['skill_id']])
+        for app, expected in (
+            ('zoom.workplace', ['zoom.breakout_rooms']),
+            ('microsoft.teams', ['teams.breakout_classrooms']),
+            ('microsoft.outlook', []),
+        ):
+            with self.subTest(app=app):
+                self.assertEqual(match_skills(skills, app, 'Create breakout rooms'), expected)
 
     def test_every_documented_intent_routes_to_its_skill(self) -> None:
         skills, _ = load_library(ROOT)
@@ -22,6 +46,145 @@ class RichSkillsTests(unittest.TestCase):
             for intent in skill['intents']:
                 with self.subTest(skill=skill['id'], intent=intent):
                     self.assertIn(skill['id'], match_skills(skills, skill['application_id'], intent))
+
+    def test_google_meeting_and_calendar_requests_route_by_application(self) -> None:
+        skills, cases = load_library(ROOT)
+        google_ids = {'meet.presentation_controls', 'meet.host_management',
+                      'google_calendar.recurring_events', 'google_calendar.office_hours'}
+        for case in cases:
+            if case['skill_id'] not in google_ids:
+                continue
+            with self.subTest(case=case['id']):
+                self.assertEqual(match_skills(skills, case['application_id'], case['user_instruction']), [case['skill_id']])
+        for app, request in (
+            ('google.meet', 'Create a recurring Calendar event'),
+            ('google.meet', 'Create office hours with booking limits'),
+            ('google.calendar', 'Share a tab and stop presenting'),
+            ('google.calendar', 'Grant host controls to Alex'),
+        ):
+            with self.subTest(app=app, request=request):
+                self.assertEqual(match_skills(skills, app, request), [])
+
+    def test_google_workspace_data_requests_keep_applications_distinct(self) -> None:
+        skills, cases = load_library(ROOT)
+        task_apps = {
+            'google_sheets.pivot_analysis': 'google.sheets',
+            'google_forms.branching': 'google.forms',
+            'gmail.labels_and_filters': 'google.gmail',
+            'drive.sharing_permissions': 'google.drive',
+        }
+        for case in cases:
+            if case['skill_id'] not in task_apps:
+                continue
+            with self.subTest(case=case['id']):
+                self.assertEqual(match_skills(skills, case['application_id'], case['user_instruction']), [case['skill_id']])
+        for app, request in (
+            ('google.sheets', 'Analyze a pivot table'),
+            ('google.forms', 'Configure answer based branching'),
+            ('google.gmail', 'Apply a label filter'),
+            ('google.drive', 'Review sharing permissions'),
+        ):
+            for other_app in set(task_apps.values()) - {app}:
+                with self.subTest(app=other_app, request=request):
+                    self.assertEqual(match_skills(skills, other_app, request), [])
+        profiles = {p['id']: p for p in load_profiles(ROOT)}
+        # Both editors use this host; the existing application picker must resolve it.
+        self.assertEqual({p['id'] for p in profiles.values() if 'docs.google.com' in p['domains']}, {'google.sheets', 'google.forms'})
+        self.assertEqual(profiles['google.gmail']['domains'], ['mail.google.com'])
+        self.assertEqual(profiles['google.drive']['domains'], ['drive.google.com'])
+
+    def test_study_requests_route_with_distinct_mac_surfaces(self) -> None:
+        skills, cases = load_library(ROOT)
+        task_apps = {'anki.deck_maintenance': ('anki.desktop', 'desktop'),
+                     'classroom.rubric_builder': ('google.classroom', 'browser'),
+                     'kahoot.assignments_and_reports': ('kahoot.web', 'browser')}
+        for case in cases:
+            if case['skill_id'] in task_apps:
+                with self.subTest(case=case['id']):
+                    self.assertEqual(match_skills(skills, case['application_id'], case['user_instruction']), [case['skill_id']])
+                    for other_app, _ in set(task_apps.values()) - {task_apps[case['skill_id']]}:
+                        self.assertEqual(match_skills(skills, other_app, case['user_instruction']), [])
+        profiles = {p['id']: p for p in load_profiles(ROOT)}
+        for task in skills:
+            if task['id'] in task_apps:
+                app, surface = task_apps[task['id']]
+                self.assertEqual((task['application_id'], task['platform'], task['surface']), (app, 'macos', surface))
+                self.assertEqual(profiles[app]['surface'], surface)
+                self.assertEqual(profiles[app]['bundle_ids'], [])
+        self.assertEqual(profiles['anki.desktop']['domains'], [])
+        self.assertEqual(profiles['google.classroom']['domains'], ['classroom.google.com'])
+        # The player join hostname must not identify a host assignment lesson.
+        self.assertEqual(profiles['kahoot.web']['domains'], ['create.kahoot.it'])
+
+    def test_research_requests_and_observation_boundaries(self) -> None:
+        skills, cases = load_library(ROOT)
+        tasks = {s['id']: s for s in skills}
+        task_apps = {'word.zotero_citations': ('microsoft.word', 'desktop'),
+                     'acrobat.fillable_forms': ('adobe.acrobat', 'desktop'),
+                     'overleaf.compile_troubleshooting': ('overleaf.web', 'browser')}
+        for case in cases:
+            if case['skill_id'] not in task_apps:
+                continue
+            with self.subTest(case=case['id']):
+                expected = [case['skill_id']]
+                # Existing built-in citation routing is retained; the picker resolves it.
+                if case['skill_id'] == 'word.zotero_citations':
+                    expected = ['word.citations', 'word.zotero_citations']
+                self.assertEqual(match_skills(skills, case['application_id'], case['user_instruction']), expected)
+                for other_app, _ in set(task_apps.values()) - {task_apps[case['skill_id']]}:
+                    self.assertEqual(match_skills(skills, other_app, case['user_instruction']), [])
+        self.assertEqual(match_skills(skills, 'microsoft.word', 'Insert a citation and bibliography'), ['word.citations'])
+        profiles = {p['id']: p for p in load_profiles(ROOT)}
+        for task_id, (app, surface) in task_apps.items():
+            self.assertEqual((tasks[task_id]['application_id'], tasks[task_id]['platform'], tasks[task_id]['surface']), (app, 'macos', surface))
+            self.assertEqual(profiles[app]['surface'], surface)
+        self.assertEqual(profiles['overleaf.web']['domains'], ['overleaf.com'])
+        self.assertEqual(profiles['adobe.acrobat']['domains'], [])
+        for app in ('adobe.acrobat', 'overleaf.web'):
+            self.assertEqual(profiles[app]['bundle_ids'], [])
+        zotero_steps = {s['id']: s for s in tasks['word.zotero_citations']['steps']}
+        for step_id in ('zotero', 'collection', 'metadata', 'search', 'choose_reference', 'insert', 'replacement_style', 'review'):
+            self.assertEqual(zotero_steps[step_id]['verification'], 'user_confirmation')
+        for task_id in task_apps:
+            self.assertEqual(tasks[task_id]['steps'][-1]['verification'], 'user_confirmation')
+
+    def test_productivity_workflows_route_on_mac_browser_surfaces(self) -> None:
+        skills, cases = load_library(ROOT)
+        tasks = {s['id']: s for s in skills}
+        task_apps = {'notion.relations_rollups': 'notion.web',
+                     'canva.bulk_personalization': 'canva.web',
+                     'slack.workflow_builder': 'slack.web',
+                     'trello.board_automation': 'trello.web'}
+        profiles = {p['id']: p for p in load_profiles(ROOT)}
+        for case in cases:
+            if case['skill_id'] in task_apps:
+                with self.subTest(case=case['id']):
+                    self.assertEqual(match_skills(skills, case['application_id'], case['user_instruction']), [case['skill_id']])
+        for task_id, app in task_apps.items():
+            with self.subTest(task=task_id):
+                self.assertEqual((tasks[task_id]['application_id'], tasks[task_id]['platform'], tasks[task_id]['surface']), (app, 'macos', 'browser'))
+                self.assertEqual(profiles[app]['surface'], 'browser')
+                expected_bundle_ids = ['com.canva.canvaeditor'] if app == 'canva.web' else []
+                self.assertEqual(profiles[app]['bundle_ids'], expected_bundle_ids)
+                self.assertEqual(tasks[task_id]['steps'][-1]['verification'], 'user_confirmation')
+        self.assertEqual(profiles['notion.web']['domains'], ['notion.com', 'notion.so'])
+        self.assertEqual(profiles['slack.web']['domains'], ['app.slack.com'])
+        self.assertEqual(profiles['trello.web']['domains'], ['trello.com'])
+        for request, expected in (
+            ('Personalize certificates with Bulk Create', ['canva.bulk_personalization']),
+            ('Build a multipage Canva design', ['canva.multipage_design']),
+            ('Apply Canva brand assets', ['canva.branding']),
+        ):
+            self.assertEqual(match_skills(skills, 'canva.web', request), expected)
+        for task_id, step_ids in {
+            'notion.relations_rollups': ('identify', 'access', 'link_page', 'review'),
+            'canva.bulk_personalization': ('data', 'field', 'preview_review', 'create', 'review'),
+            'slack.workflow_builder': ('access', 'audience', 'publish', 'test', 'review'),
+            'trello.board_automation': ('timezone', 'review', 'save', 'test', 'verify'),
+        }.items():
+            steps = {s['id']: s for s in tasks[task_id]['steps']}
+            for step_id in step_ids:
+                self.assertEqual(steps[step_id]['verification'], 'user_confirmation')
 
     def test_matching_keeps_ambiguity_and_checks_application_and_word_boundaries(self) -> None:
         skills, _ = load_library(ROOT)

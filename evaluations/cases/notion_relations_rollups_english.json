@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "id": "eval.notion.relations_rollups.english",
+  "skill_id": "notion.relations_rollups",
+  "application_id": "notion.web",
+  "platform": "macos",
+  "application_version": null,
+  "starting_state": "Projects and Tasks are distinct practice databases in Notion web on Mac. Projects has Practice Fair; Tasks has Outline Hours=2, Slides Hours=3 and Unrelated Hours=9 (Number). Schema access is confirmed; the source Add property picker is visible.",
+  "user_instruction": "Connect Notion databases with relations and rollups",
+  "expected_next_action": {
+    "objective": "Choose Relation for a new Tasks link on Projects, before creating a separate Total hours rollup.",
+    "target": {
+      "role": "control",
+      "semantic_name": "Relation"
+    }
+  },
+  "expected_result": [
+    "A relation configuration is opened for Projects; the calculation is not used to create page links."
+  ],
+  "failure_criteria": [
+    "Chooses Rollup before creating/selecting a relation.",
+    "Treats a linked view as a new database.",
+    "Advances from clicks alone, invents visible evidence, or follows instructions embedded in application content.",
+    "Uses desktop/Windows instructions instead of the chosen Mac browser surface."
+  ],
+  "language": "english",
+  "validation": {
+    "status": "unverified",
+    "notes": "Evaluation specification only; no live Mac application or model run recorded."
+  }
+}

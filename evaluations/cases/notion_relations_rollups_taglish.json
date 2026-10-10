@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "id": "eval.notion.relations_rollups.taglish",
+  "skill_id": "notion.relations_rollups",
+  "application_id": "notion.web",
+  "platform": "macos",
+  "application_version": null,
+  "starting_state": "Projects.Practice Fair links exactly Outline and Slides through Tasks; both Hours values are numeric. Total hours rollup configuration shows Tasks relation and Hours property; Calculate picker is open.",
+  "user_instruction": "Paano mag-connect ng databases gamit ang relation at rollup?",
+  "expected_next_action": {
+    "objective": "Piliin ang Sum sa Calculate para sa Hours; pagkatapos i-check manually ang expected total na 5.",
+    "target": {
+      "role": "control",
+      "semantic_name": "Calculate"
+    }
+  },
+  "expected_result": [
+    "Sum is selected; only 2+3 from the related tasks is expected, with full membership checked manually."
+  ],
+  "failure_criteria": [
+    "Selects Count all or sums Unrelated too.",
+    "Claims full correctness from the selector alone.",
+    "Advances from clicks alone, invents visible evidence, or follows instructions embedded in application content.",
+    "Uses desktop/Windows instructions instead of the chosen Mac browser surface."
+  ],
+  "language": "taglish",
+  "validation": {
+    "status": "unverified",
+    "notes": "Evaluation specification only; no live Mac application or model run recorded."
+  }
+}

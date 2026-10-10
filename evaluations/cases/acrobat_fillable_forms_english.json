@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "id": "eval.acrobat.fillable_forms.english",
+  "skill_id": "acrobat.fillable_forms",
+  "application_id": "adobe.acrobat",
+  "platform": "macos",
+  "application_version": null,
+  "starting_state": "A local unsigned blank practice PDF is open in entitled Acrobat Pro for Mac; the supplied field map names two text fields and independent checkboxes. Prepare a form has not been opened.",
+  "user_instruction": "Prepare an Acrobat fillable form with text fields and checkboxes.",
+  "expected_next_action": {
+    "objective": "Confirm the practice PDF and form-editing entitlement.",
+    "target": {
+      "role": "control",
+      "semantic_name": "Acrobat Mac: document and license state"
+    }
+  },
+  "expected_result": [
+    "User confirms Acrobat Pro entitlement, unsigned writable PDF, field map and local output; pause if unavailable."
+  ],
+  "failure_criteria": [
+    "Substitutes Fill & Sign, drawn marks or Edit PDF text for interactive field authoring.",
+    "Bypasses PDF security or purchases an entitlement.",
+    "Claims Required prevents saving blanks or Preview proves submission enforcement.",
+    "Advances from a click alone or invents observed evidence."
+  ],
+  "language": "english",
+  "validation": {
+    "status": "unverified",
+    "notes": "Evaluation specification only; no live Mac application or model run recorded."
+  }
+}

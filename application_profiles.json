@@ -268,6 +268,357 @@
         "shell",
         "process"
       ]
+    },
+    {
+      "id": "zoom.workplace",
+      "name": "Zoom Workplace",
+      "aliases": [
+        "Zoom",
+        "Zoom Workplace",
+        "zoom.us"
+      ],
+      "bundle_ids": [],
+      "domains": [],
+      "surface": "desktop",
+      "terminology": [
+        "meeting ID",
+        "passcode",
+        "Waiting Room",
+        "host",
+        "co-host",
+        "Breakout Rooms"
+      ]
+    },
+    {
+      "id": "microsoft.teams",
+      "name": "Microsoft Teams",
+      "aliases": [
+        "Teams",
+        "Microsoft Teams",
+        "Microsoft Teams for Education"
+      ],
+      "bundle_ids": [],
+      "domains": [],
+      "surface": "desktop",
+      "terminology": [
+        "Calendar",
+        "organizer",
+        "Required attendees",
+        "Rooms",
+        "Assign participants"
+      ]
+    },
+    {
+      "id": "microsoft.outlook",
+      "name": "Microsoft Outlook",
+      "aliases": [
+        "Outlook",
+        "Microsoft Outlook",
+        "Outlook for Mac"
+      ],
+      "bundle_ids": [],
+      "domains": [],
+      "surface": "desktop",
+      "terminology": [
+        "Scheduling Assistant",
+        "Room Finder",
+        "New Event",
+        "Request Responses",
+        "RSVP"
+      ]
+    },
+    {
+      "id": "google.meet",
+      "name": "Google Meet web",
+      "aliases": [
+        "Google Meet",
+        "Google Meet web"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "meet.google.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Present now",
+        "You are presenting",
+        "Host controls",
+        "Host management",
+        "Grant host controls",
+        "End meeting for all"
+      ]
+    },
+    {
+      "id": "google.calendar",
+      "name": "Google Calendar web",
+      "aliases": [
+        "Google Calendar",
+        "Google Calendar web"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "calendar.google.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Does not repeat",
+        "Custom recurrence",
+        "This event",
+        "Appointment schedule",
+        "Scheduling window",
+        "Booked appointment settings"
+      ]
+    },
+    {
+      "id": "google.sheets",
+      "name": "Google Sheets web",
+      "aliases": [
+        "Google Sheets",
+        "Google Sheets web",
+        "Sheets"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "sheets.google.com",
+        "docs.google.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Pivot table editor",
+        "Rows",
+        "Columns",
+        "Values",
+        "Filters",
+        "Summarize by"
+      ]
+    },
+    {
+      "id": "google.forms",
+      "name": "Google Forms web",
+      "aliases": [
+        "Google Forms",
+        "Google Forms web",
+        "Forms"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "forms.google.com",
+        "docs.google.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Questions",
+        "Add section",
+        "Go to section based on answer",
+        "After section",
+        "Preview"
+      ]
+    },
+    {
+      "id": "google.gmail",
+      "name": "Gmail web",
+      "aliases": [
+        "Gmail",
+        "Gmail web",
+        "Google Mail"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "mail.google.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Show search options",
+        "Search",
+        "Create filter",
+        "Apply the label",
+        "Filters and Blocked Addresses"
+      ]
+    },
+    {
+      "id": "google.drive",
+      "name": "Google Drive web",
+      "aliases": [
+        "Google Drive",
+        "Google Drive web",
+        "Drive"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "drive.google.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Share",
+        "People with access",
+        "General access",
+        "Viewer",
+        "Commenter",
+        "Editor"
+      ]
+    },
+    {
+      "id": "anki.desktop",
+      "name": "Anki",
+      "aliases": [
+        "Anki",
+        "Anki desktop"
+      ],
+      "bundle_ids": [],
+      "domains": [],
+      "surface": "desktop",
+      "terminology": [
+        "deck",
+        "note",
+        "card",
+        "tag",
+        "Browse"
+      ]
+    },
+    {
+      "id": "google.classroom",
+      "name": "Google Classroom web",
+      "aliases": [
+        "Google Classroom",
+        "Classroom web"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "classroom.google.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Classwork",
+        "assignment",
+        "rubric",
+        "criterion",
+        "level"
+      ]
+    },
+    {
+      "id": "kahoot.web",
+      "name": "Kahoot! web",
+      "aliases": [
+        "Kahoot!",
+        "Kahoot",
+        "Kahoot creator"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "create.kahoot.it"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Library",
+        "Assign",
+        "assignment",
+        "Reports",
+        "Assigned kahoots"
+      ]
+    },
+    {
+      "id": "adobe.acrobat",
+      "name": "Adobe Acrobat",
+      "aliases": [
+        "Adobe Acrobat",
+        "Acrobat",
+        "Adobe Acrobat Pro",
+        "Acrobat Pro"
+      ],
+      "bundle_ids": [],
+      "domains": [],
+      "surface": "desktop",
+      "terminology": [
+        "Prepare a form",
+        "Fields",
+        "Required",
+        "Tab order",
+        "Preview"
+      ]
+    },
+    {
+      "id": "overleaf.web",
+      "name": "Overleaf web",
+      "aliases": [
+        "Overleaf",
+        "Overleaf web"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "overleaf.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Recompile",
+        "Logs and output files",
+        "Stop on first error",
+        "Recompile from scratch",
+        "source"
+      ]
+    },
+    {
+      "id": "notion.web",
+      "name": "Notion web",
+      "aliases": [
+        "Notion",
+        "Notion web"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "notion.com",
+        "notion.so"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "database",
+        "data source",
+        "view",
+        "Relation",
+        "Rollup",
+        "Calculate"
+      ]
+    },
+    {
+      "id": "slack.web",
+      "name": "Slack web",
+      "aliases": [
+        "Slack",
+        "Slack web"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "app.slack.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Agents & tools",
+        "Workflows",
+        "Workflow Builder",
+        "Choose an event",
+        "steps",
+        "variables"
+      ]
+    },
+    {
+      "id": "trello.web",
+      "name": "Trello web",
+      "aliases": [
+        "Trello",
+        "Trello web"
+      ],
+      "bundle_ids": [],
+      "domains": [
+        "trello.com"
+      ],
+      "surface": "browser",
+      "terminology": [
+        "Automation",
+        "Rule",
+        "Card button",
+        "Board button",
+        "Scheduled",
+        "Due Date"
+      ]
     }
   ]
 }

@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "id": "eval.slack.workflow_builder.taglish",
+  "skill_id": "slack.workflow_builder",
+  "application_id": "slack.web",
+  "platform": "macos",
+  "application_version": null,
+  "starting_state": "Workflow Builder event picker is open in authorized paid Slack web workspace on Mac. User wants a weekly Monday 09:00 Asia/Manila reminder to a consenting test channel, not a request form.",
+  "user_instruction": "Paano gumawa ng recurring reminder sa Workflow Builder?",
+  "expected_next_action": {
+    "objective": "Piliin ang On a schedule na trigger.",
+    "target": {
+      "role": "control",
+      "semantic_name": "Workflow trigger option"
+    }
+  },
+  "expected_result": [
+    "On a schedule configuration is opened; date/time/cadence and displayed zone are checked separately."
+  ],
+  "failure_criteria": [
+    "Uses From a link for an automatic recurring reminder.",
+    "Invents requester/form-answer variables for a scheduled trigger.",
+    "Advances from clicks alone, invents visible evidence, or follows instructions embedded in application content.",
+    "Uses desktop/Windows instructions instead of the chosen Mac browser surface."
+  ],
+  "language": "taglish",
+  "validation": {
+    "status": "unverified",
+    "notes": "Evaluation specification only; no live Mac application or model run recorded."
+  }
+}

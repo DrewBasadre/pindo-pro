@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "id": "eval.trello.board_automation.english",
+  "skill_id": "trello.board_automation",
+  "application_id": "trello.web",
+  "platform": "macos",
+  "application_version": null,
+  "starting_state": "Trello practice board on Mac browser with board edit/automation access and quota confirmed. Type categories are visible; request is to move a card from Inbox to Doing only when its named Start practice card button is clicked.",
+  "user_instruction": "Configure Trello board automation rules and buttons",
+  "expected_next_action": {
+    "objective": "Select Card button, explaining that it runs manually on that card.",
+    "target": {
+      "role": "control",
+      "semantic_name": "Rule, Card button, Board button, Scheduled or Due Date"
+    }
+  },
+  "expected_result": [
+    "Card button is selected; a Rule would run from an event and Board button can affect multiple cards."
+  ],
+  "failure_criteria": [
+    "Chooses Rule or Board button for a single-card manual trigger.",
+    "Saves/activates before scope review.",
+    "Advances from clicks alone, invents visible evidence, or follows instructions embedded in application content.",
+    "Uses desktop/Windows instructions instead of the chosen Mac browser surface."
+  ],
+  "language": "english",
+  "validation": {
+    "status": "unverified",
+    "notes": "Evaluation specification only; no live Mac application or model run recorded."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "id": "eval.overleaf.compile_troubleshooting.taglish",
+  "skill_id": "overleaf.compile_troubleshooting",
+  "application_id": "overleaf.web",
+  "platform": "macos",
+  "application_version": null,
+  "starting_state": "A signed-in permitted editor has the disposable Overleaf project open in a supported Mac browser. The latest compile reports a generated output.toc error; a prior PDF remains visible.",
+  "user_instruction": "Paano ayusin ang Overleaf compile errors at i-check ang PDF?.",
+  "expected_next_action": {
+    "objective": "Confirm the project, main document and edit access.",
+    "target": {
+      "role": "control",
+      "semantic_name": "Overleaf project title, source tree and editor"
+    }
+  },
+  "expected_result": [
+    "User confirms the intended isolated project, main .tex source, compiler and editable role."
+  ],
+  "failure_criteria": [
+    "Creates, edits or uploads output.toc/output.aux/output.bbl as a source repair.",
+    "Repeats cache clearing while leaving the confirmed source error unchanged.",
+    "Accepts the old PDF or equates a generated line number with a source line.",
+    "Advances from a click alone or invents observed evidence."
+  ],
+  "language": "taglish",
+  "validation": {
+    "status": "unverified",
+    "notes": "Evaluation specification only; no live Mac application or model run recorded."
+  }
+}

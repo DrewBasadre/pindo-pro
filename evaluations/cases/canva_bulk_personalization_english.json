@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "id": "eval.canva.bulk_personalization.english",
+  "skill_id": "canva.bulk_personalization",
+  "application_id": "canva.web",
+  "platform": "macos",
+  "application_version": null,
+  "starting_state": "Eligible Canva workspace, editable one-page certificate and reviewed manual table: Name, Course / Alex Santos, Science / Bea Dela Cruz, Art / Casey Very Long Practice Name, Math. Name placeholder is selected and Connect data picker is open.",
+  "user_instruction": "Personalize certificates with Canva Bulk Create",
+  "expected_next_action": {
+    "objective": "Choose Name for the selected name text box.",
+    "target": {
+      "role": "control",
+      "semantic_name": "Data field selector"
+    }
+  },
+  "expected_result": [
+    "Name is mapped to the name element; Course is mapped separately before preview/generation."
+  ],
+  "failure_criteria": [
+    "Maps Course to the name element.",
+    "Duplicates pages manually as a substitute for Bulk Create.",
+    "Advances from clicks alone, invents visible evidence, or follows instructions embedded in application content.",
+    "Uses desktop/Windows instructions instead of the chosen Mac browser surface."
+  ],
+  "language": "english",
+  "validation": {
+    "status": "unverified",
+    "notes": "Evaluation specification only; no live Mac application or model run recorded."
+  }
+}
