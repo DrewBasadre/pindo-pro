@@ -1,11 +1,12 @@
 # Changed files
 
-The inherited inventory was compared with `origin/main`; the desktop meetings, Google meetings/calendar, Google Workspace administration/data, study/classroom activities, research/document preparation and productivity/content workflows batches extend it from their current local HEADs without remote Git operations. Local reconciliation preserves main's MAI-UI runtime and UI while retaining all six skill commits and 23 additional tasks. The bundle now contains 136 macOS tasks and 411 cases. No merge or push was performed; by user decision, future bundle and README conflicts remain. A = created; M = modified. No tracked files are deleted. Ignored local build assets and authoring scratch scripts are not part of the change.
+The inherited inventory was compared with `origin/main`; the desktop meetings, Google meetings/calendar, Google Workspace administration/data, study/classroom activities, research/document preparation and productivity/content workflows batches extend it from their current local HEADs without remote Git operations. Local reconciliation preserves main's MAI-UI runtime and UI while retaining all six skill commits and 23 additional tasks. The bundle now contains 136 macOS tasks and 411 cases. PR follow-up integrates remote main into the feature branch and resolves the bundle and README conflicts, retaining main's current cover art, layout and team credits. Main and the PR remain unmerged. A = created; M = modified. No tracked files are deleted. Ignored local build assets and authoring scratch scripts are not part of the change.
 
-589 files are listed individually. Most are independently editable task and evaluation data; the generated app resource duplicates them intentionally for packaging.
+590 files are listed individually. Most are independently editable task and evaluation data; the generated app resource duplicates them intentionally for packaging.
 
 | Change | File | Purpose |
 | --- | --- | --- |
+| A | [docs/pindo-cover.png](../docs/pindo-cover.png) | Main's current README cover art, retained unchanged. |
 | M | [PLAN.md](../PLAN.md) | Main's existing project plan and implementation context. |
 | M | [PinDo.xcodeproj/project.pbxproj](../PinDo.xcodeproj/project.pbxproj) | Main's native build configuration. |
 | M | [PinDo/Agent.swift](../PinDo/Agent.swift) | Main's bounded action runner, grounding and execution safeguards. |
