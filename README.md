@@ -1,32 +1,60 @@
-# Pindo (macOS)
+![Pindo: Your Screen-Aware AI Tutor](docs/pindo-cover.png)
 
-A screen-aware AI assistant for macOS that helps teachers, students and everyday users find their way around
-unfamiliar apps. It answers questions, **points** at the next control to click (Guide), **does** simple steps for
-you (Do), and teaches step-by-step lessons (Teach), in English, Filipino and Taglish.
+# Pindo
 
-It runs on your Mac: the default model is **MAI-UI 8B**, served locally by Ollama. Cloud services are optional,
-off by default, and visibly marked when on.
+**Your screen-aware AI tutor for macOS.** Pindo helps teachers, students and everyday users learn unfamiliar
+software while they work. Ask a question, get a pointer to the next control, or let Pindo perform simple steps
+in English, Filipino or Taglish.
 
-**Status:** demo-ready prototype with known limitations (see [Verified limitations](#verified-limitations) and
-[the release report](docs/RELEASE_REPORT.md)). This is the macOS rebuild; the original Windows app lives in
+Developed by **Team 800k Daily**: Jansen Viray, Rica Diaz, Drew Clarence Basadre, and Eleneus Gyen nG.
+
+[Quick start](#quick-start) · [Using Pindo](#using-pindo) · [Current status](#current-status) · [Documentation](#documentation)
+
+## What Pindo Does
+
+| Mode | How it helps |
+|---|---|
+| **Ask** | Answers questions without controlling your computer. |
+| **Guide** | Points at the next control on screen; you make the click. |
+| **Do** | Performs simple actions through macOS Accessibility, one checked step at a time. |
+| **Teach** | Walks through lessons from the application skills library. |
+
+The default model is **MAI-UI 8B**, running locally through Ollama. Optional cloud guidance, voice input and
+spoken answers are off by default and visibly marked when enabled. The cover is a promotional illustration;
+the model and capabilities documented below describe this build.
+
+**Status: prototype with known limitations.** Builds and automated tests passed in the latest hardening pass,
+but that final build has not been re-tested live. Multi-step workflows remain unreliable, and built-in PDF
+conversion is not implemented. See [current status](#current-status) before planning a demo.
+
+This repository contains the macOS app. The original Windows implementation lives in
 [cadornajansen/pindo](https://github.com/cadornajansen/pindo).
 
-## Requirements
+## Quick Start
+
+### Requirements
 
 - Apple Silicon Mac, macOS 15 or later (developed on a MacBook Pro M4 Pro, 24 GB, macOS 26.6.2)
 - Xcode 26 to build
 - [Ollama](https://ollama.com) 0.12.7 or later (developed on 0.40.2)
 - About 6 GB free memory for the model
 
-## Set up the local model (MAI-UI 8B)
+### 1. Get the source
+
+```bash
+git clone https://github.com/DrewBasadre/pindo-pro.git
+cd pindo-pro
+```
+
+### 2. Start Ollama and download the model
 
 ```bash
 ollama pull maternion/mai-ui:8b      # 6.1 GB, qwen3vl architecture, Q4_K_M
 ```
 
-Pindo talks to Ollama at `http://127.0.0.1:11434` and keeps the model loaded. Nothing else is needed for local use.
+Keep Ollama running. Pindo connects to `http://127.0.0.1:11434`; no cloud API key is needed for local use.
 
-## Build and run
+### 3. Build and launch
 
 ```bash
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer xcodebuild -project PinDo.xcodeproj -scheme PinDo -derivedDataPath build build
@@ -54,7 +82,7 @@ tccutil reset ScreenCapture com.pindopro.PinDo; tccutil reset Accessibility com.
 The permanent fix is a stable signing identity: choose a Team (a free Apple ID works) under *Signing &
 Capabilities* in Xcode. Grants then survive rebuilds.
 
-## Using it
+## Using Pindo
 
 Press **`Fn + Space`** anywhere (or menu bar → *Open Quick Bar*) and type. There's no mode to pick; Pindo decides
 from the wording ([`IntentPolicy`](PinDo/IntentPolicy.swift)):
@@ -92,6 +120,9 @@ key from the Keychain at most once per launch, off the main thread.
 Debug builds only: a developer key file `~/Library/Application Support/PinDo/<assemblyai|elevenlabs|openrouter>.key`
 (chmod 600) is used **only when the Keychain has no entry**. It is not compiled into Release builds.
 
+<details>
+<summary>Advanced configuration</summary>
+
 ### Configuration
 
 All non-secret settings are in [`Config`](PinDo/Config.swift). Change them in Settings or with
@@ -108,7 +139,9 @@ All non-secret settings are in [`Config`](PinDo/Config.swift). Change them in Se
 
 Precedence: a valid stored value, otherwise the default. No environment variables are read.
 
-## What works, and what doesn't
+</details>
+
+## Current Status
 
 Verified on the development Mac (details in [the benchmark](docs/PINDO_FINAL_BENCHMARK.md) and
 [the release report](docs/RELEASE_REPORT.md)):
@@ -148,6 +181,11 @@ Most lessons are written from documentation and are marked unverified until test
 
 ## Developer checks
 
+<details>
+<summary>Build validation and automated test commands</summary>
+
+Run from the repository root after building the app:
+
 ```bash
 swiftc -swift-version 6 PinDo/IntentPolicy.swift tests/IntentPolicyTests.swift -o build/intent-tests && build/intent-tests
 swiftc -swift-version 6 PinDo/GroundingGeometry.swift tests/GroundingTests.swift -o build/grounding-tests && build/grounding-tests
@@ -159,5 +197,26 @@ python3 -B -m unittest discover -s tests
 ```
 
 `tests/InaccessibleTarget.swift` opens a window whose buttons are invisible to Accessibility (vision test).
-See [ARCHITECTURE.md](docs/ARCHITECTURE.md) and [DISCLOSURES.md](docs/DISCLOSURES.md).
-[PLAN.md](PLAN.md) is the original (historical) plan.
+
+</details>
+
+## Documentation
+
+| Document | Contents |
+|---|---|
+| [Architecture](docs/ARCHITECTURE.md) | App structure, request flow and model integration. |
+| [Release report](docs/RELEASE_REPORT.md) | Hardening changes, validation and outstanding live checks. |
+| [Disclosures](docs/DISCLOSURES.md) | Dependencies, cloud services and prototype limitations. |
+| [Application skills](docs/APPLICATION_SKILLS.md) | Lesson format and evaluation contract. |
+| [Skill catalogue](docs/SKILL_CATALOGUE.md) | Available lessons by application. |
+| [Historical benchmark](docs/PINDO_FINAL_BENCHMARK.md) | Earlier hands-on results and failure cases. |
+| [Original plan](PLAN.md) | Historical project scope and implementation plan. |
+
+## Team 800k Daily
+
+Developed by:
+
+- Jansen Viray
+- Rica Diaz
+- Drew Clarence Basadre
+- Eleneus Gyen nG
