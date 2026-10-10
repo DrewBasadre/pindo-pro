@@ -1,14 +1,27 @@
-![Pindo: Your Screen-Aware AI Tutor](docs/pindo-cover.png)
+<p align="center">
+  <img src="docs/pindo-cover.png" alt="Pindo: Your Screen-Aware AI Tutor" width="800">
+</p>
 
-# Pindo
+<h1 align="center">Pindo</h1>
 
-**Your screen-aware AI tutor for macOS.** Pindo helps teachers, students and everyday users learn unfamiliar
-software while they work. Ask a question, get a pointer to the next control, or let Pindo perform simple steps
-in English, Filipino or Taglish.
+<p align="center">
+  <strong>Your screen-aware AI tutor for macOS.</strong><br>
+  Learn unfamiliar apps, find the next control, and get help with everyday tasks.<br>
+  English, Filipino and Taglish. Local AI with optional cloud features.
+</p>
 
-Developed by **Team 800k Daily**: Jansen Viray, Rica Diaz, Drew Clarence Basadre, and Eleneus Gyen nG.
+<p align="center">
+  Developed by <a href="#team-800k-daily"><strong>Team 800k Daily</strong></a>
+</p>
 
-[Quick start](#quick-start) · [Using Pindo](#using-pindo) · [Current status](#current-status) · [Documentation](#documentation)
+<p align="center">
+  <a href="#quick-start">Quick Start</a> &nbsp;·&nbsp;
+  <a href="#using-pindo">Using Pindo</a> &nbsp;·&nbsp;
+  <a href="#current-status">Current Status</a> &nbsp;·&nbsp;
+  <a href="#documentation">Documentation</a>
+</p>
+
+---
 
 ## What Pindo Does
 
