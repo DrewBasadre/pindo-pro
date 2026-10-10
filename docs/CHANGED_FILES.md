@@ -1,13 +1,49 @@
 # Changed files
 
-The inherited inventory was compared with `origin/main`; the desktop meetings, Google meetings/calendar, Google Workspace administration/data, study/classroom activities, research/document preparation and productivity/content workflows batches extend it from their current local HEADs without remote Git operations. A = created; M = modified. No tracked files are deleted. Ignored local build assets and authoring scratch scripts are not part of the change.
+The inherited inventory was compared with `origin/main`; the desktop meetings, Google meetings/calendar, Google Workspace administration/data, study/classroom activities, research/document preparation and productivity/content workflows batches extend it from their current local HEADs without remote Git operations. Local reconciliation preserves main's MAI-UI runtime and UI while retaining all six skill commits and 23 additional tasks. The bundle now contains 136 macOS tasks and 411 cases. No merge or push was performed; by user decision, future bundle and README conflicts remain. A = created; M = modified. No tracked files are deleted. Ignored local build assets and authoring scratch scripts are not part of the change.
 
-553 files are listed individually. Most are independently editable task and evaluation data; the generated app resource duplicates them intentionally for packaging.
+589 files are listed individually. Most are independently editable task and evaluation data; the generated app resource duplicates them intentionally for packaging.
 
 | Change | File | Purpose |
 | --- | --- | --- |
+| M | [PLAN.md](../PLAN.md) | Main's existing project plan and implementation context. |
+| M | [PinDo.xcodeproj/project.pbxproj](../PinDo.xcodeproj/project.pbxproj) | Main's native build configuration. |
+| M | [PinDo/Agent.swift](../PinDo/Agent.swift) | Main's bounded action runner, grounding and execution safeguards. |
+| A | [PinDo/Cloud.swift](../PinDo/Cloud.swift) | Main's optional cloud provider and Keychain-backed configuration. |
+| A | [PinDo/Config.swift](../PinDo/Config.swift) | Main's MAI-UI local default, validated loopback endpoint and inference timeouts. |
+| A | [PinDo/Grounding.swift](../PinDo/Grounding.swift) | Main's visual target parsing and grounding validation. |
+| A | [PinDo/GroundingGeometry.swift](../PinDo/GroundingGeometry.swift) | Main's screenshot and display coordinate transforms. |
+| A | [PinDo/GuideSession.swift](../PinDo/GuideSession.swift) | Main's guide lifecycle and target highlighting. |
+| A | [PinDo/IntentPolicy.swift](../PinDo/IntentPolicy.swift) | Main's automatic question, Guide, Do and Teach routing. |
+| M | [PinDo/PinDoApp.swift](../PinDo/PinDoApp.swift) | Main's application lifecycle and permission behavior. |
+| A | [PinDo/PointerOverlay.swift](../PinDo/PointerOverlay.swift) | Main's pointer/highlight overlay and display behavior. |
+| A | [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md) | Main's current runtime, model and UI architecture. |
+| A | [docs/DISCLOSURES.md](../docs/DISCLOSURES.md) | Main's existing disclosures and runtime limits. |
+| A | [docs/PINDO_FINAL_BENCHMARK.md](../docs/PINDO_FINAL_BENCHMARK.md) | Main's historical benchmark evidence; no new measurements claimed. |
+| A | [docs/RELEASE_REPORT.md](../docs/RELEASE_REPORT.md) | Main's historical release checks and documented limitations. |
+| A | [evaluations/cases/canva_add_shape_english.json](../evaluations/cases/canva_add_shape_english.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/canva_add_shape_recovery.json](../evaluations/cases/canva_add_shape_recovery.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/canva_add_shape_taglish.json](../evaluations/cases/canva_add_shape_taglish.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/canva_add_text_english.json](../evaluations/cases/canva_add_text_english.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/canva_add_text_recovery.json](../evaluations/cases/canva_add_text_recovery.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/canva_add_text_taglish.json](../evaluations/cases/canva_add_text_taglish.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/canva_text_effects_english.json](../evaluations/cases/canva_text_effects_english.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/canva_text_effects_recovery.json](../evaluations/cases/canva_text_effects_recovery.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/canva_text_effects_taglish.json](../evaluations/cases/canva_text_effects_taglish.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/excel_fill_table_english.json](../evaluations/cases/excel_fill_table_english.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/excel_fill_table_recovery.json](../evaluations/cases/excel_fill_table_recovery.json) | Main's retained task evaluation specification. |
+| A | [evaluations/cases/excel_fill_table_taglish.json](../evaluations/cases/excel_fill_table_taglish.json) | Main's retained task evaluation specification. |
+| A | [skills/canva/add_shape.json](../skills/canva/add_shape.json) | Main's macOS lesson: Add a shape in Canva. |
+| A | [skills/canva/add_text.json](../skills/canva/add_text.json) | Main's macOS lesson: Add text or a heading in Canva. |
+| A | [skills/canva/text_effects.json](../skills/canva/text_effects.json) | Main's macOS lesson: Apply a text effect in Canva. |
+| A | [skills/excel/fill_table.json](../skills/excel/fill_table.json) | Main's macOS lesson: Fill a student ID and name table. |
+| A | [tests/CloudTests.swift](../tests/CloudTests.swift) | Main's optional cloud configuration checks. |
+| A | [tests/ConfigTests.swift](../tests/ConfigTests.swift) | Main's local model, endpoint and timeout checks. |
+| A | [tests/GroundingTests.swift](../tests/GroundingTests.swift) | Main's grounding and coordinate checks. |
+| A | [tests/InaccessibleTarget.swift](../tests/InaccessibleTarget.swift) | Main's native accessibility test target. |
+| A | [tests/IntentPolicyTests.swift](../tests/IntentPolicyTests.swift) | Main's intent-routing checks. |
 | A | [.github/workflows/skills.yml](../.github/workflows/skills.yml) | Windows validation plus native macOS build, Swift tests and bundle check. |
-| M | [PinDo/QuickBar.swift](../PinDo/QuickBar.swift) | Adds explicit Teach routing and preserves the panel during a lesson. |
+| M | [PinDo/QuickBar.swift](../PinDo/QuickBar.swift) | Retains main's automatic question/Guide/Do/Teach routing, settings and panel behavior. |
 | A | [PinDo/Resources/ApplicationSkills.json](../PinDo/Resources/ApplicationSkills.json) | Generated deterministic resource containing all profiles and tasks. |
 | A | [PinDo/SkillLibrary.swift](../PinDo/SkillLibrary.swift) | Swift data reader, application/task matching and progression predicates. |
 | A | [PinDo/TutorClient.swift](../PinDo/TutorClient.swift) | Bounded local vision request, structured guidance and response metrics. |
@@ -15,7 +51,7 @@ The inherited inventory was compared with `origin/main`; the desktop meetings, G
 | A | [PinDo/TutorSession.swift](../PinDo/TutorSession.swift) | Teaching state, debounce, cancellation, stale responses and progression. |
 | A | [PinDo/TutorView.swift](../PinDo/TutorView.swift) | Lesson selection, prerequisites, explanations and pause/confirmation controls. |
 | M | [README.md](../README.md) | Teach-mode overview and entry points for development and Mac testing. |
-| A | [application_profiles.json](../application_profiles.json) | Application aliases, known bundle IDs, surfaces, domains and terminology, including distinct Zoom/Teams/Outlook desktop and Google Meet/Calendar and Sheets/Forms/Gmail/Drive/Classroom/Kahoot browser profiles plus Anki desktop with unconfirmed bundle IDs left empty; shared-host editors require explicit selection. Word profile reused for Zotero integration; new Acrobat desktop and Overleaf browser profiles, verified overleaf.com domain and unknown bundle IDs empty. Productivity/content: existing Canva profile reused unchanged; Notion, Slack and Trello browser profiles added with service domains and empty unknown bundle IDs. |
+| A | [application_profiles.json](../application_profiles.json) | Application aliases, known bundle IDs, surfaces, domains and terminology, including distinct Zoom/Teams/Outlook desktop and Google Meet/Calendar and Sheets/Forms/Gmail/Drive/Classroom/Kahoot browser profiles plus Anki desktop with unconfirmed bundle IDs left empty; shared-host editors require explicit selection. Word profile reused for Zotero integration; new Acrobat desktop and Overleaf browser profiles, verified overleaf.com domain and unknown bundle IDs empty. Productivity/content: main's Canva profile reused with its known desktop-wrapper bundle ID; Notion, Slack and Trello browser profiles added with service domains and empty unknown bundle IDs. |
 | A | [docs/APPLICATION_SKILLS.md](../docs/APPLICATION_SKILLS.md) | Version 2 contract, execution flow, observation limits, meeting/data prerequisites, shared-host selection, study/classroom prerequisites and evidence policy. Research/document counts, plugin/license/access requirements, paused Zotero transitions and validation boundaries. Productivity/content counts, browser surface decisions, plan/permission gates and validation limitations. |
 | A | [docs/CHANGED_FILES.md](../docs/CHANGED_FILES.md) | Complete created/modified file report for this branch. |
 | A | [docs/MAC_HANDOFF.md](../docs/MAC_HANDOFF.md) | Exact continuation/build steps and available-app validation instructions. Productivity/content browser setup and manual test boundaries. |

@@ -340,7 +340,7 @@
       "Current browser service documentation reviewed 2026-10-10 (Asia/Manila); record exact macOS/browser versions and service layout before testing."
     ],
     "tested_versions": [],
-    "notes": "Documentation-derived Mac browser candidate; no live application, screenshot evidence or qwen3-vl:8b performance run. Schema/routing checks do not verify GUI behavior."
+    "notes": "Documentation-derived Mac browser candidate; no live application, screenshot evidence or local-model performance run. Schema/routing checks do not verify GUI behavior."
   },
   "sources": [
     {

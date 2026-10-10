@@ -303,7 +303,7 @@
       "Official computer/browser documentation reviewed 2026-10-10; Mac applicability documented, exact macOS/browser builds and account entitlements must be recorded during testing."
     ],
     "tested_versions": [],
-    "notes": "Documentation-derived workflow and evaluation specifications only. Schema, routing and packaging checks do not establish live Mac GUI behavior or qwen3-vl:8b performance."
+    "notes": "Documentation-derived workflow and evaluation specifications only. Schema, routing and packaging checks do not establish live Mac GUI behavior or local-model performance."
   },
   "related_skills": [
     "meet.presentation_controls",

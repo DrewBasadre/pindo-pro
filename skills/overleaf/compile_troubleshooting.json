@@ -291,7 +291,7 @@
       "Overleaf hosted editor documentation researched 2026-10-10; supported listed Mac browsers released within the last 12 months. No fixed hosted build or live test recorded."
     ],
     "tested_versions": [],
-    "notes": "Official documentation researched 2026-10-10. Schema/routing/bundle validation only; no live Mac GUI run, screenshots or measured qwen3-vl:8b performance."
+    "notes": "Official documentation researched 2026-10-10. Schema/routing/bundle validation only; no live Mac GUI run, screenshots or measured local-model performance."
   },
   "related_skills": []
 }

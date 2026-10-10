@@ -13,28 +13,91 @@ enum Agent {
     static func run(task: String, report: (String) -> Void, confirm: (String) async -> Bool) async throws {
         if await fastPath(task, report: report) { return }
 
+        // A matching lesson from the skills library becomes a known procedure for the model to follow.
+        // The totals lesson is a review procedure (inspect, add an AVERAGE, "formula bar shows SUM"): in Do mode it made the
+        // model retype a finished formula. Typing totals is covered by the Excel tip; Teach mode still uses the lesson.
+        // Picked for the app in front, so it's picked again after Pindo opens another app (a Finder lesson was
+        // steering a Safari search).
+        var procedure = "", menuQuery = task
+        func pickLesson() {
+            let skill = Skills.match(task: task).flatMap { ["excel.totals_averages"].contains($0.id) ? nil : $0 }
+            if let skill { report("▸ Using skill: \(skill.title)") }
+            procedure = skill.map { "\n\n" + Skills.procedure($0) } ?? ""
+            // Menu commands are ranked by word overlap; include the skill's targets so e.g. "Data Validation" is offered.
+            menuQuery = task + (skill.map { " " + $0.steps.map(\.target.semantic_name).joined(separator: " ") } ?? "")
+        }
+        pickLesson()
+
         var history: [String] = []
         var lastProposal = ""
+        var anchorPID: pid_t? // the app being worked on; switching away stops the task
+        var enteredHeader: String?, enteredRows = 0 // Excel table already typed through the formula bar
+        // A plain question gets an answer, never actions: the model can only reply (it opened news sites otherwise).
+        let answerOnly = IntentPolicy.isQuestion(task)
         // Typing or Return over a selection replaces it; only allow that when the task asks to overwrite.
         // ponytail: keyword heuristic; revisit when tasks get more varied.
         let keepSelection = task.contains(/\b(replace|overwrite|change|rewrite|rename|delete|remove|instead)\b/.ignoresCase())
+        // Acting needs Accessibility. Without it every app looks empty and the model guesses: say so instead.
+        if !answerOnly, !AXIsProcessTrusted() {
+            report("Pindo needs Accessibility permission to use apps. Allow PinDo in System Settings → Privacy & Security → Accessibility, then try again.")
+            return
+        }
         for _ in 1...maxSteps {
             try Task.checkCancellation()
             guard let app = NSWorkspace.shared.frontmostApplication else { break }
             let pid = app.processIdentifier, appName = app.localizedName ?? "App"
-            let snap = await Task.detached { AX.snapshot(pid: pid, appName: appName, task: task) }.value
+            if !answerOnly, let anchorPID, anchorPID != pid {
+                agentLog.info("front app is now \(appName, privacy: .public)")
+                report("Stopped because \(appName) came to the front. Nothing more was done.")
+                return
+            }
+            anchorPID = pid
+            let query = menuQuery
+            let snap = await Task.detached { AX.snapshot(pid: pid, appName: appName, task: query) }.value
+            // Three rejected proposals in a row (invented ids, non-text targets…): stop with the real reason
+            // instead of looping or asking the user to rephrase a valid request.
+            if history.reversed().prefix(while: { $0.contains(" ✗") }).count >= 3 {
+                report(Self.stuckMessage(appName: appName, readable: !snap.candidates.isEmpty))
+                return
+            }
 
             let started = Date()
-            let action = try await Ollama.nextAction(task: task, history: history, screen: snap.prompt)
+            let action = try await Ollama.nextAction(task: task, history: history, screen: snap.prompt + procedure, answerOnly: answerOnly)
             agentLog.info("step \(history.count + 1, privacy: .public) in \(Date().timeIntervalSince(started), format: .fixed(precision: 2), privacy: .public)s: \(action.summary, privacy: .public)")
             try Task.checkCancellation()
+            // Never act on an app the user switched to while the model was thinking (its elements are stale).
+            // Answers take no action, so they don't need this.
+            if !answerOnly, let front = NSWorkspace.shared.frontmostApplication, front.processIdentifier != pid {
+                agentLog.info("front app changed from \(appName, privacy: .public) to \(front.localizedName ?? "?", privacy: .public)")
+                report("Stopped because \(front.localizedName ?? "another app") came to the front. Nothing more was done.")
+                return
+            }
+            // Small models sometimes "ask" the user's own question back instead of answering it. Retry once.
+            let plain = { (s: String) in s.lowercased().filter { $0.isLetter || $0.isNumber } }
+            if action.action == "ask", let question = action.message, plain(question) == plain(task) {
+                let note = "ask ✗ that repeats the user's question; answer it with done"
+                if history.contains(note) { report("I couldn't answer that. Try rephrasing it."); return }
+                history.append(note)
+                continue
+            }
+            // Questions never act. The local grammar enforces this; a cloud model isn't bound by it, so check here too.
+            if answerOnly, !["done", "ask"].contains(action.action) {
+                history.append("\(action.action) ✗ this is a question: answer it with done"); continue
+            }
             let element = action.id.flatMap { id in snap.candidates.first { $0.id == id } }
             // Steps are named by label, not id: menu ids shift when items enable (e.g. after Select All).
             let step = describe(action, element)
+            // Excel: retyping the address the name box already shows changes nothing visible, so the model repeats it.
+            // Say what that means instead of stopping on the repeat.
+            if action.action == "type", let element, element.label.lowercased() == "name box", let address = action.text?.nonEmpty,
+               !history.isEmpty, element.line.localizedCaseInsensitiveContains("text=\"\(address)\"") {
+                history.append("\(step) ✗ \(address) is already selected (the name box shows it); now type the cell values into the Formula Bar")
+                continue
+            }
             if step == lastProposal {
                 report(history.last?.hasSuffix("✓") == true
-                    ? "Stopped before repeating \(step). The task is probably finished. Tell me if it isn't."
-                    : "I keep trying the same step (\(step)), so I stopped. Try rephrasing the task.")
+                    ? "I stopped because the next step (\(step)) would repeat the last one. Check whether the task is finished; nothing more was done."
+                    : Self.stuckMessage(appName: appName, readable: !snap.candidates.isEmpty))
                 return
             }
             lastProposal = step
@@ -46,27 +109,90 @@ enum Agent {
                 return
             case "open_app":
                 guard let name = action.text?.nonEmpty else { history.append("open_app ✗ no app name given"); continue }
+                // The prompt's "only open an app the task names", enforced: questions were opening Safari.
+                guard name.split(separator: " ").contains(where: { $0.count > 2 && task.localizedCaseInsensitiveContains($0) }) else {
+                    history.append("open_app \(name) ✗ the task doesn't name \(name); answer with done or use the open app")
+                    continue
+                }
                 if appName.localizedCaseInsensitiveContains(name) || name.localizedCaseInsensitiveContains(appName) {
                     history.append("open_app \(name) ✗ \(appName) is already open and in front; use its elements") // small models loop on this
                     continue
                 }
                 report("▸ Opening \(name)")
+                anchorPID = nil // the opened app becomes the one to work in
                 if await openApp(name) { settle = .milliseconds(1500) } else { history.append("open_app \(name) ✗ not installed"); continue }
             case "open_url":
                 guard let url = action.text.flatMap(webURL) else { history.append("open_url ✗ not a web address"); continue }
+                // Like open_app: only a site the task names ("youtube" for youtube.com).
+                let site = url.host()?.split(separator: ".").dropLast().last.map(String.init) ?? ""
+                guard site.count > 1, task.localizedCaseInsensitiveContains(site) else {
+                    history.append("open_url \(url.host() ?? "") ✗ the task doesn't name that site; answer with done or use the open app")
+                    continue
+                }
                 report("▸ Opening \(url.host() ?? url.absoluteString)")
                 NSWorkspace.shared.open(url)
+                anchorPID = nil
                 settle = .milliseconds(1500)
             case "press":
-                guard let element else { history.append("press \(action.id ?? "") ✗ no such id"); continue }
+                guard let element else { history.append("press \(Self.unknownID(action.id))"); continue }
+                // Pressing a text field does nothing (Safari refused, the model retried). Right after typing into it,
+                // the intent is to submit: press Return, with the same check as any Return key.
+                if element.isText {
+                    guard history.last?.hasPrefix("type “\(element.label)”") == true else {
+                        history.append("press \(element.id) ✗ that is a text field: type into it, then press return"); continue
+                    }
+                    if Keys.isRisky("return", appName: appName), !(await confirm("Press Return in \(appName)?")) { report("Stopped. No key was pressed."); return }
+                    report("▸ Pressing Return to submit “\(element.label)”")
+                    Keys.post(Keys.parse("return")!, pid: pid)
+                    history.append("key return (submitted “\(element.label)”) ✓")
+                    try await Task.sleep(for: .milliseconds(800))
+                    continue
+                }
                 if isRisky(element.label), !(await confirm("Press “\(element.label)”?")) { report("Stopped. Nothing was pressed."); return }
                 report("▸ Pressing “\(element.label)”")
                 if !AX.press(element.element) { history.append("press \(element.id) ✗ the app refused"); continue }
             case "type":
-                guard let element, let text = action.text, !text.isEmpty else { history.append("type ✗ needs a listed id and text"); continue }
+                guard let element else { history.append("type \(Self.unknownID(action.id))"); continue }
+                guard let text = action.text, !text.isEmpty else { history.append("type \(element.id) ✗ no text given"); continue }
+                // Typing at a button falls back to key events, which land in whatever has focus: never do that.
+                guard element.isText else { history.append("type \(element.id) ✗ that is not a text field"); continue }
                 report("▸ Typing into “\(element.label)”")
-                if !keepSelection { AX.collapseSelection(element.element) }
-                AX.type(text, into: element.element, pid: pid)
+                if element.label.lowercased() == "name box" { // Excel: replace the address, and it only moves on Return
+                    AX.replace(text, in: element.element)
+                    Keys.post(Keys.parse("return")!, pid: pid)
+                } else if element.label.lowercased().hasPrefix("formula bar") {
+                    // The model kept retyping a finished table with new made-up names (so no exact repeat): the same
+                    // header row again means the table is in, so finish and say what was actually typed.
+                    let rows = text.split(separator: "\n").filter { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
+                    if let header = rows.first.map(String.init), header == enteredHeader {
+                        report("Done: typed \(enteredRows) rows into Excel, starting with “\(header.replacingOccurrences(of: "\t", with: " | "))”. Check the sheet.")
+                        return
+                    }
+                    enteredHeader = rows.first.map(String.init)
+                    enteredRows = rows.count
+                    // Excel accepts text set on the formula bar through Accessibility and ignores it (nothing appeared).
+                    // Type into the selected cell like a person instead: each line, then Return, which commits it and
+                    // moves down, so "Sales\n100\n200" fills the selected cell and the ones below it.
+                    // Tabs separate the cells of a row (Tab moves right; Return goes back to the row's first column, one row down).
+                    for line in text.split(separator: "\n") where !line.trimmingCharacters(in: .whitespaces).isEmpty {
+                        for (i, cell) in line.split(separator: "\t", omittingEmptySubsequences: false).enumerated() {
+                            if i > 0 { Keys.post(Keys.parse("tab")!, pid: pid); try await Task.sleep(for: .milliseconds(60)) }
+                            Keys.typeText(String(cell), pid: pid)
+                            try await Task.sleep(for: .milliseconds(60))
+                        }
+                        Keys.post(Keys.parse("return")!, pid: pid)
+                        try await Task.sleep(for: .milliseconds(120))
+                    }
+                } else {
+                    // A just-created item's name field ("untitled folder", all selected) is meant to be replaced, then
+                    // committed with Return. Collapsing it appended the name ("untitled folderPindo Test") in testing.
+                    let freshName = AX.isFreshName(element.element)
+                    if !keepSelection, !freshName { AX.collapseSelection(element.element) }
+                    guard AX.type(text, into: element.element, pid: pid) else {
+                        history.append("type \(element.id) ✗ “\(element.label)” didn't accept text or take focus"); continue
+                    }
+                    if freshName { Keys.post(Keys.parse("return")!, pid: pid) }
+                }
             case "key":
                 guard let combo = action.combo?.nonEmpty ?? action.text?.nonEmpty, let key = Keys.parse(combo) else {
                     history.append("key ✗ unknown shortcut"); continue
@@ -83,12 +209,26 @@ enum Agent {
             }
             history.append(step + " ✓")
             try await Task.sleep(for: settle)
+            if action.action == "open_app" || action.action == "open_url" { pickLesson() }
         }
         report("Stopped after \(maxSteps) steps. Tell me what's left and I'll continue.")
     }
 
+    /// Ids come only from the current list; anything else (a made-up "<id of a textfield>", a label) is rejected.
+    private static func unknownID(_ id: String?) -> String {
+        "\((id ?? "").prefix(40)) ✗ not an id from the list; use an id exactly as listed (like e3 or m2)"
+    }
+
+    /// Why Pindo stopped when it can't progress, in terms the user can act on.
+    private static func stuckMessage(appName: String, readable: Bool) -> String {
+        readable
+            ? "I couldn't find a control in \(appName) that does this, so I stopped. Nothing more was changed."
+            : "I can't read \(appName)'s controls through Accessibility, so I can't do this here. Ask “Show me how…” instead: Guide mode can use the screen."
+    }
+
     private static func describe(_ action: Ollama.Action, _ element: Candidate?) -> String {
-        [action.action, element.map { "“\($0.label)”" } ?? action.id, action.combo, action.text.map { "\"\($0.prefix(40))\"" }]
+        [action.action, element.map { "“\($0.label)”" } ?? action.id, action.combo,
+         action.text.map { "\"\($0.prefix(40).replacingOccurrences(of: "\n", with: "\\n"))\"" }]
             .compactMap { $0 }.joined(separator: " ")
     }
 
@@ -132,6 +272,46 @@ enum Agent {
     }
 }
 
+// MARK: - Skills library (docs/APPLICATION_SKILLS.md), reused as procedures in doing mode
+
+enum Skills {
+    private static let library = try? SkillLibrary.load()
+
+    /// The lesson for the frontmost app whose keywords best match the request, if any.
+    static func match(task: String) -> TeachingSkill? {
+        guard let library, let target = try? TutorCapture.target() else { return nil }
+        let apps = library.applications.filter { $0.matches(name: target.appName, bundleID: target.bundleID, host: target.host) }
+        let lowered = task.lowercased()
+        let hits = { (skill: TeachingSkill) in skill.match_groups.joined().filter { lowered.contains($0.lowercased()) }.count }
+        return apps.flatMap { library.candidates(applicationID: $0.id, instruction: task) }.max { hits($0) < hits($1) }
+    }
+
+    /// Lessons are written for people ("choose a List rule"); these say how to do it with PinDo's actions.
+    /// Keyed by application id or skill id. Without the dropdown hint the model pressed the Input Message tab.
+    // ponytail: hand-written per skill; move into ApplicationSkills.json (an "agent_hint" per step) as they grow.
+    private static let tips = [
+        // Wording tested offline on the saved Excel prompt: with it the model selects A1 once, then fills every cell in one step.
+        "apple.finder": "Finder tip: to make a folder, press the menu command File > New Folder; then type the folder's name into the "
+            + "new name field (it replaces untitled folder and is saved for you), then reply done.",
+        "microsoft.excel": "Excel steps for entering cells: (1) type the top-left cell address (like A1) into the \"name box\" field, once. "
+            + "(2) Then type ALL the cells in ONE type action into the \"Formula Bar\" textarea: one table row per line (\\n) and the "
+            + "cells of a row separated by \\t, headers first, e.g. \"Header 1\\tHeader 2\\nvalue\\tvalue\". Each row fills left to right, "
+            + "then the next row starts below it. Formulas start with =. (3) Then reply done.",
+        "excel.dropdown": "Hint: in Data Validation, press the \"Allow:\" popup and choose List; then type the choices, separated by commas, into \"Source:\" and press OK.",
+    ]
+
+    static func procedure(_ skill: TeachingSkill) -> String {
+        let steps = skill.steps.enumerated().map { i, step in
+            "\(i + 1). \(step.objective) [\(step.target.semantic_name)] Done when: \(step.expected_result.joined(separator: " "))"
+        }
+        // The lesson's input questions are left out: with them the model asked even when the task gave every detail.
+        // "Skip … the task doesn't ask for": the totals lesson made the model add an AVERAGE nobody requested.
+        return "Known procedure from PinDo's skills library (trusted; follow it in order, using the controls listed above, "
+            + "and skip steps the task doesn't ask for): \(skill.title)\n"
+            + steps.joined(separator: "\n") + [skill.application_id, skill.id].compactMap { tips[$0] }.map { "\n" + $0 }.joined()
+    }
+}
+
 // MARK: - Accessibility snapshot + actions
 
 /// One control the model can act on. IDs are only valid within one snapshot.
@@ -140,6 +320,7 @@ nonisolated struct Candidate: @unchecked Sendable { // AXUIElement is a thread-s
     let line: String  // what the model sees
     let label: String // what the user sees
     let element: AXUIElement
+    var isText = false // only text fields/areas may be typed into
 }
 
 nonisolated struct Snapshot: Sendable {
@@ -153,10 +334,10 @@ nonisolated struct Snapshot: Sendable {
 nonisolated enum AX {
     private static let actionableRoles: Set<String> = [
         "AXButton", "AXCheckBox", "AXRadioButton", "AXPopUpButton", "AXMenuButton",
-        "AXTextField", "AXTextArea", "AXComboBox", "AXLink",
+        "AXTextField", "AXTextArea", "AXComboBox", "AXLink", "AXMenuItem", // menu items = an open popup's choices
     ]
     private static let textRoles: Set<String> = ["AXTextField", "AXTextArea", "AXComboBox"]
-    private static let skippedMenus: Set<String> = ["Services", "Open Recent"]
+    private static let skippedMenus: Set<String> = ["Services", "Open Recent", "Writing Tools"] // Writing Tools rewrites text
     private static let stopWords: Set<String> = ["the", "and", "for", "with", "this", "that", "make", "please", "can", "you", "into", "from", "all", "new"]
 
     static func snapshot(pid: pid_t, appName: String, task: String) -> Snapshot {
@@ -178,7 +359,9 @@ nonisolated enum AX {
         // ranked by word overlap with the task so the list stays short.
         let taskWords = words(task).subtracting(stopWords)
         var menuItems: [(path: String, el: AXUIElement)] = []
-        if let bar: AXUIElement = attr(app, kAXMenuBarAttribute), let tops: [AXUIElement] = attr(bar, kAXChildrenAttribute) {
+        // While a dialog is in front its own buttons are what matter; menu commands only distract (it pressed one).
+        let inDialog = window.flatMap { attr($0, kAXSubroleAttribute) as String? }.map { $0.contains("Dialog") } ?? false
+        if !inDialog, let bar: AXUIElement = attr(app, kAXMenuBarAttribute), let tops: [AXUIElement] = attr(bar, kAXChildrenAttribute) {
             for top in tops.dropFirst() { // skip the Apple menu
                 if let title: String = attr(top, kAXTitleAttribute), title != "Window" { collectMenu(top, path: title, depth: 0, into: &menuItems) }
             }
@@ -200,11 +383,30 @@ nonisolated enum AX {
     }
 
     /// Inserts at the caret like typing (never replaces the whole field), falling back to key events.
-    static func type(_ text: String, into el: AXUIElement, pid: pid_t) {
+    /// Inserts text through Accessibility. Falls back to key events only when this field really has focus, since
+    /// key events go to whatever is focused in the app. Returns false when neither is possible.
+    @discardableResult
+    static func type(_ text: String, into el: AXUIElement, pid: pid_t) -> Bool {
         AXUIElementSetAttributeValue(el, kAXFocusedAttribute as CFString, kCFBooleanTrue)
-        if AXUIElementSetAttributeValue(el, kAXSelectedTextAttribute as CFString, text as CFString) != .success {
-            Keys.typeText(text, pid: pid)
-        }
+        if AXUIElementSetAttributeValue(el, kAXSelectedTextAttribute as CFString, text as CFString) == .success { return true }
+        guard (attr(el, kAXFocusedAttribute) as Bool?) == true else { return false }
+        Keys.typeText(text, pid: pid)
+        return true
+    }
+
+    /// A name field for an item that was just created: its whole value is selected and is a default name.
+    static func isFreshName(_ el: AXUIElement) -> Bool {
+        guard let value: String = attr(el, kAXValueAttribute), value.lowercased().hasPrefix("untitled") else { return false }
+        var range: CFTypeRef?
+        guard AXUIElementCopyAttributeValue(el, kAXSelectedTextRangeAttribute as CFString, &range) == .success,
+              let range, CFGetTypeID(range) == AXValueGetTypeID() else { return false }
+        var r = CFRange()
+        return AXValueGetValue(range as! AXValue, .cfRange, &r) && r.location == 0 && r.length == (value as NSString).length
+    }
+
+    static func replace(_ text: String, in el: AXUIElement) {
+        AXUIElementSetAttributeValue(el, kAXFocusedAttribute as CFString, kCFBooleanTrue)
+        AXUIElementSetAttributeValue(el, kAXValueAttribute as CFString, text as CFString)
     }
 
     static func focusedElement(pid: pid_t) -> AXUIElement? {
@@ -228,16 +430,22 @@ nonisolated enum AX {
         guard let role: String = attr(el, kAXRoleAttribute), actionableRoles.contains(role) else { return nil }
         if let enabled: Bool = attr(el, kAXEnabledAttribute), !enabled { return nil }
         if (attr(el, kAXSubroleAttribute) as String?) == "AXSecureTextField" { return nil } // never touch password fields
+        // Dialog controls are often untitled with a separate label ("Allow:" above a popup): use the linked label.
         let title = [kAXTitleAttribute, kAXDescriptionAttribute, kAXPlaceholderValueAttribute, kAXHelpAttribute]
             .lazy.compactMap { (attr(el, $0) as String?)?.nonEmpty }.first
+            ?? (attr(el, kAXTitleUIElementAttribute) as AXUIElement?).flatMap { label in
+                [kAXValueAttribute, kAXTitleAttribute].lazy.compactMap { (attr(label, $0) as String?)?.nonEmpty }.first
+            }
         let isText = textRoles.contains(role)
-        guard title != nil || isText else { return nil }
+        let choice: String? = role == "AXPopUpButton" ? (attr(el, kAXValueAttribute) as String?)?.nonEmpty : nil
+        guard title != nil || isText || choice != nil else { return nil }
         let kind = role.dropFirst(2).lowercased()
         var line = "\(id) \(kind) \"\(title?.prefix(60) ?? "")\""
         if isText, let value: String = attr(el, kAXValueAttribute) {
             line += " text=\"\(value.prefix(80).replacingOccurrences(of: "\n", with: " "))\""
         }
-        return Candidate(id: id, line: line, label: title ?? (isText ? "text area" : kind), element: el)
+        if let choice { line += " value=\"\(choice.prefix(60))\"" } // e.g. Excel's Allow: "Any value"
+        return Candidate(id: id, line: line, label: title ?? choice ?? (isText ? "text area" : kind), element: el, isText: isText)
     }
 
     private static func collectMenu(_ el: AXUIElement, path: String, depth: Int, into items: inout [(path: String, el: AXUIElement)]) {
@@ -329,9 +537,10 @@ nonisolated enum Keys {
 
 /// Local model over Ollama's HTTP API (127.0.0.1, so no ATS exception needed).
 enum Ollama {
-    // ponytail: model name via `defaults write com.pindopro.PinDo model <name>`; real settings UI in M7.
-    static var model: String { UserDefaults.standard.string(forKey: "model") ?? "qwen3-vl:8b" }
-    private static let base = URL(string: "http://127.0.0.1:11434/api/")!
+    /// The local model (MAI-UI 8B by default; `defaults write com.pindopro.PinDo model <name>` to change). See Config.
+    static var model: String { Config.localModel }
+    static var displayName: String { ["maternion/mai-ui:8b": "MAI-UI 8B", "qwen3-vl:8b": "Qwen3-VL 8B"][model] ?? model }
+    private static var base: URL { Config.endpoint }
 
     private static let system = """
         You are PinDo, an assistant that operates the user's Mac. Each turn you get the user's task, \
@@ -359,6 +568,8 @@ enum Ollama {
         variant("open_url", "text"), variant("done", "message"), variant("ask", "message"),
     ]]
 
+    private static let answerSchema = variant("done", "message")
+
     private static func variant(_ action: String, _ fields: String...) -> [String: Any] {
         var properties: [String: Any] = ["action": ["const": action]]
         for field in fields { properties[field] = ["type": "string"] }
@@ -381,17 +592,30 @@ enum Ollama {
         _ = try await URLSession.shared.data(for: request("chat", ["model": model, "messages": [], "keep_alive": -1]))
     }
 
-    static func nextAction(task: String, history: [String], screen: String) async throws -> Action {
+    /// For Settings: is the local model reachable and installed?
+    static func status() async -> String {
+        var req = URLRequest(url: base.appending(path: "tags"))
+        req.timeoutInterval = 3
+        guard let (data, _) = try? await URLSession.shared.data(for: req) else { return "Ollama isn't running" }
+        return String(decoding: data, as: UTF8.self).contains("\"\(model)\"") ? "Ready" : "Not installed (ollama pull \(model))"
+    }
+
+    static func nextAction(task: String, history: [String], screen: String, answerOnly: Bool = false) async throws -> Action {
         let completed = history.isEmpty ? "Nothing yet." : history.enumerated().map { "\($0 + 1). \($1)" }.joined(separator: "\n")
             + "\nSteps marked ✓ are finished. Do not do them again. If the task needs nothing more, reply done."
         let user = "\(screen)\n\nTask: \(task)\nAlready completed: \(completed)\n\nNext action?"
         // Raw ChatML with an empty <think> block: Qwen3-VL ignores `think: false` and otherwise reasons for
         // ~2,500 tokens (60-100 s) per step; prefilling it makes each step ~0.5-1 s with the same decisions.
         // ponytail: Qwen chat format only (Qwen3-VL, MAI-UI); add per-family templates if another family becomes the default.
+        if let cloud = Cloud.cloudModel {
+            let text = try await Cloud.generate(system: system, user: user + (answerOnly ? "\nThis is a question: reply only with the done action." : ""),
+                                                image: nil, model: cloud)
+            return try JSONDecoder().decode(Action.self, from: Data(text.utf8))
+        }
         let prompt = "<|im_start|>system\n\(system)<|im_end|>\n<|im_start|>user\n\(user)<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
         let body: [String: Any] = [
             "model": model, "raw": true, "prompt": prompt, "stream": false, "keep_alive": -1,
-            "format": schema, "options": ["temperature": 0],
+            "format": answerOnly ? answerSchema : schema, "options": ["temperature": 0],
         ]
         let (data, response) = try await URLSession.shared.data(for: request("generate", body))
         if (response as? HTTPURLResponse)?.statusCode == 404 { throw ModelError.notInstalled(model) }
@@ -400,6 +624,12 @@ enum Ollama {
         let content = try JSONDecoder().decode(Reply.self, from: data).response
         #if DEBUG
         agentLog.debug("model saw:\n\(user, privacy: .public)\nmodel said: \(content, privacy: .public)")
+        // The log truncates long messages; keep the full exchange for debugging (debug builds only).
+        try? "\(user)\n\nmodel said: \(content)\n\n---\n".data(using: .utf8).map { data in
+            let file = FileManager.default.temporaryDirectory.appending(path: "pindo-steps.log")
+            if let handle = try? FileHandle(forWritingTo: file) { handle.seekToEndOfFile(); handle.write(data); try handle.close() }
+            else { try data.write(to: file) }
+        }
         #endif
         return try JSONDecoder().decode(Action.self, from: Data(content.utf8))
     }
@@ -413,6 +643,7 @@ enum Ollama {
 
     private static func request(_ endpoint: String, _ body: [String: Any]) throws -> URLRequest {
         var req = URLRequest(url: base.appending(path: endpoint))
+        req.timeoutInterval = Config.inferenceTimeout
         req.httpMethod = "POST"
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         // Sorted keys keep "action" first in every schema variant. Ollama turns the schema into an output template

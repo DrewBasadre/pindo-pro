@@ -16,7 +16,7 @@ python3 -B -m unittest discover -s tests -v
 
 If this local branch is absent, inspect the working tree/index and create it from current local HEAD with `git switch -c qwen-skills-more`. Stop if switching would disturb unrelated work; do not reset or rewrite earlier commits.
 
-Requirements: macOS 15+, Xcode 26, and the existing local runtime configured according to the README. Teach requires image input and structured responses. No cloud service is added.
+Requirements: macOS 15+, Xcode 26, and Ollama configured according to the README. The local default is `maternion/mai-ui:8b`; run `ollama pull maternion/mai-ui:8b` if needed. Main's loopback endpoint validation and optional cloud settings are retained. Teach uses local image input and structured responses.
 
 ```bash
 DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer xcodebuild \
@@ -35,7 +35,7 @@ python3 -B tools/practice_assets.py
 This creates `build/practice-assets`. Use another `--output` directory for a fresh session; existing directories are not overwritten. The eight assets are original synthetic fixtures. The WAV contains tones, not speech. Record permitted spoken counting for caption tests as described in the fixture setups.
 
 1. Open Finder at the disposable practice directory.
-2. Press Fn+Space, enable **Teach**, and enter `Paano gumawa ng folder na Lesson Files?`.
+2. Press Fn+Space and enter `Teach me how to create a folder named Lesson Files`. The existing intent policy selects Teach automatically.
 3. Confirm the app/task if prompted, provide the parent directory and name, and choose **Requirements met — begin**.
 4. Follow one instruction at a time. The panel should stay visible. Inspect **Why this step?** and **What to check**.
 5. Confirm the new folder's name and parent. Clicking New Folder alone is insufficient evidence.
@@ -48,14 +48,14 @@ Record exact macOS version, application build, browser, account plan, language a
 | App | Start here | Then test |
 | --- | --- | --- |
 | PowerPoint | `powerpoint.insert_image` | slide masters and PDF output |
-| Excel | `excel.totals_averages` | PivotTables and Mac CSV import |
+| Excel | `excel.totals_averages` | PivotTables, Mac CSV import and main's `excel.fill_table` lesson |
 | Word | `word.headings` | section numbering and built-in citation layout |
 | Zotero + Word Mac | `word.zotero_citations` | paused library/dialog transitions, Automation grant, plugin fields, styles and Refresh |
 | Acrobat Pro Mac | `acrobat.fillable_forms` | authoring entitlement, text/checkbox properties, required flags, tab order and saved fillability |
 | Overleaf on Mac browser | `overleaf.compile_troubleshooting` | editable-source diagnosis, generated files, fresh compile and full PDF review |
 | CapCut Mac | `capcut.import_trim` | captions, tracked blur and export gates |
 | Figma web | `figma.nested_auto_layout` | interactive states and variable modes |
-| Canva web | `canva.frames_crop` | video timing, accessible PDF output and separate `canva.bulk_personalization` mapping/output checks |
+| Canva web / desktop wrapper | `canva.frames_crop` | main's text, shape and text-effect lessons, video timing, accessible PDF output and separate `canva.bulk_personalization` mapping/output checks |
 | Notion on Mac browser | `notion.relations_rollups` | data-source/view identity, schema permission, two-way links and independent rollup total |
 | Slack on Mac browser | `slack.workflow_builder` | paid-plan/admin gates, triggers, ordered native steps/variables, draft versus authorized test |
 | Trello on Mac browser | `trello.board_automation` | all five types, pooled quota, scope/button sharing, time zone and actual log/card results |
@@ -87,7 +87,7 @@ For study/classroom practice use `anki`, `classroom` and `kahoot` setups. Record
 
 For research/document preparation use `zotero_word`, `acrobat` and `overleaf` setups; preparation is manual and requires no new static media. Record exact Word/Zotero/Acrobat builds, Mac/browser versions, plugin and Automation permission, license and project role. The Zotero lesson starts in Word under the existing `microsoft.word` profile. `TutorSession.activity()` pauses on target changes; `resume()` requires the original PID, so it cannot transfer watching to Zotero or a Zotero-owned plugin dialog. Library organization and plugin dialogs are manual `user_confirmation` steps while paused. Use **I checked this result** after each manual action; bring the original Word document forward before **Resume watching**. Same-process Word dialogs/windows can be adopted by explicit Resume; restarting Word changes the PID and needs a new lesson. Generic Zotero citation wording also matches the retained built-in `word.citations` lesson; choose the explicitly titled Zotero task in the picker. No Zotero app alias/profile is added because automatic Zotero-window watching is not supported by this Word-anchored lesson. Acrobat needs an active Pro authoring entitlement; test Reader-only and PDF editing restrictions without bypassing them. Preview all field types, independent values, Required flags and forward/reverse focus order, then reopen the blank saved copy to verify retained fillability. Do not submit/distribute or infer enforcement from a Required flag. Overleaf must trace `.toc` headings, `.aux` labels/citation keys and `.bbl` entries to editable sources, repair one cause, regenerate cache and review current logs and all PDF checklist pages. Test view-only access and stale/error-tolerant PDF cases separately.
 
-The productivity/content batch chooses **browser on Mac** for both Notion and Slack after inspecting the profile contract: one profile has exactly one `surface`, and bundled task surfaces must match it. No desktop profile/instructions are mixed into these lessons. Notion uses `notion.com`/`notion.so`, Slack uses `app.slack.com`, and Trello uses `trello.com`; all new bundle-ID arrays remain empty. Canva reuses `canva.web` unchanged. Host matching identifies a service, not its signed-in editor, plan or permissions: confirm the visible database/editor/workspace and use an isolated browser window. Slack workspace URL redirects require identity review; unsupported hosts use manual app selection, not an invented domain alias.
+The productivity/content batch chooses **browser on Mac** for both Notion and Slack after inspecting the profile contract: one profile has exactly one `surface`, and bundled task surfaces must match it. No desktop profile/instructions are mixed into these lessons. Notion uses `notion.com`/`notion.so`, Slack uses `app.slack.com`, and Trello uses `trello.com`; all new bundle-ID arrays remain empty. Canva reuses main's `canva.web` profile, including its known desktop-wrapper bundle ID, without changing the browser-editor lesson surface. Host matching identifies a service, not its signed-in editor, plan or permissions: confirm the visible database/editor/workspace and use an isolated browser window. Slack workspace URL redirects require identity review; unsupported hosts use manual app selection, not an invented domain alias.
 
 The productivity/content batch adds 12 evaluation specifications and four manual synthetic setups (`notion`, `canva_bulk`, `slack`, `trello`); no new static assets are needed. Notion distinguishes data sources/views and requires schema access beyond Can edit content, then checks exact related pages and an independently computed rollup. Canva Bulk Create is distinct from manual multipage/branding lessons and requires an eligible plan, explicit column-to-element mapping, previews and complete generated-record review. Slack requires a paid plan, permitted builder/manager role and channel posting access; choose request/event versus scheduled recurrence, order steps and pass actual variables. Draft-only is supported; publishing/testing is user-scoped live service activity. Trello compares Rules, Card buttons, Board buttons, Scheduled and Due Date commands, shared Workspace quotas, private button visibility and account time zones. Save activates automation; Run now does not prove future timing. Neither authoring nor evaluation specifications execute service actions.
 
@@ -106,7 +106,7 @@ Copy `evaluations/run_template.json` into a local results directory for each rea
 1. `skills/finder/create_folder.json` defines inputs, steps and evidence.
 2. `tools/application_skills.py` validates and bundles the data.
 3. `PinDo/SkillLibrary.swift` decodes, matches and supplies progression predicates.
-4. `PinDo/QuickBar.swift` selects Teach or the existing action path.
+4. `PinDo/QuickBar.swift` and `PinDo/IntentPolicy.swift` route questions, Guide, Do and Teach automatically; `PinDo/Config.swift` supplies the configured local model and loopback endpoint.
 5. `PinDo/TutorSession.swift` owns the step, pause/resume and stale-result rejection.
 6. `PinDo/TutorObservation.swift` captures the pinned window and receives activity notifications.
 7. `PinDo/TutorClient.swift` sends bounded context and parses non-executable guidance.
@@ -115,6 +115,8 @@ Copy `evaluations/run_template.json` into a local results directory for each rea
 Task files describe procedures; they are not macros. The host owns progression while inference supplies guidance and evidence. Preserve this separation while continuing development.
 
 ## Known limits to investigate
+
+Local reconciliation on 2026-10-10: the combined bundle contains 136 macOS tasks, 32 application profiles and 411 evaluation specifications. Generation, bundle checking and all 37 Python tests passed. Runtime and UI sources follow local main `54ef98e`, including the configured `maternion/mai-ui:8b` default, automatic Guide/Do/Teach routing and existing optional cloud settings. All 23 six-group tasks and their 69 cases are retained; model-specific limitation wording is now neutral and does not establish MAI-UI accuracy. Native Xcode/Swift checks and live Mac/model execution are unavailable on this Linux host. Historical batch results below describe their original Qwen configuration, not the current runtime. The six commits are preserved; a read-only three-way preview still reports conflicts in `PinDo/Resources/ApplicationSkills.json` and `README.md`. By user decision, those two files are left for resolution during an eventual merge. No merge or push was performed.
 
 - Productivity and content workflows batch validation on 2026-10-10: generation and bundle checking passed for 132 tasks and 399 specifications; all 37 Python tests passed, including English/Taglish/recovery routing, distinct Bulk Create intents, Mac browser surfaces and confirmation boundaries. All 128 prior tasks, 29 profiles and 387 cases are retained unchanged as data. Canva reuses its existing web profile; Notion, Slack and Trello add browser profiles with unknown bundle IDs empty. Swift domain checks were added but not executed on this Linux host. Native Xcode/Swift checks and live Mac workflows are unavailable; all four tasks remain unverified with empty tested-version arrays. The existing `qwen3-vl:8b` selection is unchanged.
 

@@ -164,7 +164,8 @@ class RichSkillsTests(unittest.TestCase):
             with self.subTest(task=task_id):
                 self.assertEqual((tasks[task_id]['application_id'], tasks[task_id]['platform'], tasks[task_id]['surface']), (app, 'macos', 'browser'))
                 self.assertEqual(profiles[app]['surface'], 'browser')
-                self.assertEqual(profiles[app]['bundle_ids'], [])
+                expected_bundle_ids = ['com.canva.canvaeditor'] if app == 'canva.web' else []
+                self.assertEqual(profiles[app]['bundle_ids'], expected_bundle_ids)
                 self.assertEqual(tasks[task_id]['steps'][-1]['verification'], 'user_confirmation')
         self.assertEqual(profiles['notion.web']['domains'], ['notion.com', 'notion.so'])
         self.assertEqual(profiles['slack.web']['domains'], ['app.slack.com'])

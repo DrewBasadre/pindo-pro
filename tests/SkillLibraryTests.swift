@@ -20,6 +20,15 @@ struct SkillLibraryTests {
         precondition(profile.matches(name: "Safari", bundleID: nil, host: "www.example.com"))
         precondition(!profile.matches(name: "Safari", bundleID: nil, host: "example.com.evil.test"))
         precondition(!profile.matches(name: "Example", bundleID: nil, host: nil))
+        let wrapped = ApplicationProfile(id: "test.wrapped", name: "Example", aliases: ["Example"], bundle_ids: ["com.example.editor"], domains: ["example.com"], surface: "browser", terminology: ["page"])
+        precondition(wrapped.matches(name: "Example", bundleID: "com.example.editor", host: nil))
+        precondition(!wrapped.matches(name: "Example", bundleID: "com.other.app", host: nil))
+        for changed in 0..<7 {
+            let accepted = TeachingProgress.isCurrent(session: 1, currentSession: changed == 1 ? 2 : 1,
+                step: 2, currentStep: changed == 2 ? 3 : 2, observation: 3, currentObservation: changed == 3 ? 4 : 3,
+                paused: changed == 4, sameTarget: changed != 5)
+            precondition(accepted == (changed == 0 || changed == 6), "Stale or paused observation was accepted")
+        }
         for (applicationID, domain, otherDomain) in [
             ("google.meet", "meet.google.com", "calendar.google.com"),
             ("google.calendar", "calendar.google.com", "meet.google.com"),
@@ -47,12 +56,6 @@ struct SkillLibraryTests {
         precondition(Set(sharedEditorProfiles.map(\.id)) == Set(["google.sheets", "google.forms"]))
         // A shared host requires explicit app selection, never array-order selection.
         precondition(sharedEditorProfiles.count != 1)
-        for changed in 0..<7 {
-            let accepted = TeachingProgress.isCurrent(session: 1, currentSession: changed == 1 ? 2 : 1,
-                step: 2, currentStep: changed == 2 ? 3 : 2, observation: 3, currentObservation: changed == 3 ? 4 : 3,
-                paused: changed == 4, sameTarget: changed != 5)
-            precondition(accepted == (changed == 0 || changed == 6), "Stale or paused observation was accepted")
-        }
         print("Swift matching, application identity, and completion gates passed for \(library.skills.count) skills.")
     }
 }

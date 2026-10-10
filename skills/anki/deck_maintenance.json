@@ -420,7 +420,7 @@
       "Anki desktop manual; Cards/Notes mode introduced in 2.1.45. Mac download 26.09.3 lists macOS 13+; researched 2026-10-10, not executed."
     ],
     "tested_versions": [],
-    "notes": "Official documentation researched 2026-10-10. Schema/routing/bundle validation only; no live Mac GUI execution or measured qwen3-vl:8b performance."
+    "notes": "Official documentation researched 2026-10-10. Schema/routing/bundle validation only; no live Mac GUI execution or measured local-model performance."
   },
   "related_skills": []
 }

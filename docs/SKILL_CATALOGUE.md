@@ -1,8 +1,8 @@
 # Application task catalogue
 
-132 tasks. Research date: 2026-10-10. Every task is hands-on unverified; source documentation is not a successful test run.
+136 tasks. Research date: 2026-10-10. Every task is hands-on unverified; source documentation is not a successful test run.
 
-The initial 108-task outline is represented with one extra focused Finder rename task, plus five desktop meeting and scheduling tasks and four Google meetings/calendar browser tasks and four Google Workspace administration/data browser tasks, plus three study/classroom activities (one desktop and two browser tasks) and three research/document tasks (two desktop and one browser), plus four productivity/content browser tasks. Figma and Canva target web editors. Sources and recovery interpretations require rechecking against the installed version.
+The initial 108-task outline is represented with one extra focused Finder rename task, plus five desktop meeting and scheduling tasks and four Google meetings/calendar browser tasks and four Google Workspace administration/data browser tasks, plus three study/classroom activities (one desktop and two browser tasks) and three research/document tasks (two desktop and one browser), plus four productivity/content browser tasks and main's three focused Canva editor lessons and Excel student-table lesson. Figma and Canva target web editors. Sources and recovery interpretations require rechecking against the installed version.
 
 ## Adobe Acrobat (1)
 
@@ -72,10 +72,12 @@ Mac desktop, active Acrobat Pro Prepare a form entitlement and unsigned writable
 
 Mac desktop, writable local collection; current download 26.09.3 requires macOS 13+. No add-on, paid plan or sync account is needed. Distinguish note fields/tags from generated cards/deck placement; scope browser and duplicate searches, preserve sibling cards and review candidate content without deletion or rescheduling. Proposal `anki-mac-deck-maintenance` maps to `anki.deck_maintenance`.
 
-## Canva web (9)
+## Canva web / desktop wrapper (12)
 
 | Task | Difficulty | Primary reference |
 | --- | --- | --- |
+| [canva.add_shape](../skills/canva/add_shape.json) — Add a shape in Canva | foundation | [Vendor documentation](https://www.canva.com/help/) |
+| [canva.add_text](../skills/canva/add_text.json) — Add text or a heading in Canva | foundation | [Vendor documentation](https://www.canva.com/help/) |
 | [canva.audio_timing](../skills/canva/audio_timing.json) — Trim and time Canva audio | intermediate | [Vendor documentation](https://www.canva.com/help/edit-audio/) |
 | [canva.branding](../skills/canva/branding.json) — Apply Canva brand assets | intermediate | [Vendor documentation](https://www.canva.com/help/using-brand-templates/) |
 | [canva.bulk_personalization](../skills/canva/bulk_personalization.json) — Map data to personalized Canva designs with Bulk Create on Mac | intermediate | [Vendor documentation](https://www.canva.com/help/bulk-create/) |
@@ -84,6 +86,7 @@ Mac desktop, writable local collection; current download 26.09.3 requires macOS 
 | [canva.frames_crop](../skills/canva/frames_crop.json) — Crop images inside Canva frames | intermediate | [Vendor documentation](https://www.canva.com/help/using-frames/) |
 | [canva.layers_align](../skills/canva/layers_align.json) — Arrange and align Canva layers | intermediate | [Vendor documentation](https://www.canva.com/help/layer-group-align/) |
 | [canva.multipage_design](../skills/canva/multipage_design.json) — Build a multipage Canva design | intermediate | [Vendor documentation](https://www.canva.com/help/multi-design) |
+| [canva.text_effects](../skills/canva/text_effects.json) — Apply a text effect in Canva | foundation | [Vendor documentation](https://www.canva.com/help/) |
 | [canva.timed_titles](../skills/canva/timed_titles.json) — Time titles in a Canva video | intermediate | [Vendor documentation](https://www.canva.com/help/element-timing-video/) |
 
 Mac browser; Bulk Create reuses `canva.web` and stays distinct from manual multipage, branding and export lessons. Eligible Pro/Teams/Business/Enterprise/Education/Nonprofits plan and edit access required. Map headers to separate elements, preview each record, choose output mode and inspect every generated page/design. Image URLs are not supported image data; media preview has source-dependent limits. Proposal `canva-bulk-personalization` maps to `canva.bulk_personalization`.
@@ -205,7 +208,7 @@ Mac browser on `sheets.google.com` or `docs.google.com/spreadsheets`, signed-in 
 
 Mac browser on `create.kahoot.it` with signed-in permitted host and plan-available Assign/report controls. Player `kahoot.it` is excluded from host routing. Review future deadline/hour/zone and plan-dependent options, share session access only to a consenting test destination, then locate the specific assigned-session report. Source quiz edits do not update existing assignments; revised content needs a new session and access details. Proposal `kahoot-assignments-and-reports` maps to `kahoot.assignments_and_reports`.
 
-## Microsoft Excel (8)
+## Microsoft Excel (9)
 
 | Task | Difficulty | Primary reference |
 | --- | --- | --- |
@@ -214,6 +217,7 @@ Mac browser on `create.kahoot.it` with signed-in permitted host and plan-availab
 | [excel.clean_csv](../skills/excel/clean_csv.json) — Import and clean a CSV in Excel | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/excel/power-query-data-sources-in-excel-versions) |
 | [excel.conditional_formula](../skills/excel/conditional_formula.json) — Write an IF formula | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/Excel/get-started/overview-of-formulas-in-excel) |
 | [excel.dropdown](../skills/excel/dropdown.json) — Create a data validation dropdown | intermediate | [Vendor documentation](https://support.microsoft.com/en-gb/excel/get-started/create-a-drop-down-list) |
+| [excel.fill_table](../skills/excel/fill_table.json) — Fill a student ID and name table | foundation | [Vendor documentation](https://support.microsoft.com/en-gb/excel/get-started/create-a-drop-down-list) |
 | [excel.lookup](../skills/excel/lookup.json) — Look up a value with XLOOKUP | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/excel/functions/xlookup-function) |
 | [excel.pivot_table](../skills/excel/pivot_table.json) — Summarize data with a PivotTable | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/excel/get-started/create-a-pivottable-to-analyze-worksheet-data) |
 | [excel.totals_averages](../skills/excel/totals_averages.json) — Calculate totals and averages in Excel | intermediate | [Vendor documentation](https://support.microsoft.com/en-us/excel/calculate-an-average) |

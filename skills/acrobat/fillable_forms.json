@@ -616,7 +616,7 @@
       "Acrobat current desktop Prepare a form documentation (2025–2026) and macOS File menu guidance; Pro authoring entitlement. Record actual Mac/build/license before teaching; untested."
     ],
     "tested_versions": [],
-    "notes": "Official documentation researched 2026-10-10. Schema/routing/bundle validation only; no live Mac GUI run, screenshots or measured qwen3-vl:8b performance."
+    "notes": "Official documentation researched 2026-10-10. Schema/routing/bundle validation only; no live Mac GUI run, screenshots or measured local-model performance."
   },
   "related_skills": []
 }

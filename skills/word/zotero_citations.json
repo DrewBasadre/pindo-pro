@@ -437,7 +437,7 @@
       "Zotero current desktop documentation: macOS 10.15+; Word for Mac 2016–2024 or Office 365. Plugin and Mac Automation layouts researched 2026-10-10; actual builds untested."
     ],
     "tested_versions": [],
-    "notes": "Official documentation researched 2026-10-10. Schema/routing/bundle validation only; no live Mac GUI run, screenshots or measured qwen3-vl:8b performance."
+    "notes": "Official documentation researched 2026-10-10. Schema/routing/bundle validation only; no live Mac GUI run, screenshots or measured local-model performance."
   },
   "related_skills": []
 }

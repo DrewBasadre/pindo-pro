@@ -353,7 +353,7 @@
       "Official computer/web documentation reviewed 2026-10-10; applicable to Mac browser use. Exact macOS/browser builds, account policy and visible UI require live testing."
     ],
     "tested_versions": [],
-    "notes": "Documentation-derived task and evaluation specifications only. Portable schema/routing/bundle checks do not establish live Mac GUI accuracy or qwen3-vl:8b performance."
+    "notes": "Documentation-derived task and evaluation specifications only. Portable schema/routing/bundle checks do not establish live Mac GUI accuracy or local-model performance."
   },
   "related_skills": []
 }
